@@ -2,6 +2,6 @@
 <selector xmlns:android="http://schemas.android.com/apk/res/android"
           android:exitFadeDuration="@android:integer/config_mediumAnimTime"
           android:enterFadeDuration="@android:integer/config_mediumAnimTime">
-    <item android:drawable="@drawable/light_blue_not_pressed"/>
-    <item android:state_pressed="true" android:drawable="@drawable/white_not_pressed"/>
+    <item android:state_pressed="true" android:drawable="@drawable/ic_menu_live_passes_blue"/>
+    <item android:drawable="@drawable/ic_menu_live_passes_grey"/>
 </selector>
