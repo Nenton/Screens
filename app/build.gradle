@@ -28,6 +28,8 @@ dependencies {
     compile 'com.android.support:design:25.3.1'
     compile 'com.android.support:support-v4:25.3.1'
     compile 'com.android.support.constraint:constraint-layout:1.0.2'
+    compile 'cn.aigestudio.wheelpicker:WheelPicker:1.1.2'
+    compile 'com.kyleduo.switchbutton:library:1.4.6'
 
     testCompile 'junit:junit:4.12'
 }

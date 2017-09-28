@@ -3,7 +3,9 @@
 <android.support.v4.widget.NestedScrollView
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:layout_marginLeft="8dp"
+    android:layout_marginRight="8dp">
 
     <LinearLayout
         xmlns:android="http://schemas.android.com/apk/res/android"
@@ -21,7 +23,7 @@
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_toLeftOf="@id/school_district_volume"
+                android:layout_toLeftOf="@+id/school_district_volume"
                 android:textStyle="bold"
                 android:text="School district"
                 android:textAlignment="center"
@@ -49,7 +51,7 @@
                 android:layout_marginLeft="0dp"
                 android:layout_alignParentLeft="true"
                 android:layout_centerVertical="true"
-                android:layout_toLeftOf="@id/school_district_passes"
+                android:layout_toLeftOf="@+id/school_district_passes"
                 android:enabled="false"
                 android:text="Not logged in"
                 android:textAlignment="center"
@@ -60,7 +62,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_centerVertical="true"
-                android:layout_toLeftOf="@id/school_district_data"
+                android:layout_toLeftOf="@+id/school_district_data"
                 android:text="Passes (0)"
                 android:textAllCaps="true"
                 android:textColor="@color/blue_no_thanks"

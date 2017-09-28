@@ -1,0 +1,281 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.v4.widget.NestedScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/red">
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:padding="8dp"
+                android:src="@drawable/ic_volume_up_white_24dp"/>
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <ImageView
+                android:id="@+id/image_school_help_history"
+                android:layout_width="75dp"
+                android:layout_height="50dp"
+                android:layout_centerVertical="true"
+                android:src="@drawable/ic_help_school"/>
+
+            <ImageView
+                android:id="@+id/clear_history"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_toRightOf="@+id/image_school_help_history"
+                android:padding="8dp"
+                android:src="@drawable/ic_clear_black_24dp"/>
+
+            <EditText
+                style="@style/Field"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="0dp"
+                android:layout_toLeftOf="@+id/search_history"
+                android:layout_toRightOf="@id/clear_history"
+                android:hint="Send Student a Message"
+                android:textSize="@dimen/text_size_middle"/>
+
+            <ImageView
+                android:id="@+id/search_history"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:padding="8dp"
+                android:src="@drawable/ic_search_black_24dp"/>
+        </RelativeLayout>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="8dp"
+            android:layout_marginTop="8dp"
+            android:text="Prototype Cells"
+            android:textColor="@color/black"
+            android:textSize="@dimen/text_size_big"/>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <ImageView
+                android:id="@+id/image_school_pass_requests"
+                android:layout_width="48dp"
+                android:layout_height="48dp"
+                android:layout_centerVertical="true"
+                android:src="@drawable/ic_help_school"/>
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="8dp"
+                android:layout_toLeftOf="@+id/duration_pass_requests"
+                android:layout_toRightOf="@+id/image_school_pass_requests"
+                android:orientation="vertical">
+
+                <TextClock
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"/>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="horizontal">
+
+                    <EditText
+                        style="@style/Field"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="0dp"
+                        android:enabled="false"
+                        android:gravity="top"
+                        android:text="Auditorium"
+                        android:textSize="@dimen/text_size_middle"/>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:gravity="center_vertical"
+                        android:text="TO"
+                        android:textColor="@color/black"
+                        android:textSize="@dimen/text_size_middle"
+                        android:textStyle="italic"/>
+
+                    <EditText
+                        style="@style/Field"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_vertical"
+                        android:enabled="false"
+                        android:gravity="center_vertical"
+                        android:text="Restroom"
+                        android:textSize="@dimen/text_size_middle"/>
+                </LinearLayout>
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/duration_pass_requests"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Duration"
+                    android:textAlignment="center"
+                    android:textAllCaps="true"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/text_size_small"/>
+
+                <TextClock
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:format12Hour="h:mm"
+                    android:format24Hour="h:mm"
+                    android:textSize="48sp"/>
+            </LinearLayout>
+        </RelativeLayout>
+
+        <android.support.v7.widget.RecyclerView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+        </android.support.v7.widget.RecyclerView>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/red"
+            android:text="Pass Information"
+            android:textAlignment="center"
+            android:textAllCaps="true"
+            android:textColor="@color/white"
+            android:textSize="@dimen/text_size_big"
+            android:textStyle="bold"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:orientation="vertical">
+
+                <LinearLayout
+                    style="@style/WrapTextHistory">
+
+                    <TextView
+                        style="@style/TextHistoryArticle"
+                        android:text="Name"/>
+
+                    <TextView
+                        style="@style/TextHistoryField"
+                        android:paddingBottom="2dp"
+                        android:paddingTop="2dp"
+                        android:text="Jamie Gant"/>
+                </LinearLayout>
+                <LinearLayout
+                    style="@style/WrapTextHistory">
+
+                    <TextView
+                        style="@style/TextHistoryArticle"
+                        android:text="From"/>
+
+                    <TextView
+                        style="@style/TextHistoryField"
+                        android:paddingBottom="2dp"
+                        android:paddingTop="2dp"
+                        android:text="174 (quarles)"/>
+                </LinearLayout>
+                <LinearLayout
+                    style="@style/WrapTextHistory">
+
+                    <TextView
+                        style="@style/TextHistoryArticle"
+                        android:text="To"/>
+
+                    <TextView
+                        style="@style/TextHistoryField"
+                        android:paddingBottom="2dp"
+                        android:paddingTop="2dp"
+                        android:text="202 (Gant)"/>
+                </LinearLayout>
+                <LinearLayout
+                    style="@style/WrapTextHistory">
+
+                    <TextView
+                        style="@style/TextHistoryArticle"
+                        android:text="Depart"/>
+
+                    <TextClock
+                        android:id="@+id/textView2"
+                        style="@style/TextHistoryField"
+                        android:paddingBottom="2dp"
+                        android:paddingTop="2dp"/>
+                </LinearLayout>
+                <LinearLayout
+                    style="@style/WrapTextHistory">
+
+                    <TextView
+                        style="@style/TextHistoryArticle"
+                        android:text="Return"/>
+
+                    <TextClock
+                        style="@style/TextHistoryField"
+                        android:paddingBottom="2dp"
+                        android:paddingTop="2dp"
+                        android:text="Jamie Gant"/>
+                </LinearLayout>
+
+                <LinearLayout
+                    style="@style/WrapTextHistory">
+
+                    <TextView
+                        style="@style/TextHistoryArticle"
+                        android:text="Comment"/>
+
+                    <TextView
+                        style="@style/TextHistoryField"
+                        android:paddingBottom="2dp"
+                        android:paddingTop="2dp"
+                        android:minLines="3"
+                        android:minWidth="100dp"/>
+                </LinearLayout>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:orientation="vertical">
+
+            </LinearLayout>
+        </LinearLayout>
+    </LinearLayout>
+</android.support.v4.widget.NestedScrollView>

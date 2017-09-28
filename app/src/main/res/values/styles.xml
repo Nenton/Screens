@@ -31,7 +31,6 @@
     <style name="Field">
         <item name="android:background">@drawable/text_field</item>
         <item name="android:padding">8dp</item>
-        <item name="android:layout_marginTop">8dp</item>
         <item name="android:layout_marginRight">8dp</item>
         <item name="android:layout_marginLeft">8dp</item>
     </style>
@@ -57,6 +56,40 @@
     <style name="SwitchDestination">
         <item name="android:layout_width">wrap_content</item>
         <item name="android:layout_height">wrap_content</item>
+    </style>
+
+    <style name="ButtonBorderless" parent="Widget.AppCompat.Button.Borderless">
+
+    </style>
+
+    <style name="TextHistoryArticle">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textAllCaps">true</item>
+        <item name="android:textColor">@color/black</item>
+        <item name="android:layout_marginRight">8dp</item>
+        <item name="android:textSize">@dimen/text_size_middle</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+
+    <style name="TextHistoryField">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:background">@color/light_blue</item>
+        <item name="android:paddingLeft">16dp</item>
+        <item name="android:paddingRight">16dp</item>
+        <item name="android:textAllCaps">true</item>
+        <item name="android:textColor">@color/black</item>
+        <item name="android:textSize">@dimen/text_size_middle</item>
+    </style>
+
+    <style name="WrapTextHistory">
+
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:gravity">right|center_vertical</item>
+        <item name="android:orientation">horizontal</item>
+        <item name="android:layout_marginTop">4dp</item>
     </style>
 
 </resources>
