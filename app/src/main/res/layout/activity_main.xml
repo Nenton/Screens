@@ -41,14 +41,14 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
-            android:background="#ff0000"
+            android:background="@color/red"
             android:paddingBottom="4dp"
             android:paddingTop="4dp"
             android:text="Title"
             android:textAlignment="center"
             android:textAllCaps="true"
-            android:textColor="#ffffff"
-            android:textSize="20sp"
+            android:textColor="@color/white"
+            android:textSize="@dimen/text_size_big"
             android:textStyle="bold"/>
 
         <TextView
@@ -57,14 +57,14 @@
             android:layout_marginTop="8dp"
             android:text="Create an account or Log in below"
             android:textAlignment="center"
-            android:textColor="#000000"
-            android:textSize="20sp"/>
+            android:textColor="@color/black"
+            android:textSize="@dimen/text_size_big"/>
 
         <View
             android:layout_width="match_parent"
             android:layout_height="8dp"
             android:layout_marginTop="8dp"
-            android:background="#0000ff"/>
+            android:background="@color/blue"/>
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -105,7 +105,7 @@
             android:layout_width="match_parent"
             android:layout_height="8dp"
             android:layout_marginTop="8dp"
-            android:background="#0000ff"/>
+            android:background="@color/blue"/>
 
         <TextView
             android:layout_width="match_parent"
@@ -115,8 +115,8 @@
             android:text="Email address"
             android:textAlignment="textStart"
             android:textAllCaps="true"
-            android:textColor="#ff0000"
-            android:textSize="20sp"
+            android:textColor="@color/red"
+            android:textSize="@dimen/text_size_big"
             android:textStyle="bold"/>
 
         <EditText
@@ -139,8 +139,8 @@
                 android:layout_centerVertical="true"
                 android:text="Password"
                 android:textAllCaps="true"
-                android:textColor="#ff0000"
-                android:textSize="20sp"
+                android:textColor="@color/red"
+                android:textSize="@dimen/text_size_big"
                 android:textStyle="bold"/>
 
             <Button
@@ -167,8 +167,8 @@
             android:text="Full name"
             android:textAlignment="textStart"
             android:textAllCaps="true"
-            android:textColor="#ff0000"
-            android:textSize="20sp"
+            android:textColor="@color/red"
+            android:textSize="@dimen/text_size_big"
             android:textStyle="bold"/>
 
         <EditText
@@ -185,7 +185,7 @@
             android:paddingBottom="16dp"
             android:paddingTop="16dp"
             android:text="IMAGE"
-            android:textSize="20sp"
+            android:textSize="@dimen/text_size_big"
             />
     </LinearLayout>
 

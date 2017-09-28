@@ -1,0 +1,358 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<android.support.v4.widget.NestedScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="#ff0000"
+            android:paddingBottom="8dp"
+            android:paddingTop="8dp">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_toLeftOf="@id/school_district_volume"
+                android:textStyle="bold"
+                android:text="School district"
+                android:textAlignment="center"
+                android:textAllCaps="true"
+                android:textColor="#ffffff"
+                android:textSize="20sp"/>
+
+            <ImageView
+                android:id="@+id/school_district_volume"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_marginRight="8dp"
+                android:src="@drawable/ic_volume_up_white_24dp"/>
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <EditText
+                style="@style/Field"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="0dp"
+                android:layout_alignParentLeft="true"
+                android:layout_centerVertical="true"
+                android:layout_toLeftOf="@id/school_district_passes"
+                android:enabled="false"
+                android:text="Not logged in"
+                android:textAlignment="center"
+                android:textAllCaps="true"/>
+
+            <TextView
+                android:id="@+id/school_district_passes"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_toLeftOf="@id/school_district_data"
+                android:text="Passes (0)"
+                android:textAllCaps="true"
+                android:textColor="@color/blue_no_thanks"
+                android:textSize="14sp"/>
+
+            <EditText
+                android:id="@+id/school_district_data"
+                style="@style/Field"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_marginRight="0dp"
+                android:layout_centerVertical="true"
+                android:enabled="false"
+                android:text="Jun 5 2016"
+                android:textAllCaps="true"/>
+        </RelativeLayout>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_toLeftOf="@id/school_district_volume"
+            android:background="#ff0000"
+            android:paddingBottom="8dp"
+            android:paddingTop="8dp"
+            android:text="School name"
+            android:textStyle="bold"
+            android:textAlignment="center"
+            android:textAllCaps="true"
+            android:textColor="#ffffff"
+            android:textSize="20sp"/>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+
+            android:layout_marginTop="8dp">
+
+            <ImageView
+                android:id="@+id/image_school_help"
+                android:layout_width="75dp"
+                android:layout_height="75dp"
+                android:layout_centerHorizontal="true"
+                android:layout_marginLeft="8dp"
+                android:layout_marginRight="8dp"
+                android:src="@drawable/ic_help_school"/>
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_toLeftOf="@id/image_school_help"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Current Room"
+                    android:textColor="@color/black"
+                    android:textAlignment="center"/>
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="#00ffff"
+                    android:orientation="vertical"
+                    android:paddingBottom="16dp"
+                    android:paddingTop="16dp">
+
+                    <View
+                        android:layout_width="wrap_content"
+                        android:layout_height="1dp"
+                        android:background="@color/light_blue_divider"/>
+
+                    <EditText
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="#00ffff"
+                        android:enabled="true"
+                        android:textSize="24sp"/>
+
+                    <View
+                        android:layout_width="wrap_content"
+                        android:layout_height="1dp"
+                        android:background="@color/light_blue_divider"/>
+                </LinearLayout>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_toRightOf="@id/image_school_help"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Teacher"
+                    android:textColor="@color/black"
+                    android:textAlignment="center"/>
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="#00ffff"
+                    android:orientation="vertical"
+                    android:paddingBottom="16dp"
+                    android:paddingTop="16dp">
+
+                    <View
+                        android:layout_width="wrap_content"
+                        android:layout_height="1dp"
+                        android:background="@color/light_blue_divider"/>
+
+                    <EditText
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="#00ffff"
+                        android:enabled="true"
+                        android:textSize="24sp"/>
+
+                    <View
+                        android:layout_width="wrap_content"
+                        android:layout_height="1dp"
+                        android:background="@color/light_blue_divider"/>
+                </LinearLayout>
+
+            </LinearLayout>
+
+        </RelativeLayout>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="#000000"
+            android:paddingBottom="4dp"
+            android:layout_marginTop="8dp"
+            android:paddingTop="4dp"
+            android:text="Destination"
+            android:textAlignment="center"
+            android:textAllCaps="true"
+            android:textColor="#ffffff"
+            android:textSize="20sp"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="8dp"
+                android:layout_weight="1"
+                android:orientation="vertical">
+
+                <LinearLayout
+                    style="@style/WrapTextSwitchDestination">
+
+                    <TextView
+                        style="@style/TextSwitchDestination"
+                        android:text="Restroom"/>
+
+                    <Switch
+                        style="@style/SwitchDestination"
+                        android:checked="true"/>
+                </LinearLayout>
+
+                <LinearLayout
+                    style="@style/WrapTextSwitchDestination">
+
+                    <TextView
+                        style="@style/TextSwitchDestination"
+                        android:text="Counselor"/>
+
+                    <Switch
+                        style="@style/SwitchDestination"
+                        android:checked="true"/>
+                </LinearLayout>
+
+                <LinearLayout
+                    style="@style/WrapTextSwitchDestination">
+
+                    <TextView
+                        style="@style/TextSwitchDestination"
+                        android:text="Main office"/>
+
+                    <Switch
+                        style="@style/SwitchDestination"
+                        android:checked="true"/>
+                </LinearLayout>
+
+                <LinearLayout
+                    style="@style/WrapTextSwitchDestination">
+
+                    <TextView
+                        style="@style/TextSwitchDestination"
+                        android:text="Student Services"/>
+
+                    <Switch
+                        style="@style/SwitchDestination"
+                        android:checked="true"/>
+                </LinearLayout>
+
+
+                <LinearLayout
+                    style="@style/WrapTextSwitchDestination">
+
+                    <TextView
+                        style="@style/TextSwitchDestination"
+                        android:text="Library"/>
+
+                    <Switch
+                        style="@style/SwitchDestination"
+                        android:checked="true"/>
+                </LinearLayout>
+
+                <LinearLayout
+                    style="@style/WrapTextSwitchDestination">
+
+                    <TextView
+                        style="@style/TextSwitchDestination"
+                        android:text="Clinic"/>
+
+                    <Switch
+                        style="@style/SwitchDestination"
+                        android:checked="true"/>
+                </LinearLayout>
+
+                <LinearLayout
+                    style="@style/WrapTextSwitchDestination">
+
+                    <TextView
+                        style="@style/TextSwitchDestination"
+                        android:text="Other"/>
+
+                    <Switch
+                        style="@style/SwitchDestination"
+                        android:checked="true"/>
+                </LinearLayout>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:orientation="vertical">
+
+                <ImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="200dp"
+                    android:src="@drawable/icon_chalkboard_bg"/>
+                <TextClock
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textAlignment="center"
+                    android:format12Hour="h:mm"
+                    android:format24Hour="h:mm"
+                    android:textSize="36sp"
+                    android:background="@drawable/text_field"/>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+                    <ImageView
+                        android:layout_width="0dp"
+                        android:layout_weight="1"
+                        android:padding="8dp"
+                        android:layout_height="100dp"
+                        android:src="@drawable/ic_classrooms_door"/>
+                    <ImageView
+                        android:layout_width="0dp"
+                        android:layout_weight="1"
+                        android:padding="8dp"
+                        android:layout_height="100dp"
+                        android:src="@drawable/ic_book_bag_shop"/>
+                </LinearLayout>
+            </LinearLayout>
+        </LinearLayout>
+
+        <EditText
+            style="@style/Field"
+            android:layout_marginLeft="0dp"
+            android:layout_marginRight="0dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:enabled="false"
+            android:layout_marginBottom="8dp"
+            android:text="Details"/>
+
+    </LinearLayout>
+
+</android.support.v4.widget.NestedScrollView>

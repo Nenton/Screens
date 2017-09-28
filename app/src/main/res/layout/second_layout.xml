@@ -19,7 +19,7 @@
             <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="#ff0000"
+                android:background="@color/red"
                 android:paddingBottom="8dp"
                 android:paddingTop="8dp">
 
@@ -31,8 +31,8 @@
                     android:text="Title"
                     android:textAlignment="center"
                     android:textAllCaps="true"
-                    android:textColor="#ffffff"
-                    android:textSize="20sp"
+                    android:textColor="@color/white"
+                    android:textSize="@dimen/text_size_big"
                     android:textStyle="bold"/>
 
                 <ImageButton
@@ -89,7 +89,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="4dp"
                 android:layout_marginTop="8dp"
-                android:background="#0000ff"/>
+                android:background="@color/blue"/>
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -148,7 +148,7 @@
                     <ImageView
                         android:layout_width="match_parent"
                         android:layout_height="150dp"
-                        android:background="#ff0000"/>
+                        android:background="@color/red"/>
 
                     <Button
                         style="@style/BlueBtn"
@@ -159,9 +159,11 @@
                         android:textColor="@color/blue_btn"/>
 
                     <Button
+                        android:id="@+id/button"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="8dp"
+                        android:textSize="@dimen/text_size_middle"
                         android:background="@drawable/red_btn_state"
                         android:text="Logout"
                         android:textColor="@color/red_btn"/>
@@ -172,13 +174,13 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="8dp"
-                android:background="#000000"
+                android:background="@color/black"
                 android:padding="4dp"
                 android:text="School information"
                 android:textAlignment="center"
                 android:textAllCaps="true"
-                android:textColor="#ffffff"
-                android:textSize="20sp"
+                android:textColor="@color/white"
+                android:textSize="@dimen/text_size_big"
                 android:textStyle="bold|italic"/>
 
             <LinearLayout
@@ -200,7 +202,7 @@
                         android:textAlignment="center"
                         android:textAllCaps="true"
                         android:textColor="#000000"
-                        android:textSize="14sp"/>
+                        android:textSize="@dimen/text_size_middle"/>
 
                     <Button
                         android:layout_width="match_parent"
@@ -224,7 +226,7 @@
                         android:textAlignment="center"
                         android:textAllCaps="true"
                         android:textColor="#000000"
-                        android:textSize="14sp"/>
+                        android:textSize="@dimen/text_size_middle"/>
 
                     <Button
                         android:layout_width="match_parent"
@@ -245,7 +247,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="8dp"
-                android:background="#0000ff"
+                android:background="@color/blue"
                 android:checkedButton="@+id/elementary_radio_btn"
                 android:orientation="horizontal"
                 android:padding="8dp">
@@ -287,7 +289,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="4dp"
                 android:layout_marginTop="8dp"
-                android:background="#0000ff"/>
+                android:background="@color/blue"/>
 
             <RelativeLayout
                 android:layout_width="match_parent"
@@ -356,8 +358,9 @@
                     android:layout_toLeftOf="@+id/image_registration"
                     android:layout_toRightOf="@+id/icon_phone"
                     android:minLines="3"
+                    android:background="@color/white_transparent"
                     android:text="123 Sesame Street Miami, FL 33056 305-502-3535"
-                    android:textSize="14sp"/>
+                    android:textSize="@dimen/text_size_middle"/>
             </RelativeLayout>
 
             <LinearLayout
@@ -373,8 +376,8 @@
                     android:layout_height="wrap_content"
                     android:text="Text for switch"
                     android:textAllCaps="true"
-                    android:textColor="#000000"
-                    android:textSize="18sp"/>
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/text_size_big"/>
 
                 <android.support.v7.widget.SwitchCompat
                     android:layout_width="wrap_content"
@@ -388,7 +391,7 @@
     </android.support.v4.widget.NestedScrollView>
 
     <LinearLayout
-        android:background="#ffffff"
+        android:background="@color/white"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:paddingTop="8dp"
