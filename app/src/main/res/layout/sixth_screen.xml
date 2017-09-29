@@ -53,16 +53,19 @@
 
         <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp">
 
             <EditText
                 style="@style/Field"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_centerVertical="true"
+                android:layout_marginRight="8dp"
                 android:layout_marginLeft="0dp"
-                android:layout_toLeftOf="@id/send_message"
-                android:hint="Send Student a Message"/>
+                android:layout_toLeftOf="@+id/send_message"
+                android:hint="Send Student a Message"
+                android:textSize="@dimen/text_size_middle"/>
 
             <ImageView
                 android:id="@+id/send_message"
@@ -86,7 +89,8 @@
 
         <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="8dp">
 
             <ImageView
                 android:id="@+id/image_school_pass_requests"
@@ -105,6 +109,7 @@
                 android:orientation="vertical">
 
                 <TextClock
+                    style="@style/TextClockAll"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"/>
 
@@ -120,8 +125,10 @@
                         android:layout_marginLeft="0dp"
                         android:enabled="false"
                         android:gravity="top"
+                        android:textColor="@color/black"
                         android:text="Jamie Gant"
-                        android:textSize="@dimen/text_size_middle"/>
+                        android:layout_marginRight="8dp"
+                        android:textSize="@dimen/text_size_small"/>
 
                     <TextView
                         android:layout_width="wrap_content"
@@ -137,10 +144,11 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_gravity="center_vertical"
+                        android:textColor="@color/black"
                         android:enabled="false"
                         android:gravity="center_vertical"
                         android:text="Restroom"
-                        android:textSize="@dimen/text_size_middle"/>
+                        android:textSize="@dimen/text_size_small"/>
                 </LinearLayout>
             </LinearLayout>
 
@@ -208,7 +216,8 @@
                 android:layout_centerVertical="true"
                 android:layout_toLeftOf="@+id/search_btn"
                 android:layout_toRightOf="@+id/switch_search_request"
-                android:hint="Search Request Archive"/>
+                android:hint="Search Request Archive"
+                android:textSize="@dimen/text_size_middle"/>
 
             <ImageView
                 android:id="@+id/search_btn"
@@ -222,10 +231,10 @@
         </RelativeLayout>
 
         <com.aigestudio.wheelpicker.WheelPicker
-            android:background="@color/light_blue"
             android:layout_width="match_parent"
-            app:wheel_item_text_color="@color/black"
             android:layout_height="100dp"
+            android:background="@color/light_blue"
+            app:wheel_item_text_color="@color/black"
             app:wheel_selected_item_position="9"
             app:wheel_visible_item_count="5"/>
 
@@ -245,10 +254,10 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_horizontal"
-                    android:textSize="@dimen/text_size_big"
+                    android:text="Deny"
                     android:textColor="@color/blue_no_thanks"
-                    android:textStyle="bold"
-                    android:text="Deny"/>
+                    android:textSize="@dimen/text_size_big"
+                    android:textStyle="bold"/>
             </FrameLayout>
 
             <FrameLayout
@@ -261,24 +270,24 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_horizontal"
-                    android:textSize="@dimen/text_size_big"
+                    android:text="Approve"
                     android:textColor="@color/blue_no_thanks"
-                    android:textStyle="bold"
-                    android:text="Approve"/>
+                    android:textSize="@dimen/text_size_big"
+                    android:textStyle="bold"/>
             </FrameLayout>
         </LinearLayout>
 
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:textSize="@dimen/text_size_big"
-            android:textStyle="italic"
-            android:layout_marginTop="24dp"
             android:layout_marginBottom="24dp"
+            android:layout_marginTop="24dp"
             android:text="Jamie Gant"
-            android:textAllCaps="true"
             android:textAlignment="center"
-            android:textColor="@color/black"/>
+            android:textAllCaps="true"
+            android:textColor="@color/black"
+            android:textSize="@dimen/text_size_big"
+            android:textStyle="italic"/>
 
     </LinearLayout>
 

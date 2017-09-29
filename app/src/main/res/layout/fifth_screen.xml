@@ -4,8 +4,7 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:layout_marginLeft="8dp"
-    android:layout_marginRight="8dp">
+    xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <LinearLayout
         xmlns:android="http://schemas.android.com/apk/res/android"
@@ -17,8 +16,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="#ff0000"
-            android:paddingBottom="8dp"
-            android:paddingTop="8dp">
+            android:paddingBottom="4dp"
+            android:paddingTop="4dp">
 
             <TextView
                 android:layout_width="match_parent"
@@ -42,13 +41,17 @@
 
         <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            android:layout_marginTop="4dp"
+            android:layout_marginBottom="4dp">
 
             <EditText
                 style="@style/Field"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="0dp"
+                android:textSize="@dimen/text_size_small"
+                android:layout_marginRight="8dp"
                 android:layout_alignParentLeft="true"
                 android:layout_centerVertical="true"
                 android:layout_toLeftOf="@+id/school_district_passes"
@@ -74,8 +77,9 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_alignParentRight="true"
-                android:layout_marginRight="0dp"
+
                 android:layout_centerVertical="true"
+                android:textSize="@dimen/text_size_small"
                 android:enabled="false"
                 android:text="Jun 5 2016"
                 android:textAllCaps="true"/>
@@ -226,8 +230,10 @@
                         style="@style/TextSwitchDestination"
                         android:text="Restroom"/>
 
-                    <Switch
+                    <com.kyleduo.switchbutton.SwitchButton
                         style="@style/SwitchDestination"
+                        app:kswTintColor="@color/green_switch"
+                        app:kswThumbColor="@color/color_switcher"
                         android:checked="true"/>
                 </LinearLayout>
 
@@ -238,8 +244,10 @@
                         style="@style/TextSwitchDestination"
                         android:text="Counselor"/>
 
-                    <Switch
+                    <com.kyleduo.switchbutton.SwitchButton
                         style="@style/SwitchDestination"
+                        app:kswTintColor="@color/green_switch"
+                        app:kswThumbColor="@color/color_switcher"
                         android:checked="true"/>
                 </LinearLayout>
 
@@ -250,8 +258,10 @@
                         style="@style/TextSwitchDestination"
                         android:text="Main office"/>
 
-                    <Switch
+                    <com.kyleduo.switchbutton.SwitchButton
                         style="@style/SwitchDestination"
+                        app:kswTintColor="@color/green_switch"
+                        app:kswThumbColor="@color/color_switcher"
                         android:checked="true"/>
                 </LinearLayout>
 
@@ -262,8 +272,10 @@
                         style="@style/TextSwitchDestination"
                         android:text="Student Services"/>
 
-                    <Switch
+                    <com.kyleduo.switchbutton.SwitchButton
                         style="@style/SwitchDestination"
+                        app:kswTintColor="@color/green_switch"
+                        app:kswThumbColor="@color/color_switcher"
                         android:checked="true"/>
                 </LinearLayout>
 
@@ -275,8 +287,10 @@
                         style="@style/TextSwitchDestination"
                         android:text="Library"/>
 
-                    <Switch
+                    <com.kyleduo.switchbutton.SwitchButton
                         style="@style/SwitchDestination"
+                        app:kswTintColor="@color/green_switch"
+                        app:kswThumbColor="@color/color_switcher"
                         android:checked="true"/>
                 </LinearLayout>
 
@@ -287,8 +301,10 @@
                         style="@style/TextSwitchDestination"
                         android:text="Clinic"/>
 
-                    <Switch
+                    <com.kyleduo.switchbutton.SwitchButton
                         style="@style/SwitchDestination"
+                        app:kswTintColor="@color/green_switch"
+                        app:kswThumbColor="@color/color_switcher"
                         android:checked="true"/>
                 </LinearLayout>
 
@@ -299,9 +315,10 @@
                         style="@style/TextSwitchDestination"
                         android:text="Other"/>
 
-                    <Switch
+                    <com.kyleduo.switchbutton.SwitchButton
                         style="@style/SwitchDestination"
-                        android:checked="true"/>
+                        app:kswTintColor="@color/green_switch"
+                        app:kswThumbColor="@color/color_switcher"/>
                 </LinearLayout>
 
             </LinearLayout>
@@ -332,13 +349,13 @@
                     <ImageView
                         android:layout_width="0dp"
                         android:layout_weight="1"
-                        android:padding="8dp"
+                        android:padding="16dp"
                         android:layout_height="100dp"
                         android:src="@drawable/ic_classrooms_door"/>
                     <ImageView
                         android:layout_width="0dp"
                         android:layout_weight="1"
-                        android:padding="8dp"
+                        android:padding="16dp"
                         android:layout_height="100dp"
                         android:src="@drawable/ic_book_bag_shop"/>
                 </LinearLayout>

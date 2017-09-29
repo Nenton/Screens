@@ -20,8 +20,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:background="@color/red"
-                android:paddingBottom="8dp"
-                android:paddingTop="8dp">
+                android:paddingBottom="4dp"
+                android:paddingTop="4dp">
 
                 <TextView
                     android:layout_width="match_parent"
@@ -100,6 +100,7 @@
                 <LinearLayout
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
+                    android:layout_marginRight="16dp"
                     android:layout_marginTop="8dp"
                     android:layout_weight="2"
                     android:orientation="vertical">
@@ -108,11 +109,20 @@
                         style="@style/Field"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
+                        android:layout_marginBottom="8dp"
                         android:inputType="textPassword"/>
 
                     <EditText
                         style="@style/Field"
                         android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="8dp"
+                        android:inputType="textPassword"/>
+
+                    <EditText
+                        style="@style/Field"
+                        android:layout_width="match_parent"
+                        android:layout_marginBottom="8dp"
                         android:layout_height="wrap_content"
                         android:inputType="textPassword"/>
 
@@ -122,17 +132,20 @@
                         android:layout_height="wrap_content"
                         android:inputType="textPassword"/>
 
-                    <EditText
-                        style="@style/Field"
+                    <TextView
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:inputType="textPassword"/>
+                        android:text="Grade"
+                        android:textAllCaps="true"
+                        android:textAlignment="center"
+                        android:textColor="@color/black"
+                        android:textSize="@dimen/text_size_small"
+                        android:layout_marginTop="8dp"/>
 
                     <Button
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="8dp"
-                        android:layout_marginRight="8dp"
                         android:layout_marginTop="8dp"
                         android:background="@drawable/light_blue_btn_state"
                         android:text="------------"/>
@@ -156,17 +169,18 @@
                         android:layout_height="wrap_content"
                         android:layout_marginTop="8dp"
                         android:text="My classrooms (0)"
-                        android:textColor="@color/blue_btn"/>
+                        android:textColor="@color/blue_btn"
+                        android:textSize="@dimen/text_size_small"/>
 
                     <Button
                         android:id="@+id/button"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="8dp"
-                        android:textSize="@dimen/text_size_middle"
                         android:background="@drawable/red_btn_state"
                         android:text="Logout"
-                        android:textColor="@color/red_btn"/>
+                        android:textColor="@color/red_btn"
+                        android:textSize="@dimen/text_size_middle"/>
                 </LinearLayout>
             </LinearLayout>
 
@@ -186,6 +200,8 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginLeft="8dp"
+                android:layout_marginRight="8dp"
                 android:layout_marginTop="8dp"
                 android:orientation="horizontal">
 
@@ -202,7 +218,7 @@
                         android:textAlignment="center"
                         android:textAllCaps="true"
                         android:textColor="#000000"
-                        android:textSize="@dimen/text_size_middle"/>
+                        android:textSize="@dimen/text_size_small"/>
 
                     <Button
                         android:layout_width="match_parent"
@@ -226,7 +242,7 @@
                         android:textAlignment="center"
                         android:textAllCaps="true"
                         android:textColor="#000000"
-                        android:textSize="@dimen/text_size_middle"/>
+                        android:textSize="@dimen/text_size_small"/>
 
                     <Button
                         android:layout_width="match_parent"
@@ -250,7 +266,7 @@
                 android:background="@color/blue"
                 android:checkedButton="@+id/elementary_radio_btn"
                 android:orientation="horizontal"
-                android:padding="8dp">
+                android:padding="4dp">
 
                 <RadioButton
                     android:id="@+id/elementary_radio_btn"
@@ -357,8 +373,8 @@
                     android:layout_marginRight="8dp"
                     android:layout_toLeftOf="@+id/image_registration"
                     android:layout_toRightOf="@+id/icon_phone"
-                    android:minLines="3"
                     android:background="@color/white_transparent"
+                    android:minLines="3"
                     android:text="123 Sesame Street Miami, FL 33056 305-502-3535"
                     android:textSize="@dimen/text_size_middle"/>
             </RelativeLayout>
@@ -379,10 +395,14 @@
                     android:textColor="@color/black"
                     android:textSize="@dimen/text_size_big"/>
 
-                <android.support.v7.widget.SwitchCompat
+                <com.kyleduo.switchbutton.SwitchButton
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginLeft="8dp"/>
+                    android:layout_marginLeft="8dp"
+                    android:checked="false"
+                    app:kswBackRadius="2dp"
+                    app:kswThumbRadius="2dp"
+                    app:kswTintColor="@color/blue_switch"/>
 
             </LinearLayout>
 
@@ -391,14 +411,14 @@
     </android.support.v4.widget.NestedScrollView>
 
     <LinearLayout
-        android:background="@color/white"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:paddingTop="8dp"
-        android:paddingBottom="8dp"
         android:layout_alignParentBottom="true"
+        android:background="@color/white"
         android:gravity="center_horizontal"
-        android:orientation="horizontal">
+        android:orientation="horizontal"
+        android:paddingBottom="8dp"
+        android:paddingTop="8dp">
 
         <ImageButton
             android:layout_width="48dp"

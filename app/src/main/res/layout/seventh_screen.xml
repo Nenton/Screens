@@ -95,7 +95,8 @@
 
                 <TextClock
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"/>
+                    android:layout_height="wrap_content"
+                    style="@style/TextClockAll"/>
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -109,8 +110,10 @@
                         android:layout_marginLeft="0dp"
                         android:enabled="false"
                         android:gravity="top"
+                        android:textColor="@color/black"
                         android:text="Auditorium"
-                        android:textSize="@dimen/text_size_middle"/>
+                        android:layout_marginRight="8dp"
+                        android:textSize="@dimen/text_size_small"/>
 
                     <TextView
                         android:layout_width="wrap_content"
@@ -128,8 +131,9 @@
                         android:layout_gravity="center_vertical"
                         android:enabled="false"
                         android:gravity="center_vertical"
+                        android:textColor="@color/black"
                         android:text="Restroom"
-                        android:textSize="@dimen/text_size_middle"/>
+                        android:textSize="@dimen/text_size_small"/>
                 </LinearLayout>
             </LinearLayout>
 
@@ -162,6 +166,7 @@
         <android.support.v7.widget.RecyclerView
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
+
         </android.support.v7.widget.RecyclerView>
 
         <TextView
@@ -199,6 +204,7 @@
                         android:paddingTop="2dp"
                         android:text="Jamie Gant"/>
                 </LinearLayout>
+
                 <LinearLayout
                     style="@style/WrapTextHistory">
 
@@ -212,6 +218,7 @@
                         android:paddingTop="2dp"
                         android:text="174 (quarles)"/>
                 </LinearLayout>
+
                 <LinearLayout
                     style="@style/WrapTextHistory">
 
@@ -225,6 +232,7 @@
                         android:paddingTop="2dp"
                         android:text="202 (Gant)"/>
                 </LinearLayout>
+
                 <LinearLayout
                     style="@style/WrapTextHistory">
 
@@ -238,6 +246,7 @@
                         android:paddingBottom="2dp"
                         android:paddingTop="2dp"/>
                 </LinearLayout>
+
                 <LinearLayout
                     style="@style/WrapTextHistory">
 
@@ -261,10 +270,10 @@
 
                     <TextView
                         style="@style/TextHistoryField"
-                        android:paddingBottom="2dp"
-                        android:paddingTop="2dp"
                         android:minLines="3"
-                        android:minWidth="100dp"/>
+                        android:minWidth="100dp"
+                        android:paddingBottom="2dp"
+                        android:paddingTop="2dp"/>
                 </LinearLayout>
 
             </LinearLayout>
@@ -273,9 +282,84 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
+                android:layout_marginLeft="8dp"
+                android:layout_marginTop="8dp"
                 android:orientation="vertical">
 
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+
+                    android:orientation="horizontal">
+                    <Button
+                        android:layout_width="0dp"
+                        android:layout_height="50dp"
+                        android:layout_weight="1"
+                        android:layout_marginRight="8dp"
+                        android:background="@drawable/image"
+                        android:paddingBottom="16dp"
+                        android:paddingTop="16dp"
+                        android:text="Image"
+                        android:textSize="@dimen/text_size_middle"/>
+                    <Button
+                        android:layout_width="0dp"
+                        android:layout_height="50dp"
+                        android:layout_weight="1"
+                        android:background="@drawable/image"
+                        android:paddingBottom="16dp"
+                        android:paddingTop="16dp"
+                        android:text="Image"
+                        android:textSize="@dimen/text_size_middle"/>
+                </LinearLayout>
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@color/light_blue"
+                    android:layout_marginTop="8dp"
+                    android:orientation="vertical">
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Duration"
+                        android:textSize="@dimen/text_size_small"
+                        android:textColor="@color/black"
+                        android:textAllCaps="true"
+                        android:textStyle="bold"
+                        android:textAlignment="center"/>
+                    <TextClock
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:textAlignment="center"
+                        android:format12Hour="h:mm"
+                        android:format24Hour="h:mm"
+                        android:textSize="48sp"/>
+                </LinearLayout>
+                <TextClock
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textAlignment="center"
+                    android:format12Hour="h:mm"
+                    android:format24Hour="h:mm"
+                    android:textSize="@dimen/text_size_middle"
+                    android:textStyle="bold"
+                    android:textAllCaps="true"/>
             </LinearLayout>
         </LinearLayout>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Map"
+            android:textAllCaps="true"
+            android:textSize="@dimen/text_size_big"
+            android:textColor="@color/white"
+            android:background="@color/black"
+            android:textAlignment="center"
+            android:textStyle="italic"/>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="300dp"
+            android:background="@color/grey"/>
     </LinearLayout>
 </android.support.v4.widget.NestedScrollView>

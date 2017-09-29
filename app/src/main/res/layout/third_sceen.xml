@@ -1,94 +1,103 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
+<RelativeLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:background="@drawable/icon_chalkboard_bg"
-    android:orientation="vertical">
+    android:layout_height="match_parent">
 
-    <RelativeLayout
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="16dp"
-        android:layout_marginRight="16dp"
-        android:layout_marginTop="48dp"
-        android:background="@color/red">
+        android:layout_height="match_parent"
+        android:background="@drawable/icon_chalkboard_bg"
+        android:orientation="vertical">
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_centerInParent="true"
-            android:text="Extra credit shop"
-            android:textAllCaps="true"
-            android:textColor="@color/white"
-            android:textSize="@dimen/text_size_big"
-            android:textStyle="bold"/>
-
-        <ImageView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentRight="true"
-            android:layout_margin="8dp"
-            android:src="@drawable/ic_volume_up_white_24dp"/>
-    </RelativeLayout>
-
-    <Button
-        android:layout_width="match_parent"
-        android:layout_height="150dp"
-        android:layout_marginBottom="8dp"
-        android:layout_marginLeft="16dp"
-        android:layout_marginRight="16dp"
-        android:layout_marginTop="8dp"
-        android:background="@drawable/image"
-        android:paddingBottom="16dp"
-        android:paddingTop="16dp"
-        android:text="IMAGE"
-        android:textSize="20sp"/>
-
-    <RelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="16dp"
-        android:layout_marginRight="16dp">
-
-        <LinearLayout
+        <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginRight="48dp"
-            android:layout_toLeftOf="@+id/help_btn_board"
-            android:orientation="vertical">
+            android:layout_marginLeft="16dp"
+            android:layout_marginRight="16dp"
+            android:layout_marginTop="48dp"
+            android:background="@color/red">
 
             <TextView
-                android:layout_width="match_parent"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Product name"
-                android:textAlignment="textEnd"
+                android:layout_centerInParent="true"
+                android:text="Extra credit shop"
                 android:textAllCaps="true"
-                android:textColor="@color/yellow"
+                android:textColor="@color/white"
                 android:textSize="@dimen/text_size_big"
                 android:textStyle="bold"/>
 
-            <TextView
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_margin="8dp"
+                android:src="@drawable/ic_volume_up_white_24dp"/>
+        </RelativeLayout>
+
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="150dp"
+            android:layout_marginBottom="8dp"
+            android:layout_marginLeft="16dp"
+            android:layout_marginRight="16dp"
+            android:layout_marginTop="8dp"
+            android:background="@drawable/image"
+            android:paddingBottom="16dp"
+            android:paddingTop="16dp"
+            android:text="IMAGE"
+            android:textSize="@dimen/text_size_big"/>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="16dp"
+            android:layout_marginRight="16dp">
+
+            <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Product Description"
-                android:textAlignment="textEnd"
-                android:textColor="@color/white"
-                android:textSize="@dimen/text_size_middle"/>
-        </LinearLayout>
+                android:layout_marginRight="48dp"
+                android:layout_toLeftOf="@+id/help_btn_board"
+                android:orientation="vertical">
 
-        <ImageView
-            android:id="@+id/help_btn_board"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentRight="true"
-            android:layout_margin="8dp"
-            android:src="@drawable/ic_help_white_24dp"/>
-    </RelativeLayout>
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Product name"
+                    android:textAlignment="textEnd"
+                    android:textAllCaps="true"
+                    android:textColor="@color/yellow"
+                    android:textSize="@dimen/text_size_big"
+                    android:textStyle="bold"/>
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Product Description"
+                    android:textAlignment="textEnd"
+                    android:textColor="@color/white"
+                    android:textSize="@dimen/text_size_middle"/>
+            </LinearLayout>
+
+            <ImageView
+                android:id="@+id/help_btn_board"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_margin="8dp"
+                android:src="@drawable/ic_help_white_24dp"/>
+        </RelativeLayout>
+
+
+    </LinearLayout>
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_above="@+id/wrap_policy_privacy"
         android:layout_marginLeft="8dp"
         android:layout_marginRight="8dp"
         android:orientation="horizontal">
@@ -115,26 +124,34 @@
         <ImageButton
             android:layout_width="0dp"
             android:layout_height="96dp"
-            android:layout_weight="1"
+            android:layout_weight="0.75"
             android:scaleType="fitXY"
             android:src="@drawable/ic_book_bag_stuff"/>
     </LinearLayout>
 
     <RelativeLayout
+        android:id="@+id/wrap_policy_privacy"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="54dp"
         android:layout_marginLeft="16dp"
         android:layout_marginRight="16dp"
         android:layout_marginTop="8dp">
 
-        <android.support.v7.widget.SwitchCompat
+        <com.kyleduo.switchbutton.SwitchButton
             android:id="@+id/switch_privacy_policy"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"/>
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:checked="true"
+            app:kswThumbColor="@color/color_switcher"
+            app:kswTintColor="@color/green_switch"/>
 
         <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
             android:layout_marginLeft="8dp"
             android:layout_toRightOf="@id/switch_privacy_policy"
             android:orientation="vertical">
@@ -158,8 +175,8 @@
             android:layout_width="48dp"
             android:layout_height="48dp"
             android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
             android:background="@color/black"
             />
     </RelativeLayout>
-
-</LinearLayout>
+</RelativeLayout>
