@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+      xmlns:app="http://schemas.android.com/apk/res-auto">
+    <item
+        android:id="@+id/menu_pass"
+        android:icon="@drawable/ic_menu_pass_grey"
+        android:title="Pass"
+        android:enabled="true"
+        app:showAsAction="ifRoom"/>
+    <item
+        android:id="@+id/menu_pass_history"
+        android:icon="@drawable/ic_menu_pass_history_grey"
+        android:title="History"
+        android:enabled="true"
+        app:showAsAction="ifRoom"/>
+    <item
+        android:id="@+id/menu_live_passes"
+        android:icon="@drawable/ic_menu_live_passes_grey"
+        android:title="Live"
+        android:enabled="true"
+        app:showAsAction="ifRoom"/>
+
+    <item
+        android:id="@+id/menu_account"
+        android:icon="@drawable/ic_menu_account_grey"
+        android:title="Account"
+        android:enabled="true"
+        app:showAsAction="ifRoom"/>
+</menu>

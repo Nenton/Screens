@@ -1,376 +1,399 @@
 <?xml version="1.0" encoding="utf-8"?>
-
-<android.support.v4.widget.NestedScrollView
+<RelativeLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
+    android:layout_height="match_parent">
 
-    <LinearLayout
-        xmlns:android="http://schemas.android.com/apk/res/android"
+
+    <android.support.v4.widget.NestedScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:orientation="vertical">
+        android:layout_marginBottom="?attr/actionBarSize">
 
-        <RelativeLayout
+        <LinearLayout
+            xmlns:android="http://schemas.android.com/apk/res/android"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="#ff0000"
-            android:paddingBottom="4dp"
-            android:paddingTop="4dp">
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="#ff0000"
+                android:paddingBottom="4dp"
+                android:paddingTop="4dp">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_toLeftOf="@+id/school_district_volume"
+                    android:text="School district"
+                    android:textAlignment="center"
+                    android:textAllCaps="true"
+                    android:textColor="#ffffff"
+                    android:textSize="20sp"
+                    android:textStyle="bold"/>
+
+                <ImageView
+                    android:id="@+id/school_district_volume"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:layout_marginRight="8dp"
+                    android:src="@drawable/ic_volume_up_white_24dp"/>
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="4dp"
+                android:layout_marginTop="4dp">
+
+                <EditText
+                    style="@style/Field"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentLeft="true"
+                    android:layout_centerVertical="true"
+                    android:layout_marginLeft="0dp"
+                    android:layout_marginRight="8dp"
+                    android:layout_toLeftOf="@+id/school_district_passes"
+                    android:enabled="false"
+                    android:text="Not logged in"
+                    android:textAlignment="center"
+                    android:textAllCaps="true"
+                    android:textSize="@dimen/text_size_middle"/>
+
+                <TextView
+                    android:id="@+id/school_district_passes"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_toLeftOf="@+id/school_district_data"
+                    android:text="Passes (0)"
+                    android:textAllCaps="true"
+                    android:textColor="@color/blue_no_thanks"
+                    android:textSize="@dimen/text_size_small"/>
+
+                <EditText
+                    android:id="@+id/school_district_data"
+                    style="@style/Field"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    android:enabled="false"
+                    android:text="Jun 5 2016"
+                    android:textAllCaps="true"
+                    android:textSize="@dimen/text_size_middle"/>
+            </RelativeLayout>
 
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_toLeftOf="@+id/school_district_volume"
-                android:textStyle="bold"
-                android:text="School district"
+                android:layout_toLeftOf="@id/school_district_volume"
+                android:background="#ff0000"
+                android:paddingBottom="8dp"
+                android:paddingTop="8dp"
+                android:text="School name"
+                android:textAlignment="center"
+                android:textAllCaps="true"
+                android:textColor="#ffffff"
+                android:textSize="20sp"
+                android:textStyle="bold"/>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+
+                android:layout_marginTop="8dp">
+
+                <ImageView
+                    android:id="@+id/image_school_help"
+                    android:layout_width="75dp"
+                    android:layout_height="75dp"
+                    android:layout_centerHorizontal="true"
+                    android:layout_marginLeft="8dp"
+                    android:layout_marginRight="8dp"
+                    android:src="@drawable/ic_help_school"/>
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_toLeftOf="@id/image_school_help"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Current Room"
+                        android:textAlignment="center"
+                        android:textColor="@color/black"/>
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:background="#00ffff"
+                        android:orientation="vertical"
+                        android:paddingBottom="16dp"
+                        android:paddingTop="16dp">
+
+                        <View
+                            android:layout_width="wrap_content"
+                            android:layout_height="1dp"
+                            android:background="@color/light_blue_divider"/>
+
+                        <EditText
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:background="#00ffff"
+                            android:enabled="true"
+                            android:textSize="24sp"/>
+
+                        <View
+                            android:layout_width="wrap_content"
+                            android:layout_height="1dp"
+                            android:background="@color/light_blue_divider"/>
+                    </LinearLayout>
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_toRightOf="@id/image_school_help"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Teacher"
+                        android:textAlignment="center"
+                        android:textColor="@color/black"/>
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:background="#00ffff"
+                        android:orientation="vertical"
+                        android:paddingBottom="16dp"
+                        android:paddingTop="16dp">
+
+                        <View
+                            android:layout_width="wrap_content"
+                            android:layout_height="1dp"
+                            android:background="@color/light_blue_divider"/>
+
+                        <EditText
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:background="#00ffff"
+                            android:enabled="true"
+                            android:textSize="24sp"/>
+
+                        <View
+                            android:layout_width="wrap_content"
+                            android:layout_height="1dp"
+                            android:background="@color/light_blue_divider"/>
+                    </LinearLayout>
+
+                </LinearLayout>
+
+            </RelativeLayout>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:background="#000000"
+                android:paddingBottom="4dp"
+                android:paddingTop="4dp"
+                android:text="Destination"
                 android:textAlignment="center"
                 android:textAllCaps="true"
                 android:textColor="#ffffff"
                 android:textSize="20sp"/>
 
-            <ImageView
-                android:id="@+id/school_district_volume"
-                android:layout_width="wrap_content"
+            <LinearLayout
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_alignParentRight="true"
-                android:layout_marginRight="8dp"
-                android:src="@drawable/ic_volume_up_white_24dp"/>
-        </RelativeLayout>
+                android:orientation="horizontal">
 
-        <RelativeLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="4dp"
-            android:layout_marginBottom="4dp">
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="8dp"
+                    android:layout_weight="1"
+                    android:orientation="vertical">
+
+                    <LinearLayout
+                        style="@style/WrapTextSwitchDestination">
+
+                        <TextView
+                            style="@style/TextSwitchDestination"
+                            android:text="Restroom"/>
+
+                        <com.kyleduo.switchbutton.SwitchButton
+                            style="@style/SwitchDestination"
+                            android:checked="true"
+                            app:kswThumbColor="@color/color_switcher"
+                            app:kswTintColor="@color/green_switch"/>
+                    </LinearLayout>
+
+                    <LinearLayout
+                        style="@style/WrapTextSwitchDestination">
+
+                        <TextView
+                            style="@style/TextSwitchDestination"
+                            android:text="Counselor"/>
+
+                        <com.kyleduo.switchbutton.SwitchButton
+                            style="@style/SwitchDestination"
+                            android:checked="true"
+                            app:kswThumbColor="@color/color_switcher"
+                            app:kswTintColor="@color/green_switch"/>
+                    </LinearLayout>
+
+                    <LinearLayout
+                        style="@style/WrapTextSwitchDestination">
+
+                        <TextView
+                            style="@style/TextSwitchDestination"
+                            android:text="Main office"/>
+
+                        <com.kyleduo.switchbutton.SwitchButton
+                            style="@style/SwitchDestination"
+                            android:checked="true"
+                            app:kswThumbColor="@color/color_switcher"
+                            app:kswTintColor="@color/green_switch"/>
+                    </LinearLayout>
+
+                    <LinearLayout
+                        style="@style/WrapTextSwitchDestination">
+
+                        <TextView
+                            style="@style/TextSwitchDestination"
+                            android:text="Student Services"/>
+
+                        <com.kyleduo.switchbutton.SwitchButton
+                            style="@style/SwitchDestination"
+                            android:checked="true"
+                            app:kswThumbColor="@color/color_switcher"
+                            app:kswTintColor="@color/green_switch"/>
+                    </LinearLayout>
+
+
+                    <LinearLayout
+                        style="@style/WrapTextSwitchDestination">
+
+                        <TextView
+                            style="@style/TextSwitchDestination"
+                            android:text="Library"/>
+
+                        <com.kyleduo.switchbutton.SwitchButton
+                            style="@style/SwitchDestination"
+                            android:checked="true"
+                            app:kswThumbColor="@color/color_switcher"
+                            app:kswTintColor="@color/green_switch"/>
+                    </LinearLayout>
+
+                    <LinearLayout
+                        style="@style/WrapTextSwitchDestination">
+
+                        <TextView
+                            style="@style/TextSwitchDestination"
+                            android:text="Clinic"/>
+
+                        <com.kyleduo.switchbutton.SwitchButton
+                            style="@style/SwitchDestination"
+                            android:checked="true"
+                            app:kswThumbColor="@color/color_switcher"
+                            app:kswTintColor="@color/green_switch"/>
+                    </LinearLayout>
+
+                    <LinearLayout
+                        style="@style/WrapTextSwitchDestination">
+
+                        <TextView
+                            style="@style/TextSwitchDestination"
+                            android:text="Other"/>
+
+                        <com.kyleduo.switchbutton.SwitchButton
+                            style="@style/SwitchDestination"
+                            app:kswThumbColor="@color/color_switcher"
+                            app:kswTintColor="@color/green_switch"/>
+                    </LinearLayout>
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:orientation="vertical">
+
+                    <ImageView
+                        android:layout_width="match_parent"
+                        android:layout_height="200dp"
+                        android:src="@drawable/icon_chalkboard_bg"/>
+
+                    <TextClock
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/text_field"
+                        android:format12Hour="h:mm"
+                        android:format24Hour="h:mm"
+                        android:textAlignment="center"
+                        android:textSize="36sp"/>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal">
+
+                        <ImageView
+                            android:layout_width="0dp"
+                            android:layout_height="100dp"
+                            android:layout_weight="1"
+                            android:padding="16dp"
+                            android:src="@drawable/ic_classrooms_door"/>
+
+                        <ImageView
+                            android:layout_width="0dp"
+                            android:layout_height="100dp"
+                            android:layout_weight="1"
+                            android:padding="16dp"
+                            android:src="@drawable/ic_book_bag_shop"/>
+                    </LinearLayout>
+                </LinearLayout>
+            </LinearLayout>
 
             <EditText
                 style="@style/Field"
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="0dp"
-                android:textSize="@dimen/text_size_middle"
-                android:layout_marginRight="8dp"
-                android:layout_alignParentLeft="true"
-                android:layout_centerVertical="true"
-                android:layout_toLeftOf="@+id/school_district_passes"
+                android:layout_marginRight="0dp"
                 android:enabled="false"
-                android:text="Not logged in"
-                android:textAlignment="center"
-                android:textAllCaps="true"/>
 
-            <TextView
-                android:id="@+id/school_district_passes"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_centerVertical="true"
-                android:layout_toLeftOf="@+id/school_district_data"
-                android:text="Passes (0)"
-                android:textAllCaps="true"
-                android:textColor="@color/blue_no_thanks"
-                android:textSize="@dimen/text_size_small"/>
+                android:text="Details"/>
 
-            <EditText
-                android:id="@+id/school_district_data"
-                style="@style/Field"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignParentRight="true"
-                android:layout_centerVertical="true"
-                android:textSize="@dimen/text_size_middle"
-                android:enabled="false"
-                android:text="Jun 5 2016"
-                android:textAllCaps="true"/>
-        </RelativeLayout>
-
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_toLeftOf="@id/school_district_volume"
-            android:background="#ff0000"
-            android:paddingBottom="8dp"
-            android:paddingTop="8dp"
-            android:text="School name"
-            android:textStyle="bold"
-            android:textAlignment="center"
-            android:textAllCaps="true"
-            android:textColor="#ffffff"
-            android:textSize="20sp"/>
-
-        <RelativeLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-
-            android:layout_marginTop="8dp">
-
-            <ImageView
-                android:id="@+id/image_school_help"
-                android:layout_width="75dp"
-                android:layout_height="75dp"
-                android:layout_centerHorizontal="true"
-                android:layout_marginLeft="8dp"
-                android:layout_marginRight="8dp"
-                android:src="@drawable/ic_help_school"/>
-
-            <LinearLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_toLeftOf="@id/image_school_help"
-                android:orientation="vertical">
-
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="Current Room"
-                    android:textColor="@color/black"
-                    android:textAlignment="center"/>
-
-                <LinearLayout
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:background="#00ffff"
-                    android:orientation="vertical"
-                    android:paddingBottom="16dp"
-                    android:paddingTop="16dp">
-
-                    <View
-                        android:layout_width="wrap_content"
-                        android:layout_height="1dp"
-                        android:background="@color/light_blue_divider"/>
-
-                    <EditText
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:background="#00ffff"
-                        android:enabled="true"
-                        android:textSize="24sp"/>
-
-                    <View
-                        android:layout_width="wrap_content"
-                        android:layout_height="1dp"
-                        android:background="@color/light_blue_divider"/>
-                </LinearLayout>
-
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_toRightOf="@id/image_school_help"
-                android:orientation="vertical">
-
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="Teacher"
-                    android:textColor="@color/black"
-                    android:textAlignment="center"/>
-
-                <LinearLayout
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:background="#00ffff"
-                    android:orientation="vertical"
-                    android:paddingBottom="16dp"
-                    android:paddingTop="16dp">
-
-                    <View
-                        android:layout_width="wrap_content"
-                        android:layout_height="1dp"
-                        android:background="@color/light_blue_divider"/>
-
-                    <EditText
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:background="#00ffff"
-                        android:enabled="true"
-                        android:textSize="24sp"/>
-
-                    <View
-                        android:layout_width="wrap_content"
-                        android:layout_height="1dp"
-                        android:background="@color/light_blue_divider"/>
-                </LinearLayout>
-
-            </LinearLayout>
-
-        </RelativeLayout>
-
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="#000000"
-            android:paddingBottom="4dp"
-            android:layout_marginTop="8dp"
-            android:paddingTop="4dp"
-            android:text="Destination"
-            android:textAlignment="center"
-            android:textAllCaps="true"
-            android:textColor="#ffffff"
-            android:textSize="20sp"/>
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal">
-
-            <LinearLayout
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_marginRight="8dp"
-                android:layout_weight="1"
-                android:orientation="vertical">
-
-                <LinearLayout
-                    style="@style/WrapTextSwitchDestination">
-
-                    <TextView
-                        style="@style/TextSwitchDestination"
-                        android:text="Restroom"/>
-
-                    <com.kyleduo.switchbutton.SwitchButton
-                        style="@style/SwitchDestination"
-                        app:kswTintColor="@color/green_switch"
-                        app:kswThumbColor="@color/color_switcher"
-                        android:checked="true"/>
-                </LinearLayout>
-
-                <LinearLayout
-                    style="@style/WrapTextSwitchDestination">
-
-                    <TextView
-                        style="@style/TextSwitchDestination"
-                        android:text="Counselor"/>
-
-                    <com.kyleduo.switchbutton.SwitchButton
-                        style="@style/SwitchDestination"
-                        app:kswTintColor="@color/green_switch"
-                        app:kswThumbColor="@color/color_switcher"
-                        android:checked="true"/>
-                </LinearLayout>
-
-                <LinearLayout
-                    style="@style/WrapTextSwitchDestination">
-
-                    <TextView
-                        style="@style/TextSwitchDestination"
-                        android:text="Main office"/>
-
-                    <com.kyleduo.switchbutton.SwitchButton
-                        style="@style/SwitchDestination"
-                        app:kswTintColor="@color/green_switch"
-                        app:kswThumbColor="@color/color_switcher"
-                        android:checked="true"/>
-                </LinearLayout>
-
-                <LinearLayout
-                    style="@style/WrapTextSwitchDestination">
-
-                    <TextView
-                        style="@style/TextSwitchDestination"
-                        android:text="Student Services"/>
-
-                    <com.kyleduo.switchbutton.SwitchButton
-                        style="@style/SwitchDestination"
-                        app:kswTintColor="@color/green_switch"
-                        app:kswThumbColor="@color/color_switcher"
-                        android:checked="true"/>
-                </LinearLayout>
-
-
-                <LinearLayout
-                    style="@style/WrapTextSwitchDestination">
-
-                    <TextView
-                        style="@style/TextSwitchDestination"
-                        android:text="Library"/>
-
-                    <com.kyleduo.switchbutton.SwitchButton
-                        style="@style/SwitchDestination"
-                        app:kswTintColor="@color/green_switch"
-                        app:kswThumbColor="@color/color_switcher"
-                        android:checked="true"/>
-                </LinearLayout>
-
-                <LinearLayout
-                    style="@style/WrapTextSwitchDestination">
-
-                    <TextView
-                        style="@style/TextSwitchDestination"
-                        android:text="Clinic"/>
-
-                    <com.kyleduo.switchbutton.SwitchButton
-                        style="@style/SwitchDestination"
-                        app:kswTintColor="@color/green_switch"
-                        app:kswThumbColor="@color/color_switcher"
-                        android:checked="true"/>
-                </LinearLayout>
-
-                <LinearLayout
-                    style="@style/WrapTextSwitchDestination">
-
-                    <TextView
-                        style="@style/TextSwitchDestination"
-                        android:text="Other"/>
-
-                    <com.kyleduo.switchbutton.SwitchButton
-                        style="@style/SwitchDestination"
-                        app:kswTintColor="@color/green_switch"
-                        app:kswThumbColor="@color/color_switcher"/>
-                </LinearLayout>
-
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:orientation="vertical">
-
-                <ImageView
-                    android:layout_width="match_parent"
-                    android:layout_height="200dp"
-                    android:src="@drawable/icon_chalkboard_bg"/>
-                <TextClock
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:textAlignment="center"
-                    android:format12Hour="h:mm"
-                    android:format24Hour="h:mm"
-                    android:textSize="36sp"
-                    android:background="@drawable/text_field"/>
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="horizontal">
-                    <ImageView
-                        android:layout_width="0dp"
-                        android:layout_weight="1"
-                        android:padding="16dp"
-                        android:layout_height="100dp"
-                        android:src="@drawable/ic_classrooms_door"/>
-                    <ImageView
-                        android:layout_width="0dp"
-                        android:layout_weight="1"
-                        android:padding="16dp"
-                        android:layout_height="100dp"
-                        android:src="@drawable/ic_book_bag_shop"/>
-                </LinearLayout>
-            </LinearLayout>
         </LinearLayout>
 
-        <EditText
-            style="@style/Field"
-            android:layout_marginLeft="0dp"
-            android:layout_marginRight="0dp"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:enabled="false"
-            android:layout_marginBottom="8dp"
-            android:text="Details"/>
+    </android.support.v4.widget.NestedScrollView>
 
-    </LinearLayout>
+    <android.support.design.widget.BottomNavigationView
+        android:id="@+id/bottom_navigation"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_gravity="bottom"
+        android:background="@android:color/white"
+        app:elevation="16dp"
+        app:itemIconTint="@drawable/nav_item_color_state"
+        app:itemTextColor="@drawable/nav_item_color_state"
+        app:layout_insetEdge="bottom"
+        app:menu="@menu/menu_bottom_navigation"/>
 
-</android.support.v4.widget.NestedScrollView>
+</RelativeLayout>

@@ -30,6 +30,7 @@ dependencies {
     compile 'com.android.support.constraint:constraint-layout:1.0.2'
     compile 'cn.aigestudio.wheelpicker:WheelPicker:1.1.2'
     compile 'com.kyleduo.switchbutton:library:1.4.6'
+    compile 'com.codesgood:justifiedtextview:1.0.2'
 
     testCompile 'junit:junit:4.12'
 }

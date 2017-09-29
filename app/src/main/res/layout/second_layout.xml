@@ -95,18 +95,20 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginRight="8dp"
+                android:paddingTop="8dp"
                 android:orientation="horizontal">
 
                 <LinearLayout
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_marginRight="16dp"
-                    android:layout_marginTop="8dp"
                     android:layout_weight="2"
                     android:orientation="vertical">
 
                     <EditText
                         style="@style/Field"
+                        android:hint="NAME"
+                        android:textAlignment="center"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginBottom="8dp"
@@ -114,6 +116,8 @@
 
                     <EditText
                         style="@style/Field"
+                        android:hint="E-MAIL"
+                        android:textAlignment="center"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginBottom="8dp"
@@ -121,6 +125,8 @@
 
                     <EditText
                         style="@style/Field"
+                        android:hint="ID#"
+                        android:textAlignment="center"
                         android:layout_width="match_parent"
                         android:layout_marginBottom="8dp"
                         android:layout_height="wrap_content"
@@ -161,7 +167,8 @@
                     <ImageView
                         android:layout_width="match_parent"
                         android:layout_height="150dp"
-                        android:background="@color/red"/>
+                        android:scaleType="fitXY"
+                        android:src="@drawable/account_icon"/>
 
                     <Button
                         style="@style/BlueBtn"
@@ -388,14 +395,18 @@
                 android:orientation="horizontal">
 
                 <TextView
+                    android:id="@+id/textView3"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Text for switch"
+                    android:background="@drawable/text_stroke"
                     android:textAllCaps="true"
+                    android:padding="2dp"
                     android:textColor="@color/black"
                     android:textSize="@dimen/text_size_big"/>
 
                 <com.kyleduo.switchbutton.SwitchButton
+                    android:id="@+id/switchButton"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="8dp"
@@ -410,54 +421,67 @@
 
     </android.support.v4.widget.NestedScrollView>
 
-    <LinearLayout
+    <android.support.design.widget.BottomNavigationView
+        android:id="@+id/bottom_navigation"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
-        android:background="@color/white"
-        android:gravity="center_horizontal"
-        android:orientation="horizontal"
-        android:paddingBottom="8dp"
-        android:paddingTop="8dp">
+        android:layout_gravity="bottom"
+        android:background="@android:color/white"
+        app:elevation="16dp"
+        app:layout_insetEdge="bottom"
+        app:itemIconTint="@drawable/nav_item_color_state"
+        app:itemTextColor="@drawable/nav_item_color_state"
+        app:menu="@menu/menu_bottom_navigation"/>
 
-        <ImageButton
-            android:layout_width="48dp"
-            android:layout_height="48dp"
-            android:layout_centerVertical="true"
-            android:layout_marginRight="36dp"
-            android:layout_toLeftOf="@+id/help_registration"
-            android:background="@drawable/white_not_pressed"
-            android:padding="8dp"
-            android:src="@drawable/selector_menu_pass"/>
+    <!--<LinearLayout-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:layout_alignParentBottom="true"-->
+        <!--android:background="@color/white"-->
+        <!--android:gravity="center_horizontal"-->
+        <!--android:orientation="horizontal"-->
+        <!--android:paddingBottom="8dp"-->
+        <!--android:paddingTop="8dp">-->
 
-        <ImageButton
-            android:layout_width="48dp"
-            android:layout_height="48dp"
-            android:layout_centerVertical="true"
-            android:layout_marginRight="36dp"
-            android:layout_toLeftOf="@+id/help_registration"
-            android:background="@drawable/white_not_pressed"
-            android:padding="8dp"
-            android:src="@drawable/selector_menu_pass_history"/>
+        <!--<ImageButton-->
+            <!--android:layout_width="48dp"-->
+            <!--android:layout_height="48dp"-->
+            <!--android:layout_centerVertical="true"-->
+            <!--android:layout_marginRight="36dp"-->
+            <!--android:layout_toLeftOf="@+id/help_registration"-->
+            <!--android:background="@drawable/white_not_pressed"-->
+            <!--android:padding="8dp"-->
+            <!--android:src="@drawable/selector_menu_pass"/>-->
 
-        <ImageButton
-            android:layout_width="48dp"
-            android:layout_height="48dp"
-            android:layout_centerVertical="true"
-            android:layout_marginRight="36dp"
-            android:layout_toLeftOf="@+id/help_registration"
-            android:background="@drawable/white_not_pressed"
-            android:padding="8dp"
-            android:src="@drawable/selector_menu_passes"/>
+        <!--<ImageButton-->
+            <!--android:layout_width="48dp"-->
+            <!--android:layout_height="48dp"-->
+            <!--android:layout_centerVertical="true"-->
+            <!--android:layout_marginRight="36dp"-->
+            <!--android:layout_toLeftOf="@+id/help_registration"-->
+            <!--android:background="@drawable/white_not_pressed"-->
+            <!--android:padding="8dp"-->
+            <!--android:src="@drawable/selector_menu_pass_history"/>-->
 
-        <ImageButton
-            android:layout_width="48dp"
-            android:layout_height="48dp"
-            android:layout_centerVertical="true"
-            android:layout_toLeftOf="@+id/help_registration"
-            android:background="@drawable/white_not_pressed"
-            android:padding="8dp"
-            android:src="@drawable/selector_ic_menu_account"/>
-    </LinearLayout>
+        <!--<ImageButton-->
+            <!--android:layout_width="48dp"-->
+            <!--android:layout_height="48dp"-->
+            <!--android:layout_centerVertical="true"-->
+            <!--android:layout_marginRight="36dp"-->
+            <!--android:layout_toLeftOf="@+id/help_registration"-->
+            <!--android:background="@drawable/white_not_pressed"-->
+            <!--android:padding="8dp"-->
+            <!--android:src="@drawable/selector_menu_passes"/>-->
+
+        <!--<ImageButton-->
+            <!--android:layout_width="48dp"-->
+            <!--android:layout_height="48dp"-->
+            <!--android:layout_centerVertical="true"-->
+            <!--android:layout_toLeftOf="@+id/help_registration"-->
+            <!--android:background="@drawable/white_not_pressed"-->
+            <!--android:padding="8dp"-->
+            <!--android:src="@drawable/selector_ic_menu_account"/>-->
+    <!--</LinearLayout>-->
 
 </RelativeLayout>
