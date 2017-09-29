@@ -71,11 +71,13 @@
             android:layout_marginTop="8dp"
             android:text="Prototype Cells"
             android:textColor="@color/black"
-            android:textSize="@dimen/text_size_big"/>
+            android:textSize="18sp"
+            android:textStyle="bold"/>
 
         <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="8dp">
 
             <ImageView
                 android:id="@+id/image_school_pass_requests"
@@ -338,7 +340,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:textAlignment="center"
-                    android:format12Hour="h:mm"
+                    android:format12Hour="EE MMM dd, yyyy"
                     android:format24Hour="h:mm"
                     android:textSize="@dimen/text_size_middle"
                     android:textStyle="bold"

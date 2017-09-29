@@ -197,16 +197,26 @@
 
         <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            android:layout_marginTop="4dp"
+            android:layout_marginBottom="4dp"
+            android:layout_marginLeft="8dp">
 
             <com.kyleduo.switchbutton.SwitchButton
                 android:id="@+id/switch_search_request"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                app:kswAutoAdjustTextPosition="true"
+                app:kswThumbHeight="36dp"
+                app:kswThumbWidth="36dp"
+                android:checked="false"
+                app:kswThumbRadius="2dp"
+                app:kswBackRadius="2dp"
+                app:kswTintColor="@color/blue_switch"
+                app:kswTextOff="ARCHIVE"
+                app:kswTextOn="NEW"
                 android:layout_centerVertical="true"
-                android:checked="true"
-                app:kswTextOff="NEW"
-                app:kswTextOn="Archive"/>
+                android:layout_alignParentStart="true"/>
 
             <EditText
                 android:id="@+id/search_et"
@@ -231,11 +241,18 @@
         </RelativeLayout>
 
         <com.aigestudio.wheelpicker.WheelPicker
+            android:id="@+id/data_picker"
             android:layout_width="match_parent"
-            android:layout_height="100dp"
+            android:layout_height="150dp"
             android:background="@color/light_blue"
-            app:wheel_item_text_color="@color/black"
-            app:wheel_selected_item_position="9"
+            app:wheel_item_text_color="#818181"
+            android:paddingTop="8dp"
+            android:paddingBottom="8dp"
+            app:wheel_curved="true"
+            app:wheel_curtain="true"
+            app:wheel_curtain_color="#00ffffff"
+            app:wheel_selected_item_text_color="@color/black"
+            app:wheel_atmospheric="true"
             app:wheel_visible_item_count="5"/>
 
         <LinearLayout
