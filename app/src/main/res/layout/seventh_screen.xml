@@ -353,7 +353,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:format12Hour="EE MMM dd, yyyy"
-                        android:format24Hour="h:mm"
+                        android:format24Hour="EE MMM dd, yyyy"
                         android:textAlignment="center"
                         android:textAllCaps="true"
                         android:textSize="@dimen/text_size_middle"
