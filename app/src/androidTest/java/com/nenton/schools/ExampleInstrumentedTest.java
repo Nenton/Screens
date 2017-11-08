@@ -1,4 +1,4 @@
-package com.nenton.screens;
+package com.nenton.schools;
 
 import android.content.Context;
 import android.support.test.InstrumentationRegistry;
