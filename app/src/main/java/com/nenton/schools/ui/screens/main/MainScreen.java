@@ -17,12 +17,10 @@ import dagger.Provides;
 import mortar.MortarScope;
 
 /**
- * Created by serge on 07.11.2017.
+ * Created by serge on 08.11.2017.
  */
-
-@Screen(R.layout.first_screen)
+@Screen(R.layout.main_screen)
 public class MainScreen extends AbstractScreen<RootActivity.RootComponent> {
-
 
     @Override
     public Object createScreenComponent(RootActivity.RootComponent parentComponent) {
@@ -36,14 +34,14 @@ public class MainScreen extends AbstractScreen<RootActivity.RootComponent> {
     public class Module {
         @Provides
         @DaggerScope(MainScreen.class)
-        MainModel providePhotoModel() {
+        MainModel provideMainModel() {
             return new MainModel();
         }
 
         @Provides
         @DaggerScope(MainScreen.class)
-        MainPresenter provideMainPresenter() {
-            return new MainPresenter();
+        MainScreen.MainPresenter provideMainPresenter() {
+            return new MainScreen.MainPresenter();
         }
     }
 
@@ -66,16 +64,15 @@ public class MainScreen extends AbstractScreen<RootActivity.RootComponent> {
 
         @Override
         protected void initDagger(MortarScope scope) {
-            ((Component) scope.getService(DaggerService.SERVICE_NAME)).inject(this);
+            ((MainScreen.Component) scope.getService(DaggerService.SERVICE_NAME)).inject(this);
         }
 
         @Override
         protected void onLoad(Bundle savedInstanceState) {
             super.onLoad(savedInstanceState);
-        }
-
-        public void clickLogin(String email, String password) {
-            mModel.createUser(email, password);
+            if (getView() != null){
+                getView().initView();
+            }
         }
     }
 }

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout
+<com.nenton.schools.ui.screens.regisgration.RegistrationView
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
@@ -8,7 +8,6 @@
     <android.support.v4.widget.NestedScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_marginBottom="?attr/actionBarSize"
         android:orientation="vertical">
 
         <LinearLayout
@@ -24,10 +23,11 @@
                 android:paddingTop="4dp">
 
                 <TextView
+                    android:id="@+id/reg_title"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_centerVertical="true"
-                    android:layout_toLeftOf="@+id/sound_registration"
+                    android:layout_toLeftOf="@+id/reg_sound"
                     android:text="Title"
                     android:textAlignment="center"
                     android:textAllCaps="true"
@@ -36,18 +36,18 @@
                     android:textStyle="bold"/>
 
                 <ImageButton
-                    android:id="@+id/sound_registration"
+                    android:id="@+id/reg_sound"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_centerVertical="true"
                     android:layout_marginRight="8dp"
-                    android:layout_toLeftOf="@+id/help_registration"
+                    android:layout_toLeftOf="@+id/reg_help"
                     android:background="@drawable/red_btn_state"
                     android:padding="8dp"
                     android:src="@drawable/ic_volume_up_black_24dp"/>
 
                 <ImageButton
-                    android:id="@+id/help_registration"
+                    android:id="@+id/reg_help"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_alignParentRight="true"
@@ -59,16 +59,17 @@
             </RelativeLayout>
 
             <RadioGroup
+                android:id="@+id/reg_type_user_rg"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="8dp"
                 android:layout_marginRight="8dp"
                 android:layout_marginTop="8dp"
-                android:checkedButton="@+id/radio_student"
+                android:checkedButton="@+id/reg_student_rb"
                 android:orientation="horizontal">
 
                 <RadioButton
-                    android:id="@+id/radio_student"
+                    android:id="@+id/reg_student_rb"
                     style="@style/BlueRadioBtn"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
@@ -76,7 +77,7 @@
                     android:text="Student"/>
 
                 <RadioButton
-                    android:id="@+id/radio_educator"
+                    android:id="@+id/reg_educator_rb"
                     style="@style/BlueRadioBtn"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
@@ -106,31 +107,31 @@
                     android:orientation="vertical">
 
                     <EditText
+                        android:id="@+id/reg_user_name"
                         style="@style/Field"
                         android:hint="NAME"
                         android:textAlignment="center"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginBottom="8dp"
-                        android:inputType="textPassword"/>
+                        android:layout_marginBottom="8dp" />
 
                     <EditText
+                        android:id="@+id/reg_user_email"
                         style="@style/Field"
                         android:hint="E-MAIL"
                         android:textAlignment="center"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginBottom="8dp"
-                        android:inputType="textPassword"/>
+                        android:layout_marginBottom="8dp" />
 
                     <EditText
+                        android:id="@+id/reg_user_id"
                         style="@style/Field"
                         android:hint="ID#"
                         android:textAlignment="center"
                         android:layout_width="match_parent"
                         android:layout_marginBottom="8dp"
-                        android:layout_height="wrap_content"
-                        android:inputType="textPassword"/>
+                        android:layout_height="wrap_content" />
 
                     <EditText
                         style="@style/Field"
@@ -149,6 +150,7 @@
                         android:layout_marginTop="8dp"/>
 
                     <Button
+                        android:id="@+id/reg_user_grade"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="8dp"
@@ -165,12 +167,14 @@
                     android:orientation="vertical">
 
                     <ImageView
+                        android:id="@+id/reg_account_img"
                         android:layout_width="match_parent"
                         android:layout_height="150dp"
                         android:scaleType="fitXY"
                         android:src="@drawable/account_icon"/>
 
                     <Button
+                        android:id="@+id/reg_classrooms"
                         style="@style/BlueBtn"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
@@ -180,7 +184,7 @@
                         android:textSize="@dimen/text_size_small"/>
 
                     <Button
-                        android:id="@+id/button"
+                        android:id="@+id/reg_logout"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="8dp"
@@ -228,6 +232,7 @@
                         android:textSize="@dimen/text_size_small"/>
 
                     <Button
+                        android:id="@+id/reg_user_state"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="8dp"
@@ -252,6 +257,7 @@
                         android:textSize="@dimen/text_size_small"/>
 
                     <Button
+                        android:id="@+id/reg_user_district"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="8dp"
@@ -267,16 +273,17 @@
                 android:background="#0000ff"/>
 
             <RadioGroup
+                android:id="@+id/reg_type_education_rg"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="8dp"
                 android:background="@color/blue"
-                android:checkedButton="@+id/elementary_radio_btn"
+                android:checkedButton="@+id/reg_elementary_rb"
                 android:orientation="horizontal"
                 android:padding="4dp">
 
                 <RadioButton
-                    android:id="@+id/elementary_radio_btn"
+                    android:id="@+id/reg_elementary_rb"
                     style="@style/BlueRadioBtn"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
@@ -284,6 +291,7 @@
                     android:text="Elementary"/>
 
                 <RadioButton
+                    android:id="@+id/reg_ir_high_rb"
                     style="@style/BlueRadioBtn"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
@@ -292,6 +300,7 @@
                     android:text="Jr. High"/>
 
                 <RadioButton
+                    android:id="@+id/reg_sr_high_rb"
                     style="@style/BlueRadioBtn"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
@@ -300,6 +309,7 @@
                     android:text="Sr. High"/>
 
                 <RadioButton
+                    android:id="@+id/reg_all_rb"
                     style="@style/BlueRadioBtn"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
@@ -320,14 +330,15 @@
                 android:layout_margin="8dp">
 
                 <Button
+                    android:id="@+id/reg_education"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_toLeftOf="@+id/add_school"
+                    android:layout_toLeftOf="@+id/reg_add_school"
                     android:background="@drawable/light_blue_btn_state"
                     android:text="------------"/>
 
                 <ImageButton
-                    android:id="@+id/add_school"
+                    android:id="@+id/reg_add_school"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_alignParentRight="true"
@@ -345,7 +356,7 @@
                 android:layout_margin="8dp">
 
                 <ImageButton
-                    android:id="@+id/icon_position"
+                    android:id="@+id/reg_geo"
                     style="@style/BlueBtn"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -354,13 +365,13 @@
                     android:src="@drawable/ic_place_black_24dp"/>
 
                 <ImageButton
-                    android:id="@+id/icon_phone"
+                    android:id="@+id/reg_phone"
                     style="@style/BlueBtn"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_centerVertical="true"
                     android:layout_marginLeft="8dp"
-                    android:layout_toRightOf="@+id/icon_position"
+                    android:layout_toRightOf="@+id/reg_geo"
                     android:background="@drawable/blue_btn_state"
                     android:src="@drawable/ic_call_black_24dp"/>
 
@@ -373,13 +384,14 @@
                     android:background="@drawable/image"/>
 
                 <EditText
+                    android:id="@+id/reg_description_et"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_centerVertical="true"
                     android:layout_marginLeft="8dp"
                     android:layout_marginRight="8dp"
                     android:layout_toLeftOf="@+id/image_registration"
-                    android:layout_toRightOf="@+id/icon_phone"
+                    android:layout_toRightOf="@+id/reg_phone"
                     android:background="@color/white_transparent"
                     android:minLines="3"
                     android:text="123 Sesame Street Miami, FL 33056 305-502-3535"
@@ -421,67 +433,4 @@
 
     </android.support.v4.widget.NestedScrollView>
 
-    <android.support.design.widget.BottomNavigationView
-        android:id="@+id/bottom_navigation"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:layout_gravity="bottom"
-        android:background="@android:color/white"
-        app:elevation="16dp"
-        app:layout_insetEdge="bottom"
-        app:itemIconTint="@drawable/nav_item_color_state"
-        app:itemTextColor="@drawable/nav_item_color_state"
-        app:menu="@menu/menu_bottom_navigation"/>
-
-    <!--<LinearLayout-->
-        <!--android:layout_width="match_parent"-->
-        <!--android:layout_height="wrap_content"-->
-        <!--android:layout_alignParentBottom="true"-->
-        <!--android:background="@color/white"-->
-        <!--android:gravity="center_horizontal"-->
-        <!--android:orientation="horizontal"-->
-        <!--android:paddingBottom="8dp"-->
-        <!--android:paddingTop="8dp">-->
-
-        <!--<ImageButton-->
-            <!--android:layout_width="48dp"-->
-            <!--android:layout_height="48dp"-->
-            <!--android:layout_centerVertical="true"-->
-            <!--android:layout_marginRight="36dp"-->
-            <!--android:layout_toLeftOf="@+id/help_registration"-->
-            <!--android:background="@drawable/white_not_pressed"-->
-            <!--android:padding="8dp"-->
-            <!--android:src="@drawable/selector_menu_pass"/>-->
-
-        <!--<ImageButton-->
-            <!--android:layout_width="48dp"-->
-            <!--android:layout_height="48dp"-->
-            <!--android:layout_centerVertical="true"-->
-            <!--android:layout_marginRight="36dp"-->
-            <!--android:layout_toLeftOf="@+id/help_registration"-->
-            <!--android:background="@drawable/white_not_pressed"-->
-            <!--android:padding="8dp"-->
-            <!--android:src="@drawable/selector_menu_pass_history"/>-->
-
-        <!--<ImageButton-->
-            <!--android:layout_width="48dp"-->
-            <!--android:layout_height="48dp"-->
-            <!--android:layout_centerVertical="true"-->
-            <!--android:layout_marginRight="36dp"-->
-            <!--android:layout_toLeftOf="@+id/help_registration"-->
-            <!--android:background="@drawable/white_not_pressed"-->
-            <!--android:padding="8dp"-->
-            <!--android:src="@drawable/selector_menu_passes"/>-->
-
-        <!--<ImageButton-->
-            <!--android:layout_width="48dp"-->
-            <!--android:layout_height="48dp"-->
-            <!--android:layout_centerVertical="true"-->
-            <!--android:layout_toLeftOf="@+id/help_registration"-->
-            <!--android:background="@drawable/white_not_pressed"-->
-            <!--android:padding="8dp"-->
-            <!--android:src="@drawable/selector_ic_menu_account"/>-->
-    <!--</LinearLayout>-->
-
-</RelativeLayout>
+</com.nenton.schools.ui.screens.regisgration.RegistrationView>

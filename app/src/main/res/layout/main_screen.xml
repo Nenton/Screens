@@ -1,0 +1,205 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.nenton.schools.ui.screens.main.MainView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@drawable/icon_chalkboard_bg"
+            android:orientation="vertical">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="16dp"
+                android:layout_marginRight="16dp"
+                android:layout_marginTop="48dp"
+                android:background="@color/red">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerInParent="true"
+                    android:text="Extra credit shop"
+                    android:textAllCaps="true"
+                    android:textColor="@color/white"
+                    android:textSize="@dimen/text_size_big"
+                    android:textStyle="bold" />
+
+                <ImageView
+                    android:id="@+id/main_sound_iv"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:layout_margin="8dp"
+                    android:src="@drawable/ic_volume_up_white_24dp" />
+            </RelativeLayout>
+
+            <Button
+                android:id="@+id/main_image_btn"
+                android:layout_width="match_parent"
+                android:layout_height="150dp"
+                android:layout_marginBottom="8dp"
+                android:layout_marginLeft="16dp"
+                android:layout_marginRight="16dp"
+                android:layout_marginTop="8dp"
+                android:background="@drawable/image"
+                android:paddingBottom="16dp"
+                android:paddingTop="16dp"
+                android:text="IMAGE"
+                android:textSize="@dimen/text_size_big" />
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="16dp"
+                android:layout_marginRight="16dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="48dp"
+                    android:layout_toLeftOf="@+id/main_help_product_iv"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/main_product_name_tv"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Product name"
+                        android:textAlignment="textEnd"
+                        android:textAllCaps="true"
+                        android:textColor="@color/yellow"
+                        android:textSize="@dimen/text_size_big"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:id="@+id/main_product_description_tv"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Product Description"
+                        android:textAlignment="textEnd"
+                        android:textColor="@color/white"
+                        android:textSize="@dimen/text_size_middle" />
+                </LinearLayout>
+
+                <ImageView
+                    android:id="@+id/main_help_product_iv"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:layout_margin="8dp"
+                    android:src="@drawable/ic_help_white_24dp" />
+            </RelativeLayout>
+
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_above="@+id/wrap_policy_privacy"
+            android:layout_centerHorizontal="true"
+            android:layout_marginLeft="8dp"
+            android:layout_marginRight="8dp"
+            android:orientation="horizontal">
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:layout_weight="2"
+                android:orientation="vertical">
+
+                <ImageButton
+                    android:id="@+id/main_purchase_ib"
+                    android:layout_width="wrap_content"
+                    android:layout_height="36dp"
+                    android:layout_marginLeft="8dp"
+                    android:layout_marginRight="8dp"
+                    android:background="@drawable/iap_purchase"
+                    android:scaleType="fitXY" />
+
+                <ImageButton
+                    android:id="@+id/main_exit_shop_ib"
+                    android:layout_width="wrap_content"
+                    android:layout_height="36dp"
+                    android:layout_marginLeft="8dp"
+                    android:layout_marginRight="8dp"
+                    android:layout_marginTop="8dp"
+                    android:background="@drawable/iap_exit_shop"
+                    android:scaleType="fitXY" />
+            </LinearLayout>
+
+            <ImageView
+                android:id="@+id/main_stuff_iv"
+                android:layout_width="0dp"
+                android:layout_height="96dp"
+                android:layout_gravity="center_vertical"
+                android:layout_marginRight="8dp"
+                android:layout_weight="0.75"
+                android:padding="8dp"
+                android:scaleType="fitXY"
+                android:src="@drawable/ic_book_bag_stuff" />
+        </LinearLayout>
+
+        <RelativeLayout
+            android:id="@+id/wrap_policy_privacy"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_marginBottom="60dp"
+            android:layout_marginLeft="16dp"
+            android:layout_marginRight="16dp"
+            android:layout_marginTop="8dp">
+
+            <com.kyleduo.switchbutton.SwitchButton
+                android:id="@+id/main_privacy_policy_switch"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:checked="true"
+                app:kswThumbColor="@color/color_switcher"
+                app:kswTintColor="@color/green_switch" />
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="8dp"
+                android:layout_toRightOf="@id/main_privacy_policy_switch"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="All App Features $4.99"
+                    android:textColor="@color/white"
+                    android:textSize="@dimen/text_size_middle" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Privacy Policy Terms"
+                    android:textColor="@color/yellow"
+                    android:textSize="@dimen/text_size_middle" />
+            </LinearLayout>
+
+            <ImageButton
+                android:id="@+id/main_reload_ib"
+                android:layout_width="48dp"
+                android:layout_height="36dp"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:layout_marginRight="8dp"
+                android:background="@drawable/icon_re" />
+        </RelativeLayout>
+    </RelativeLayout>
+</com.nenton.schools.ui.screens.main.MainView>

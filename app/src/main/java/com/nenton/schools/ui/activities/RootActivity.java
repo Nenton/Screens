@@ -12,11 +12,8 @@ import android.support.design.internal.BottomNavigationItemView;
 import android.support.design.internal.BottomNavigationMenuView;
 import android.support.design.widget.BottomNavigationView;
 import android.support.design.widget.CoordinatorLayout;
-import android.support.design.widget.Snackbar;
 import android.support.v4.content.ContextCompat;
 import android.support.v4.widget.DrawerLayout;
-import android.support.v7.app.ActionBar;
-import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
@@ -27,21 +24,21 @@ import android.widget.Toast;
 import com.google.firebase.crash.FirebaseCrash;
 import com.nenton.schools.BuildConfig;
 import com.nenton.schools.R;
+import com.nenton.schools.data.managers.FireBaseManager;
 import com.nenton.schools.di.DaggerService;
 import com.nenton.schools.di.components.AppComponent;
 import com.nenton.schools.di.modules.PicassoCacheModule;
 import com.nenton.schools.di.modules.RootModule;
 import com.nenton.schools.di.sqopes.RootScope;
 import com.nenton.schools.flow.TreeKeyDispatcher;
-import com.nenton.schools.mvp.presenters.MenuItemHolder;
 import com.nenton.schools.mvp.presenters.RootPresenter;
 import com.nenton.schools.mvp.views.IRootView;
 import com.nenton.schools.mvp.views.IView;
+import com.nenton.schools.ui.screens.auth.AuthScreen;
 import com.nenton.schools.ui.screens.main.MainScreen;
 import com.squareup.picasso.Picasso;
 
 import java.lang.reflect.Field;
-import java.util.List;
 
 import javax.inject.Inject;
 
@@ -106,7 +103,7 @@ public class RootActivity extends AppCompatActivity implements IRootView{
             Object key = null;
             switch (item.getItemId()) {
 //                case R.id.action_home:
-////                    key = new MainScreen();
+////                    key = new AuthScreen();
 //                    break;
             }
 
@@ -158,7 +155,7 @@ public class RootActivity extends AppCompatActivity implements IRootView{
     @Override
     protected void attachBaseContext(Context newBase) {
         newBase = Flow.configure(newBase, this)
-                .defaultKey(new MainScreen())
+                .defaultKey(FireBaseManager.getInstance().getFirebaseAuth().getCurrentUser() != null ? new MainScreen() : new AuthScreen())
                 .dispatcher(new TreeKeyDispatcher(this))
                 .install();
         super.attachBaseContext(newBase);

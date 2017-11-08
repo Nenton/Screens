@@ -2,6 +2,7 @@ package com.nenton.schools.data.managers;
 
 import com.nenton.schools.data.network.RestCallTransformer;
 import com.nenton.schools.data.network.RestService;
+import com.nenton.schools.data.storage.realm.UserRealm;
 import com.nenton.schools.di.DaggerService;
 import com.nenton.schools.di.components.DaggerDataManagerComponent;
 import com.nenton.schools.di.components.DataManagerComponent;
@@ -69,4 +70,7 @@ public class DataManager {
         mRestCallTransformer = new RestCallTransformer<>();
     }
 
+    public void saveUserToRealm(UserRealm userRealm) {
+        mRealmManager.saveUserInfo(userRealm);
+    }
 }
