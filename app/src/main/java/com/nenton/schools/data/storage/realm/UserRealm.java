@@ -39,6 +39,30 @@ public class UserRealm extends RealmObject {
     public UserRealm() {
     }
 
+    public UserRealm(String email, String uid, String fullName) {
+        this.id = uid;
+        this.email = email;
+        this.name = fullName;
+        this.accountType = "";
+        this.educatorVerified = false;
+        this.fbAccountImg = "";
+        this.phone = "";
+        this.schoolCity = "";
+        this.schoolDistrict = "";
+        this.schoolId = "";
+        this.schoolName = "";
+        this.schoolPhone = "";
+        this.schoolPeopleMyUrl = "";
+        this.schoolPosition = "";
+        this.schoolStreet = "";
+        this.schoolType = "";
+        this.schoolZip = "";
+        this.state = "";
+        this.accountType = "";
+        this.studentVerified = false;
+        this.teacherRoom = "";
+    }
+
     public void setId(String id) {
         this.id = id;
     }

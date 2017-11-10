@@ -5,6 +5,8 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.nenton.schools.data.managers.FireBaseManager;
 import com.nenton.schools.data.storage.realm.UserRealm;
 
+import java.util.Map;
+
 import javax.annotation.Nullable;
 
 import rx.Observable;
@@ -27,6 +29,10 @@ public class RegistrationModel extends AbstractModel {
 
     @Nullable
     public Observable<UserRealm> getUser() {
-        return mDataManager.getRealmManager().getUserById(mFirebaseManager.getFirebaseAuth().getCurrentUser().getUid());
+        return mDataManager.getRealmManager().getUserByIdObs(mFirebaseManager.getFirebaseAuth().getCurrentUser().getUid());
+    }
+
+    public void saveUserInfo(Map<String, Object> mapFirebase) {
+        mDB.getReference().child("users").child(mAuth.getCurrentUser().getUid()).updateChildren(mapFirebase);
     }
 }

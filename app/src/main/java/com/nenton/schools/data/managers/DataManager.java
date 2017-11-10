@@ -1,5 +1,6 @@
 package com.nenton.schools.data.managers;
 
+import com.google.firebase.auth.FirebaseAuth;
 import com.nenton.schools.data.network.RestCallTransformer;
 import com.nenton.schools.data.network.RestService;
 import com.nenton.schools.data.storage.realm.UserRealm;
@@ -13,6 +14,7 @@ import com.nenton.schools.utils.App;
 import javax.inject.Inject;
 
 import retrofit2.Retrofit;
+import rx.Observable;
 
 /**
  * Created by serge on 03.06.2017.
@@ -73,4 +75,26 @@ public class DataManager {
     public void saveUserToRealm(UserRealm userRealm) {
         mRealmManager.saveUserInfo(userRealm);
     }
+
+    public Observable<Boolean> checkCompleteRegistrationObs() {
+        return getRealmManager().getUserByIdObs(FirebaseAuth.getInstance().getCurrentUser().getUid())
+                .flatMap(userRealm -> {
+                    boolean isComplete = !userRealm.getName().isEmpty() &&
+                            !userRealm.getEmail().isEmpty() &&
+                            !userRealm.getState().isEmpty() &&
+                            !userRealm.getSchoolDistrict().isEmpty() &&
+                            !userRealm.getSchoolPosition().isEmpty();
+                    return Observable.just(isComplete);
+                });
+    }
+
+    public boolean checkCompleteRegistration() {
+        UserRealm userRealm = getRealmManager().getUserById(FirebaseAuth.getInstance().getCurrentUser().getUid());
+        return !userRealm.getName().isEmpty() &&
+                !userRealm.getEmail().isEmpty() &&
+                !userRealm.getState().isEmpty() &&
+                !userRealm.getSchoolDistrict().isEmpty() &&
+                !userRealm.getSchoolPosition().isEmpty();
+    }
+
 }

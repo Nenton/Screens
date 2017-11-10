@@ -11,9 +11,6 @@ import com.nenton.schools.di.DaggerService;
 import com.nenton.schools.mvp.views.IRootView;
 import com.nenton.schools.ui.activities.RootActivity;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import mortar.MortarScope;
 import mortar.Presenter;
 import mortar.bundler.BundleService;
@@ -68,5 +65,23 @@ public class RootPresenter extends Presenter<IRootView> {
 
     }
 
+    public RootActivityBarBuilder newRootActivityBarBuilder() {
+        return this.new RootActivityBarBuilder();
+    }
 
+    public class RootActivityBarBuilder {
+        private boolean isShowBottomNav = false;
+
+        public RootActivityBarBuilder setShowBottomNav(boolean showBottomNav) {
+            this.isShowBottomNav = showBottomNav;
+            return this;
+        }
+
+        public void build() {
+            if (getRootView() != null) {
+                RootActivity activity = (RootActivity) getRootView();
+                activity.stateBottomNavView(isShowBottomNav);
+            }
+        }
+    }
 }

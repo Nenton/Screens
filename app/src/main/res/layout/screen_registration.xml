@@ -376,7 +376,7 @@
                     android:src="@drawable/ic_call_black_24dp"/>
 
                 <ImageButton
-                    android:id="@+id/image_registration"
+                    android:id="@+id/reg_complete_edit"
                     android:layout_width="100dp"
                     android:layout_height="100dp"
                     android:layout_alignParentRight="true"
@@ -384,13 +384,13 @@
                     android:background="@drawable/image"/>
 
                 <EditText
-                    android:id="@+id/reg_description_et"
+                    android:id="@+id/reg_school_position_et"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_centerVertical="true"
                     android:layout_marginLeft="8dp"
                     android:layout_marginRight="8dp"
-                    android:layout_toLeftOf="@+id/image_registration"
+                    android:layout_toLeftOf="@+id/reg_complete_edit"
                     android:layout_toRightOf="@+id/reg_phone"
                     android:background="@color/white_transparent"
                     android:minLines="3"

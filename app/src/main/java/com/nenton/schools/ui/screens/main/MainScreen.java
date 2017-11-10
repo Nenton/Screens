@@ -19,7 +19,7 @@ import mortar.MortarScope;
 /**
  * Created by serge on 08.11.2017.
  */
-@Screen(R.layout.main_screen)
+@Screen(R.layout.screen_main)
 public class MainScreen extends AbstractScreen<RootActivity.RootComponent> {
 
     @Override
@@ -58,8 +58,10 @@ public class MainScreen extends AbstractScreen<RootActivity.RootComponent> {
     public class MainPresenter extends AbstractPresenter<MainView, MainModel> implements IMainPresenter {
 
         @Override
-        protected void initActionBar() {
-
+        protected void initActivityBarBuilder() {
+            mRootPresenter.newRootActivityBarBuilder()
+                    .setShowBottomNav(false)
+                    .build();
         }
 
         @Override
@@ -70,7 +72,7 @@ public class MainScreen extends AbstractScreen<RootActivity.RootComponent> {
         @Override
         protected void onLoad(Bundle savedInstanceState) {
             super.onLoad(savedInstanceState);
-            if (getView() != null){
+            if (getView() != null) {
                 getView().initView();
             }
         }

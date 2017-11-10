@@ -24,9 +24,8 @@ import mortar.MortarScope;
  * Created by serge on 07.11.2017.
  */
 
-@Screen(R.layout.first_screen)
+@Screen(R.layout.screen_auth)
 public class AuthScreen extends AbstractScreen<RootActivity.RootComponent> {
-
 
     @Override
     public Object createScreenComponent(RootActivity.RootComponent parentComponent) {
@@ -68,8 +67,10 @@ public class AuthScreen extends AbstractScreen<RootActivity.RootComponent> {
         private int stateScreen = STATE_EXISTING_ACCOUNT;
 
         @Override
-        protected void initActionBar() {
-
+        protected void initActivityBarBuilder() {
+            mRootPresenter.newRootActivityBarBuilder()
+                    .setShowBottomNav(false)
+                    .build();
         }
 
         public void changeState(int state) {
@@ -123,7 +124,12 @@ public class AuthScreen extends AbstractScreen<RootActivity.RootComponent> {
                                 .subscribe(firebaseUser -> {
                                     getRootView().showMessage("Complete");
                                     mModel.saveUserInfo();
-                                    Flow.get(getView()).set(new MainScreen());
+                                    mCompSubs.add(
+                                            mModel.checkCompleteRegistration().subscribe(aBoolean -> {
+                                                Flow.get(getView()).set(aBoolean ? new MainScreen() : new RegistrationScreen());
+                                            }, throwable -> {
+                                                getRootView().showError(throwable);
+                                            }));
                                 }, throwable -> {
                                     getRootView().showMessage(throwable.getMessage());
                                 })

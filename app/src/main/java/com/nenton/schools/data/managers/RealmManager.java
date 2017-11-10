@@ -39,7 +39,7 @@ public class RealmManager {
         realm.close();
     }
 
-    public Observable<UserRealm> getUserById(String id){
+    public Observable<UserRealm> getUserByIdObs(String id){
         RealmResults<UserRealm> user = getQueryRealmInstance().where(UserRealm.class)
                 .equalTo("id", id)
                 .findAllAsync();
@@ -48,4 +48,12 @@ public class RealmManager {
                 .flatMap(Observable::from)
                 .first();
     }
+
+    public UserRealm getUserById(String id){
+        return getQueryRealmInstance().where(UserRealm.class)
+                .equalTo("id", id)
+                .findFirst();
+    }
+
+
 }

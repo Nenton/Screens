@@ -24,18 +24,21 @@ import android.widget.Toast;
 import com.google.firebase.crash.FirebaseCrash;
 import com.nenton.schools.BuildConfig;
 import com.nenton.schools.R;
+import com.nenton.schools.data.managers.DataManager;
 import com.nenton.schools.data.managers.FireBaseManager;
 import com.nenton.schools.di.DaggerService;
 import com.nenton.schools.di.components.AppComponent;
 import com.nenton.schools.di.modules.PicassoCacheModule;
 import com.nenton.schools.di.modules.RootModule;
 import com.nenton.schools.di.sqopes.RootScope;
+import com.nenton.schools.flow.AbstractScreen;
 import com.nenton.schools.flow.TreeKeyDispatcher;
 import com.nenton.schools.mvp.presenters.RootPresenter;
 import com.nenton.schools.mvp.views.IRootView;
 import com.nenton.schools.mvp.views.IView;
 import com.nenton.schools.ui.screens.auth.AuthScreen;
 import com.nenton.schools.ui.screens.main.MainScreen;
+import com.nenton.schools.ui.screens.regisgration.RegistrationScreen;
 import com.squareup.picasso.Picasso;
 
 import java.lang.reflect.Field;
@@ -47,8 +50,9 @@ import butterknife.ButterKnife;
 import flow.Flow;
 import mortar.MortarScope;
 import mortar.bundler.BundleServiceRunner;
+import rx.subscriptions.CompositeSubscription;
 
-public class RootActivity extends AppCompatActivity implements IRootView{
+public class RootActivity extends AppCompatActivity implements IRootView {
 
     @Inject
     RootPresenter mRootPresenter;
@@ -115,7 +119,7 @@ public class RootActivity extends AppCompatActivity implements IRootView{
     }
 
     @Override
-    public void changeOnBottom(@IdRes int id){
+    public void changeOnBottom(@IdRes int id) {
         mBottomNavigationView.setSelectedItemId(id);
     }
 
@@ -132,8 +136,8 @@ public class RootActivity extends AppCompatActivity implements IRootView{
 //        }
     }
 
-    public void stateBottomNavView(boolean is){
-        if (is){
+    public void stateBottomNavView(boolean is) {
+        if (is) {
             mBottomNavigationView.setVisibility(View.VISIBLE);
         } else {
             mBottomNavigationView.setVisibility(View.GONE);
@@ -154,8 +158,17 @@ public class RootActivity extends AppCompatActivity implements IRootView{
 
     @Override
     protected void attachBaseContext(Context newBase) {
+        AbstractScreen key = new AuthScreen();
+        if (FireBaseManager.getInstance().getFirebaseAuth().getCurrentUser() != null) {
+            if (DataManager.getInstance().checkCompleteRegistration()) {
+                key = new MainScreen();
+            } else {
+                key = new RegistrationScreen();
+            }
+        }
+
         newBase = Flow.configure(newBase, this)
-                .defaultKey(FireBaseManager.getInstance().getFirebaseAuth().getCurrentUser() != null ? new MainScreen() : new AuthScreen())
+                .defaultKey(key)
                 .dispatcher(new TreeKeyDispatcher(this))
                 .install();
         super.attachBaseContext(newBase);

@@ -6,6 +6,7 @@ import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 import com.nenton.schools.data.managers.FireBaseManager;
 import com.nenton.schools.data.storage.realm.UserRealm;
@@ -19,10 +20,12 @@ import rx.Observable;
 public class AuthModel extends AbstractModel {
     private final FireBaseManager mFirebaseManager;
     private final FirebaseAuth mAuth;
+    private final FirebaseDatabase mDB;
 
     public AuthModel() {
         mFirebaseManager = FireBaseManager.getInstance();
         mAuth = mFirebaseManager.getFirebaseAuth();
+        mDB = mFirebaseManager.getFirebaseDatabase();
     }
 
     public boolean isAuthUser() {
@@ -67,11 +70,11 @@ public class AuthModel extends AbstractModel {
     public Observable<FirebaseUser> createUser(String email, String pass, String fullName) {
         return createUserObs(email, pass)
                 .doOnNext(firebaseUser -> {
-                    UserRealm userRealm = new UserRealm();
+                    UserRealm userRealm = new UserRealm(firebaseUser.getEmail(), firebaseUser.getUid(), fullName);
                     userRealm.setEmail(firebaseUser.getEmail());
                     userRealm.setId(firebaseUser.getUid());
                     userRealm.setName(fullName);
-                    mFirebaseManager.getFirebaseDatabase().getReference().child("users").child(firebaseUser.getUid()).setValue(userRealm);
+                    mDB.getReference().child("users").child(firebaseUser.getUid()).setValue(userRealm);
                 });
     }
 
@@ -81,7 +84,7 @@ public class AuthModel extends AbstractModel {
     }
 
     public void saveUserInfo() {
-        DatabaseReference user = mFirebaseManager.getFirebaseDatabase().getReference().child("users").child(mAuth.getCurrentUser().getUid());
+        DatabaseReference user = mDB.getReference().child("users").child(mAuth.getCurrentUser().getUid());
         if (user != null){
             user.addValueEventListener(new ValueEventListener() {
                 @Override
@@ -97,4 +100,9 @@ public class AuthModel extends AbstractModel {
             });
         }
     }
+
+    public Observable<Boolean> checkCompleteRegistration() {
+        return mDataManager.checkCompleteRegistrationObs();
+    }
+
 }

@@ -41,7 +41,7 @@ public abstract class AbstractPresenter<V extends AbstractView, M extends Abstra
     protected void onLoad(Bundle savedInstanceState) {
         super.onLoad(savedInstanceState);
         mCompSubs = new CompositeSubscription();
-        initActionBar();
+        initActivityBarBuilder();
         getRootView().checkBottomNavView(getView());
     }
 
@@ -53,7 +53,7 @@ public abstract class AbstractPresenter<V extends AbstractView, M extends Abstra
         super.dropView(view);
     }
 
-    protected abstract void initActionBar();
+    protected abstract void initActivityBarBuilder();
     protected abstract void initDagger(MortarScope scope);
 
 
