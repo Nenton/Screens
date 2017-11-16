@@ -14,6 +14,7 @@ import com.nenton.schools.mvp.views.AbstractView;
 import com.nenton.schools.mvp.views.IMainView;
 
 import butterknife.BindView;
+import butterknife.OnClick;
 
 /**
  * Created by serge on 08.11.2017.
@@ -44,6 +45,11 @@ class MainView extends AbstractView<MainScreen.MainPresenter> implements IMainVi
 
     public MainView(Context context, AttributeSet attrs) {
         super(context, attrs);
+    }
+
+    @OnClick(R.id.main_purchase_ib)
+    void clickOnPurchase(){
+        mPresenter.clickOnPurchase();
     }
 
     @Override

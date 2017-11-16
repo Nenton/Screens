@@ -1,18 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<com.nenton.schools.ui.screens.schoolPass.SchoolPassView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
 
     <android.support.v4.widget.NestedScrollView
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_marginBottom="?attr/actionBarSize">
+        android:layout_height="match_parent">
 
-        <LinearLayout
-            xmlns:android="http://schemas.android.com/apk/res/android"
+        <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:orientation="vertical">
@@ -33,7 +31,7 @@
                     android:textAllCaps="true"
                     android:textColor="#ffffff"
                     android:textSize="20sp"
-                    android:textStyle="bold"/>
+                    android:textStyle="bold" />
 
                 <ImageView
                     android:id="@+id/school_district_volume"
@@ -41,7 +39,7 @@
                     android:layout_height="wrap_content"
                     android:layout_alignParentRight="true"
                     android:layout_marginRight="8dp"
-                    android:src="@drawable/ic_volume_up_white_24dp"/>
+                    android:src="@drawable/ic_volume_up_white_24dp" />
             </RelativeLayout>
 
             <RelativeLayout
@@ -51,6 +49,7 @@
                 android:layout_marginTop="4dp">
 
                 <EditText
+                    android:id="@+id/pass_log_et"
                     style="@style/Field"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -58,26 +57,26 @@
                     android:layout_centerVertical="true"
                     android:layout_marginLeft="0dp"
                     android:layout_marginRight="8dp"
-                    android:layout_toLeftOf="@+id/school_district_passes"
+                    android:layout_toLeftOf="@+id/pass_passes_tv"
                     android:enabled="false"
                     android:text="Not logged in"
                     android:textAlignment="center"
                     android:textAllCaps="true"
-                    android:textSize="@dimen/text_size_middle"/>
+                    android:textSize="@dimen/text_size_middle" />
 
                 <TextView
-                    android:id="@+id/school_district_passes"
+                    android:id="@+id/pass_passes_tv"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_centerVertical="true"
-                    android:layout_toLeftOf="@+id/school_district_data"
+                    android:layout_toLeftOf="@+id/pass_district_data_et"
                     android:text="Passes (0)"
                     android:textAllCaps="true"
                     android:textColor="@color/blue_no_thanks"
-                    android:textSize="@dimen/text_size_small"/>
+                    android:textSize="@dimen/text_size_small" />
 
                 <EditText
-                    android:id="@+id/school_district_data"
+                    android:id="@+id/pass_district_data_et"
                     style="@style/Field"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -86,7 +85,7 @@
                     android:enabled="false"
                     android:text="Jun 5 2016"
                     android:textAllCaps="true"
-                    android:textSize="@dimen/text_size_middle"/>
+                    android:textSize="@dimen/text_size_middle" />
             </RelativeLayout>
 
             <TextView
@@ -101,7 +100,7 @@
                 android:textAllCaps="true"
                 android:textColor="#ffffff"
                 android:textSize="20sp"
-                android:textStyle="bold"/>
+                android:textStyle="bold" />
 
             <RelativeLayout
                 android:layout_width="match_parent"
@@ -116,7 +115,7 @@
                     android:layout_centerHorizontal="true"
                     android:layout_marginLeft="8dp"
                     android:layout_marginRight="8dp"
-                    android:src="@drawable/ic_help_school"/>
+                    android:src="@drawable/ic_help_school" />
 
                 <LinearLayout
                     android:layout_width="wrap_content"
@@ -129,7 +128,7 @@
                         android:layout_height="wrap_content"
                         android:text="Current Room"
                         android:textAlignment="center"
-                        android:textColor="@color/black"/>
+                        android:textColor="@color/black" />
 
                     <LinearLayout
                         android:layout_width="wrap_content"
@@ -142,19 +141,20 @@
                         <View
                             android:layout_width="wrap_content"
                             android:layout_height="1dp"
-                            android:background="@color/light_blue_divider"/>
+                            android:background="@color/light_blue_divider" />
 
                         <EditText
+                            android:id="@+id/pass_current_room_et"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:background="#00ffff"
                             android:enabled="true"
-                            android:textSize="24sp"/>
+                            android:textSize="24sp" />
 
                         <View
                             android:layout_width="wrap_content"
                             android:layout_height="1dp"
-                            android:background="@color/light_blue_divider"/>
+                            android:background="@color/light_blue_divider" />
                     </LinearLayout>
 
                 </LinearLayout>
@@ -170,7 +170,7 @@
                         android:layout_height="wrap_content"
                         android:text="Teacher"
                         android:textAlignment="center"
-                        android:textColor="@color/black"/>
+                        android:textColor="@color/black" />
 
                     <LinearLayout
                         android:layout_width="wrap_content"
@@ -183,19 +183,20 @@
                         <View
                             android:layout_width="wrap_content"
                             android:layout_height="1dp"
-                            android:background="@color/light_blue_divider"/>
+                            android:background="@color/light_blue_divider" />
 
                         <EditText
+                            android:id="@+id/pass_teacher_et"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:background="#00ffff"
                             android:enabled="true"
-                            android:textSize="24sp"/>
+                            android:textSize="24sp" />
 
                         <View
                             android:layout_width="wrap_content"
                             android:layout_height="1dp"
-                            android:background="@color/light_blue_divider"/>
+                            android:background="@color/light_blue_divider" />
                     </LinearLayout>
 
                 </LinearLayout>
@@ -213,7 +214,7 @@
                 android:textAlignment="center"
                 android:textAllCaps="true"
                 android:textColor="#ffffff"
-                android:textSize="20sp"/>
+                android:textSize="20sp" />
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -227,102 +228,103 @@
                     android:layout_weight="1"
                     android:orientation="vertical">
 
-                    <LinearLayout
-                        style="@style/WrapTextSwitchDestination">
+                    <LinearLayout style="@style/WrapTextSwitchDestination">
 
                         <TextView
                             style="@style/TextSwitchDestination"
-                            android:text="Restroom"/>
+                            android:text="Restroom" />
 
                         <com.kyleduo.switchbutton.SwitchButton
+                            android:id="@+id/pass_restroom_sb"
                             style="@style/SwitchDestination"
-                            android:checked="true"
                             app:kswThumbColor="@color/color_switcher"
-                            app:kswTintColor="@color/green_switch"/>
+                            app:kswTintColor="@color/green_switch"
+                            tools:checked="true" />
                     </LinearLayout>
 
-                    <LinearLayout
-                        style="@style/WrapTextSwitchDestination">
+                    <LinearLayout style="@style/WrapTextSwitchDestination">
 
                         <TextView
                             style="@style/TextSwitchDestination"
-                            android:text="Counselor"/>
+                            android:text="Counselor" />
 
                         <com.kyleduo.switchbutton.SwitchButton
+                            android:id="@+id/pass_counselor_sb"
                             style="@style/SwitchDestination"
-                            android:checked="true"
                             app:kswThumbColor="@color/color_switcher"
-                            app:kswTintColor="@color/green_switch"/>
+                            app:kswTintColor="@color/green_switch"
+                            tools:checked="true" />
                     </LinearLayout>
 
-                    <LinearLayout
-                        style="@style/WrapTextSwitchDestination">
+                    <LinearLayout style="@style/WrapTextSwitchDestination">
 
                         <TextView
                             style="@style/TextSwitchDestination"
-                            android:text="Main office"/>
+                            android:text="Main office" />
 
                         <com.kyleduo.switchbutton.SwitchButton
+                            android:id="@+id/pass_main_office_sb"
                             style="@style/SwitchDestination"
-                            android:checked="true"
                             app:kswThumbColor="@color/color_switcher"
-                            app:kswTintColor="@color/green_switch"/>
+                            app:kswTintColor="@color/green_switch"
+                            tools:checked="true" />
                     </LinearLayout>
 
-                    <LinearLayout
-                        style="@style/WrapTextSwitchDestination">
+                    <LinearLayout style="@style/WrapTextSwitchDestination">
 
                         <TextView
                             style="@style/TextSwitchDestination"
-                            android:text="Student Services"/>
+                            android:text="Student Services" />
 
                         <com.kyleduo.switchbutton.SwitchButton
+                            android:id="@+id/pass_student_service_sb"
                             style="@style/SwitchDestination"
-                            android:checked="true"
                             app:kswThumbColor="@color/color_switcher"
-                            app:kswTintColor="@color/green_switch"/>
+                            app:kswTintColor="@color/green_switch"
+                            tools:checked="true" />
                     </LinearLayout>
 
 
-                    <LinearLayout
-                        style="@style/WrapTextSwitchDestination">
+                    <LinearLayout style="@style/WrapTextSwitchDestination">
 
                         <TextView
                             style="@style/TextSwitchDestination"
-                            android:text="Library"/>
+                            android:text="Library" />
 
                         <com.kyleduo.switchbutton.SwitchButton
+                            android:id="@+id/pass_library_sb"
                             style="@style/SwitchDestination"
-                            android:checked="true"
                             app:kswThumbColor="@color/color_switcher"
-                            app:kswTintColor="@color/green_switch"/>
+                            app:kswTintColor="@color/green_switch"
+                            tools:checked="true" />
                     </LinearLayout>
 
-                    <LinearLayout
-                        style="@style/WrapTextSwitchDestination">
+                    <LinearLayout style="@style/WrapTextSwitchDestination">
 
                         <TextView
                             style="@style/TextSwitchDestination"
-                            android:text="Clinic"/>
+                            android:text="Clinic" />
 
                         <com.kyleduo.switchbutton.SwitchButton
+                            android:id="@+id/pass_clinic_sb"
                             style="@style/SwitchDestination"
-                            android:checked="true"
                             app:kswThumbColor="@color/color_switcher"
-                            app:kswTintColor="@color/green_switch"/>
+                            app:kswTintColor="@color/green_switch"
+                            tools:checked="true" />
                     </LinearLayout>
 
-                    <LinearLayout
-                        style="@style/WrapTextSwitchDestination">
+                    <LinearLayout style="@style/WrapTextSwitchDestination">
 
                         <TextView
                             style="@style/TextSwitchDestination"
-                            android:text="Other"/>
+                            android:text="Other" />
 
                         <com.kyleduo.switchbutton.SwitchButton
+                            android:id="@+id/pass_other_sb"
                             style="@style/SwitchDestination"
                             app:kswThumbColor="@color/color_switcher"
-                            app:kswTintColor="@color/green_switch"/>
+                            app:kswTintColor="@color/green_switch"
+                            tools:checked="true" />
                     </LinearLayout>
 
                 </LinearLayout>
@@ -334,18 +336,21 @@
                     android:orientation="vertical">
 
                     <ImageView
+                        android:id="@+id/pass_chalkboard_iv"
                         android:layout_width="match_parent"
                         android:layout_height="200dp"
-                        android:src="@drawable/icon_chalkboard_bg"/>
+                        android:scaleType="fitXY"
+                        android:src="@drawable/icon_chalkboard_bg" />
 
-                    <TextClock
+                    <com.nenton.schools.ui.custom_views.CustomChronometer
+                        android:id="@+id/pass_chronometer_tc"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:background="@drawable/text_field"
                         android:format12Hour="h:mm"
                         android:format24Hour="h:mm"
                         android:textAlignment="center"
-                        android:textSize="36sp"/>
+                        android:textSize="36sp" />
 
                     <LinearLayout
                         android:layout_width="match_parent"
@@ -353,23 +358,26 @@
                         android:orientation="horizontal">
 
                         <ImageView
+                            android:id="@+id/pass_classes_iv"
                             android:layout_width="0dp"
                             android:layout_height="100dp"
                             android:layout_weight="1"
                             android:padding="16dp"
-                            android:src="@drawable/ic_classrooms_door"/>
+                            android:src="@drawable/ic_classrooms_door" />
 
                         <ImageView
+                            android:id="@+id/pass_shop_iv"
                             android:layout_width="0dp"
                             android:layout_height="100dp"
                             android:layout_weight="1"
                             android:padding="16dp"
-                            android:src="@drawable/ic_book_bag_shop"/>
+                            android:src="@drawable/ic_book_bag_shop" />
                     </LinearLayout>
                 </LinearLayout>
             </LinearLayout>
 
             <EditText
+                android:id="@+id/pass_details_et"
                 style="@style/Field"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -377,23 +385,10 @@
                 android:layout_marginRight="0dp"
                 android:enabled="false"
 
-                android:text="Details"/>
+                android:text="Details" />
 
         </LinearLayout>
 
     </android.support.v4.widget.NestedScrollView>
 
-    <android.support.design.widget.BottomNavigationView
-        android:id="@+id/bottom_navigation"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:layout_gravity="bottom"
-        android:background="@android:color/white"
-        app:elevation="16dp"
-        app:itemIconTint="@drawable/nav_item_color_state"
-        app:itemTextColor="@drawable/nav_item_color_state"
-        app:layout_insetEdge="bottom"
-        app:menu="@menu/menu_bottom_navigation"/>
-
-</RelativeLayout>
+</com.nenton.schools.ui.screens.schoolPass.SchoolPassView>

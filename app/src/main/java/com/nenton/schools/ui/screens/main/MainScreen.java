@@ -12,8 +12,10 @@ import com.nenton.schools.mvp.presenters.AbstractPresenter;
 import com.nenton.schools.mvp.presenters.IMainPresenter;
 import com.nenton.schools.mvp.presenters.RootPresenter;
 import com.nenton.schools.ui.activities.RootActivity;
+import com.nenton.schools.ui.screens.schoolPass.SchoolPassScreen;
 
 import dagger.Provides;
+import flow.Flow;
 import mortar.MortarScope;
 
 /**
@@ -74,6 +76,12 @@ public class MainScreen extends AbstractScreen<RootActivity.RootComponent> {
             super.onLoad(savedInstanceState);
             if (getView() != null) {
                 getView().initView();
+            }
+        }
+
+        public void clickOnPurchase() {
+            if (getView() != null) {
+                Flow.get(getView()).set(new SchoolPassScreen());
             }
         }
     }
