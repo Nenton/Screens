@@ -1,4 +1,4 @@
-package com.nenton.schools.ui.screens.regisgration;
+package com.nenton.schools.ui.screens.account;
 
 import android.os.Bundle;
 
@@ -8,11 +8,11 @@ import com.nenton.schools.di.DaggerService;
 import com.nenton.schools.di.sqopes.DaggerScope;
 import com.nenton.schools.flow.AbstractScreen;
 import com.nenton.schools.flow.Screen;
-import com.nenton.schools.mvp.model.RegistrationModel;
+import com.nenton.schools.mvp.model.AccountModel;
 import com.nenton.schools.mvp.presenters.AbstractPresenter;
 import com.nenton.schools.mvp.presenters.RootPresenter;
 import com.nenton.schools.ui.activities.RootActivity;
-import com.nenton.schools.ui.screens.main.MainScreen;
+import com.nenton.schools.ui.screens.shop.ShopScreen;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -26,11 +26,11 @@ import rx.Subscriber;
  * Created by serge on 08.11.2017.
  */
 
-@Screen(R.layout.screen_registration)
-public class RegistrationScreen extends AbstractScreen<RootActivity.RootComponent> {
+@Screen(R.layout.screen_account)
+public class AccountScreen extends AbstractScreen<RootActivity.RootComponent> {
     @Override
     public Object createScreenComponent(RootActivity.RootComponent parentComponent) {
-        return DaggerRegistrationScreen_Component.builder()
+        return DaggerAccountScreen_Component.builder()
                 .rootComponent(parentComponent)
                 .module(new Module())
                 .build();
@@ -39,40 +39,40 @@ public class RegistrationScreen extends AbstractScreen<RootActivity.RootComponen
     @dagger.Module
     public class Module {
         @Provides
-        @DaggerScope(RegistrationScreen.class)
-        RegistrationModel provideRegistrationModel() {
-            return new RegistrationModel();
+        @DaggerScope(AccountScreen.class)
+        AccountModel provideRegistrationModel() {
+            return new AccountModel();
         }
 
         @Provides
-        @DaggerScope(RegistrationScreen.class)
-        RegistrationPresenter provideMainPresenter() {
-            return new RegistrationPresenter();
+        @DaggerScope(AccountScreen.class)
+        AccountPresenter provideMainPresenter() {
+            return new AccountPresenter();
         }
     }
 
     @dagger.Component(dependencies = RootActivity.RootComponent.class, modules = Module.class)
-    @DaggerScope(RegistrationScreen.class)
+    @DaggerScope(AccountScreen.class)
     public interface Component {
-        void inject(RegistrationPresenter presenter);
+        void inject(AccountPresenter presenter);
 
-        void inject(RegistrationView view);
+        void inject(AccountView view);
 
         RootPresenter getRootPresenter();
     }
 
-    public class RegistrationPresenter extends AbstractPresenter<RegistrationView, RegistrationModel> {
+    public class AccountPresenter extends AbstractPresenter<AccountView, AccountModel> {
 
         @Override
         protected void initActivityBarBuilder() {
-            mRootPresenter.newRootActivityBarBuilder()
-                    .setShowBottomNav(false)
-                    .build();
+//            mRootPresenter.newRootActivityBarBuilder()
+//                    .setShowBottomNav(false)
+//                    .build();
         }
 
         @Override
         protected void initDagger(MortarScope scope) {
-            ((RegistrationScreen.Component) scope.getService(DaggerService.SERVICE_NAME)).inject(this);
+            ((AccountScreen.Component) scope.getService(DaggerService.SERVICE_NAME)).inject(this);
         }
 
         @Override
@@ -91,7 +91,7 @@ public class RegistrationScreen extends AbstractScreen<RootActivity.RootComponen
                 mapFirebase.put("schoolPosition", getView().getSchoolPosition());
                 mModel.saveUserInfo(mapFirebase);
 
-                Flow.get(getView()).set(new MainScreen());
+                Flow.get(getView()).set(new ShopScreen());
             } else {
                 getView().showNotCompleted();
 //                getRootView().showMessage("Not complete registration");

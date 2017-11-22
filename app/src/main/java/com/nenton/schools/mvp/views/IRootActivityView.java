@@ -11,5 +11,5 @@ public interface IRootActivityView extends IRootView {
 
     void changeOnBottom(@IdRes int id);
 
-    void checkBottomNavView(View view);
+    void checkBottomNavView(int customIdScreen);
 }

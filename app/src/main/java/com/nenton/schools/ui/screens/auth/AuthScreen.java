@@ -13,8 +13,8 @@ import com.nenton.schools.mvp.presenters.AbstractPresenter;
 import com.nenton.schools.mvp.presenters.IAuthPresenter;
 import com.nenton.schools.mvp.presenters.RootPresenter;
 import com.nenton.schools.ui.activities.RootActivity;
-import com.nenton.schools.ui.screens.main.MainScreen;
-import com.nenton.schools.ui.screens.regisgration.RegistrationScreen;
+import com.nenton.schools.ui.screens.account.AccountScreen;
+import com.nenton.schools.ui.screens.shop.ShopScreen;
 
 import dagger.Provides;
 import flow.Flow;
@@ -70,7 +70,7 @@ public class AuthScreen extends AbstractScreen<RootActivity.RootComponent> {
         protected void initActivityBarBuilder() {
 //            mRootPresenter.newRootActivityBarBuilder()
 //                    .setShowBottomNav(false)
-//                    .build();
+//                    .build();// TODO: 22.11.2017 исправить вылетает ошибка потому что расчитан на RootActivivty а не LoginActivity
         }
 
         public void changeState(int state) {
@@ -104,7 +104,7 @@ public class AuthScreen extends AbstractScreen<RootActivity.RootComponent> {
                                 .subscribe(firebaseUser -> {
                                     getRootView().showMessage("Complete");
                                     mModel.saveUserInfo();
-                                    Flow.get(getView()).set(new RegistrationScreen());
+                                    Flow.get(getView()).set(new AccountScreen());
                                 }, throwable -> {
                                     if (throwable instanceof FirebaseAuthUserCollisionException) {
                                         getRootView().showMessage("Collision exception");
@@ -126,7 +126,7 @@ public class AuthScreen extends AbstractScreen<RootActivity.RootComponent> {
                                     mModel.saveUserInfo();
                                     mCompSubs.add(
                                             mModel.checkCompleteRegistration().subscribe(aBoolean -> {
-                                                Flow.get(getView()).set(aBoolean ? new MainScreen() : new RegistrationScreen());
+                                                Flow.get(getView()).set(aBoolean ? new ShopScreen() : new AccountScreen());
                                             }, throwable -> {
                                                 getRootView().showError(throwable);
                                             }));

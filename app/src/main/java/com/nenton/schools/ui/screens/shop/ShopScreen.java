@@ -1,4 +1,4 @@
-package com.nenton.schools.ui.screens.main;
+package com.nenton.schools.ui.screens.shop;
 
 import android.os.Bundle;
 
@@ -7,9 +7,9 @@ import com.nenton.schools.di.DaggerService;
 import com.nenton.schools.di.sqopes.DaggerScope;
 import com.nenton.schools.flow.AbstractScreen;
 import com.nenton.schools.flow.Screen;
-import com.nenton.schools.mvp.model.MainModel;
+import com.nenton.schools.mvp.model.ShopModel;
 import com.nenton.schools.mvp.presenters.AbstractPresenter;
-import com.nenton.schools.mvp.presenters.IMainPresenter;
+import com.nenton.schools.mvp.presenters.IShopPresenter;
 import com.nenton.schools.mvp.presenters.RootPresenter;
 import com.nenton.schools.ui.activities.RootActivity;
 import com.nenton.schools.ui.screens.schoolPass.SchoolPassScreen;
@@ -21,12 +21,12 @@ import mortar.MortarScope;
 /**
  * Created by serge on 08.11.2017.
  */
-@Screen(R.layout.screen_main)
-public class MainScreen extends AbstractScreen<RootActivity.RootComponent> {
+@Screen(R.layout.screen_shop)
+public class ShopScreen extends AbstractScreen<RootActivity.RootComponent> {
 
     @Override
     public Object createScreenComponent(RootActivity.RootComponent parentComponent) {
-        return DaggerMainScreen_Component.builder()
+        return DaggerShopScreen_Component.builder()
                 .rootComponent(parentComponent)
                 .module(new Module())
                 .build();
@@ -35,29 +35,29 @@ public class MainScreen extends AbstractScreen<RootActivity.RootComponent> {
     @dagger.Module
     public class Module {
         @Provides
-        @DaggerScope(MainScreen.class)
-        MainModel provideMainModel() {
-            return new MainModel();
+        @DaggerScope(ShopScreen.class)
+        ShopModel provideMainModel() {
+            return new ShopModel();
         }
 
         @Provides
-        @DaggerScope(MainScreen.class)
-        MainScreen.MainPresenter provideMainPresenter() {
-            return new MainScreen.MainPresenter();
+        @DaggerScope(ShopScreen.class)
+        ShopPresenter provideMainPresenter() {
+            return new ShopPresenter();
         }
     }
 
     @dagger.Component(dependencies = RootActivity.RootComponent.class, modules = Module.class)
-    @DaggerScope(MainScreen.class)
+    @DaggerScope(ShopScreen.class)
     public interface Component {
-        void inject(MainPresenter presenter);
+        void inject(ShopPresenter presenter);
 
-        void inject(MainView view);
+        void inject(ShopView view);
 
         RootPresenter getRootPresenter();
     }
 
-    public class MainPresenter extends AbstractPresenter<MainView, MainModel> implements IMainPresenter {
+    public class ShopPresenter extends AbstractPresenter<ShopView, ShopModel> implements IShopPresenter {
 
         @Override
         protected void initActivityBarBuilder() {
@@ -68,7 +68,7 @@ public class MainScreen extends AbstractScreen<RootActivity.RootComponent> {
 
         @Override
         protected void initDagger(MortarScope scope) {
-            ((MainScreen.Component) scope.getService(DaggerService.SERVICE_NAME)).inject(this);
+            ((ShopScreen.Component) scope.getService(DaggerService.SERVICE_NAME)).inject(this);
         }
 
         @Override

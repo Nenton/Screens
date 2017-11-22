@@ -15,13 +15,13 @@ import rx.Observable;
  * Created by serge on 08.11.2017.
  */
 
-public class RegistrationModel extends AbstractModel {
+public class AccountModel extends AbstractModel {
 
     private final FireBaseManager mFirebaseManager;
     private final FirebaseAuth mAuth;
     private final FirebaseDatabase mDB;
 
-    public RegistrationModel() {
+    public AccountModel() {
         mFirebaseManager = FireBaseManager.getInstance();
         mAuth = mFirebaseManager.getFirebaseAuth();
         mDB = mFirebaseManager.getFirebaseDatabase();

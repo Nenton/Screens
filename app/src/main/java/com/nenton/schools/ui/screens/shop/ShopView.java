@@ -1,4 +1,4 @@
-package com.nenton.schools.ui.screens.main;
+package com.nenton.schools.ui.screens.shop;
 
 import android.content.Context;
 import android.util.AttributeSet;
@@ -11,7 +11,7 @@ import com.kyleduo.switchbutton.SwitchButton;
 import com.nenton.schools.R;
 import com.nenton.schools.di.DaggerService;
 import com.nenton.schools.mvp.views.AbstractView;
-import com.nenton.schools.mvp.views.IMainView;
+import com.nenton.schools.mvp.views.IShopView;
 
 import butterknife.BindView;
 import butterknife.OnClick;
@@ -20,7 +20,7 @@ import butterknife.OnClick;
  * Created by serge on 08.11.2017.
  */
 
-class MainView extends AbstractView<MainScreen.MainPresenter> implements IMainView{
+class ShopView extends AbstractView<ShopScreen.ShopPresenter> implements IShopView {
 
     @BindView(R.id.main_sound_iv)
     ImageView mSound;
@@ -43,7 +43,7 @@ class MainView extends AbstractView<MainScreen.MainPresenter> implements IMainVi
     @BindView(R.id.main_reload_ib)
     ImageButton mReload;
 
-    public MainView(Context context, AttributeSet attrs) {
+    public ShopView(Context context, AttributeSet attrs) {
         super(context, attrs);
     }
 
@@ -59,7 +59,7 @@ class MainView extends AbstractView<MainScreen.MainPresenter> implements IMainVi
 
     @Override
     protected void initDagger(Context context) {
-        DaggerService.<MainScreen.Component>getDaggerComponent(context).inject(this);
+        DaggerService.<ShopScreen.Component>getDaggerComponent(context).inject(this);
     }
 
     public void initView() {

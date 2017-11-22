@@ -1,9 +1,8 @@
-package com.nenton.schools.ui.screens.regisgration;
+package com.nenton.schools.ui.screens.account;
 
 import android.content.Context;
 import android.support.v7.app.AlertDialog;
 import android.util.AttributeSet;
-import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
@@ -23,7 +22,7 @@ import butterknife.OnClick;
  * Created by serge on 08.11.2017.
  */
 
-public class RegistrationView extends AbstractView<RegistrationScreen.RegistrationPresenter> {
+public class AccountView extends AbstractView<AccountScreen.AccountPresenter> {
 
     @BindView(R.id.reg_type_user_rg)
     RadioGroup mTypeUser;
@@ -60,7 +59,7 @@ public class RegistrationView extends AbstractView<RegistrationScreen.Registrati
     @BindView(R.id.reg_school_position_et)
     EditText mSchoolPosition;
 
-    public RegistrationView(Context context, AttributeSet attrs) {
+    public AccountView(Context context, AttributeSet attrs) {
         super(context, attrs);
     }
 
@@ -86,7 +85,7 @@ public class RegistrationView extends AbstractView<RegistrationScreen.Registrati
 
     @Override
     protected void initDagger(Context context) {
-        DaggerService.<RegistrationScreen.Component>getDaggerComponent(context).inject(this);
+        DaggerService.<AccountScreen.Component>getDaggerComponent(context).inject(this);
     }
 
     public void initView(UserRealm user) {

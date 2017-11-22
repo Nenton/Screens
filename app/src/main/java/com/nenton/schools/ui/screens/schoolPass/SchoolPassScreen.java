@@ -98,10 +98,15 @@ public class SchoolPassScreen extends AbstractScreen<RootActivity.RootComponent>
             if (getRootView() != null && getView() != null) {
                 CustomChronometer chronometer = getView().getChronometer();
                 if (chronometer.isRunning()) {
-                    Date date = new Date(SystemClock.elapsedRealtime() - chronometer.getBase());
-                    getRootView().showMessage(String.valueOf(date.getMinutes()) + ":" + String.valueOf(date.getSeconds()));
+                    chronometer.stop();
+                    getView().enableSwitches();
+//                    Date date = new Date(SystemClock.elapsedRealtime() - chronometer.getBase());
+//                    getRootView().showMessage(String.valueOf(date.getMinutes()) + ":" + String.valueOf(date.getSeconds()));
                 } else {
+                    getRootView().showMessage("Start time");
+                    chronometer.setBase(SystemClock.elapsedRealtime());
                     chronometer.start();
+                    getView().disableSwitches();
                 }
             }
         }

@@ -25,7 +25,6 @@ import com.google.firebase.crash.FirebaseCrash;
 import com.nenton.schools.BuildConfig;
 import com.nenton.schools.R;
 import com.nenton.schools.data.managers.DataManager;
-import com.nenton.schools.data.managers.FireBaseManager;
 import com.nenton.schools.di.DaggerService;
 import com.nenton.schools.di.components.AppComponent;
 import com.nenton.schools.di.modules.PicassoCacheModule;
@@ -35,11 +34,13 @@ import com.nenton.schools.flow.AbstractScreen;
 import com.nenton.schools.flow.TreeKeyDispatcher;
 import com.nenton.schools.mvp.presenters.RootPresenter;
 import com.nenton.schools.mvp.views.IRootActivityView;
-import com.nenton.schools.mvp.views.IRootView;
 import com.nenton.schools.mvp.views.IView;
-import com.nenton.schools.ui.screens.auth.AuthScreen;
-import com.nenton.schools.ui.screens.main.MainScreen;
-import com.nenton.schools.ui.screens.regisgration.RegistrationScreen;
+import com.nenton.schools.ui.screens.account.AccountScreen;
+import com.nenton.schools.ui.screens.history.HistoryScreen;
+import com.nenton.schools.ui.screens.live.LiveScreen;
+import com.nenton.schools.ui.screens.schoolPass.SchoolPassScreen;
+import com.nenton.schools.ui.screens.shop.ShopScreen;
+import com.nenton.schools.utils.ConstantsManager;
 import com.squareup.picasso.Picasso;
 
 import java.lang.reflect.Field;
@@ -51,7 +52,6 @@ import butterknife.ButterKnife;
 import flow.Flow;
 import mortar.MortarScope;
 import mortar.bundler.BundleServiceRunner;
-import rx.subscriptions.CompositeSubscription;
 
 public class RootActivity extends AppCompatActivity implements IRootActivityView {
 
@@ -107,9 +107,18 @@ public class RootActivity extends AppCompatActivity implements IRootActivityView
         mBottomNavigationView.setOnNavigationItemSelectedListener(item -> {
             Object key = null;
             switch (item.getItemId()) {
-//                case R.id.action_home:
-////                    key = new AuthScreen();
-//                    break;
+                case R.id.menu_pass:
+                    key = new SchoolPassScreen();
+                    break;
+                case R.id.menu_pass_history:
+                    key = new HistoryScreen();
+                    break;
+                case R.id.menu_live_passes:
+                    key = new LiveScreen();
+                    break;
+                case R.id.menu_account:
+                    key = new AccountScreen();
+                    break;
             }
 
             if (key != null) {
@@ -125,16 +134,21 @@ public class RootActivity extends AppCompatActivity implements IRootActivityView
     }
 
     @Override
-    public void checkBottomNavView(View view) {
-//        if (view instanceof MainView){
-//            mBottomNavigationView.setSelectedItemId(R.id.action_home);
-//        }
-//        if (view instanceof AccountView){
-//            mBottomNavigationView.setSelectedItemId(R.id.action_account);
-//        }
-//        if (view instanceof AddPhotocardView){
-//            mBottomNavigationView.setSelectedItemId(R.id.action_upload);
-//        }
+    public void checkBottomNavView(int customIdScreen) {
+        switch (customIdScreen) {
+            case ConstantsManager.BOTTOM_SCREEN_PASS:
+                mBottomNavigationView.setSelectedItemId(R.id.menu_pass);
+                break;
+            case ConstantsManager.BOTTOM_SCREEN_HISTORY:
+                mBottomNavigationView.setSelectedItemId(R.id.menu_pass_history);
+                break;
+            case ConstantsManager.BOTTOM_SCREEN_LIVE:
+                mBottomNavigationView.setSelectedItemId(R.id.menu_live_passes);
+                break;
+            case ConstantsManager.BOTTOM_SCREEN_ACCOUNT:
+                mBottomNavigationView.setSelectedItemId(R.id.menu_account);
+                break;
+        }
     }
 
     public void stateBottomNavView(boolean is) {
@@ -160,11 +174,11 @@ public class RootActivity extends AppCompatActivity implements IRootActivityView
     @Override
     protected void attachBaseContext(Context newBase) {
         AbstractScreen key;
-            if (DataManager.getInstance().checkCompleteRegistration()) {
-                key = new MainScreen();
-            } else {
-                key = new RegistrationScreen();
-            }
+        if (DataManager.getInstance().checkCompleteRegistration()) {
+            key = new ShopScreen();
+        } else {
+            key = new AccountScreen();
+        }
         newBase = Flow.configure(newBase, this)
                 .defaultKey(key)
                 .dispatcher(new TreeKeyDispatcher(this))
@@ -260,7 +274,9 @@ public class RootActivity extends AppCompatActivity implements IRootActivityView
     @RootScope
     public interface RootComponent {
         void inject(RootActivity rootActivity);
+
         void inject(LoginActivity loginActivity);
+
         void inject(RootPresenter rootPresenter);
 
         RootPresenter getRootPresenter();

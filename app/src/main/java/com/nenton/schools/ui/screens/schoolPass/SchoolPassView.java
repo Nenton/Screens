@@ -2,10 +2,8 @@ package com.nenton.schools.ui.screens.schoolPass;
 
 import android.content.Context;
 import android.util.AttributeSet;
-import android.widget.Chronometer;
 import android.widget.EditText;
 import android.widget.ImageView;
-import android.widget.TextClock;
 import android.widget.TextView;
 
 import com.kyleduo.switchbutton.SwitchButton;
@@ -13,9 +11,7 @@ import com.nenton.schools.R;
 import com.nenton.schools.di.DaggerService;
 import com.nenton.schools.mvp.views.AbstractView;
 import com.nenton.schools.ui.custom_views.CustomChronometer;
-import com.nenton.schools.ui.screens.regisgration.RegistrationScreen;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import butterknife.BindView;
@@ -121,5 +117,17 @@ class SchoolPassView extends AbstractView<SchoolPassScreen.SchoolPassPresenter> 
 
     public void initView() {
 
+    }
+
+    public void disableSwitches() {
+        for (SwitchButton switchButton : mSwitches) {
+            switchButton.setEnabled(false);
+        }
+    }
+
+    public void enableSwitches() {
+        for (SwitchButton switchButton : mSwitches) {
+            switchButton.setEnabled(true);
+        }
     }
 }
