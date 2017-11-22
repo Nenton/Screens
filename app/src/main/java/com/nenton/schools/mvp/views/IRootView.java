@@ -17,8 +17,4 @@ public interface IRootView extends IView{
 
     @Nullable
     IView getCurrentScreen();
-
-    void changeOnBottom(@IdRes int id);
-
-    void checkBottomNavView(View view);
 }

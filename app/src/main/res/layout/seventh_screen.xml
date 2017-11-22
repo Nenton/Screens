@@ -39,7 +39,7 @@
                     android:layout_width="75dp"
                     android:layout_height="50dp"
                     android:layout_centerVertical="true"
-                    android:src="@drawable/ic_help_school"/>
+                    android:src="@drawable/school_help"/>
 
                 <ImageView
                     android:id="@+id/clear_history"
@@ -91,7 +91,7 @@
                     android:layout_width="48dp"
                     android:layout_height="48dp"
                     android:layout_centerVertical="true"
-                    android:src="@drawable/ic_help_school"/>
+                    android:src="@drawable/school_help"/>
 
                 <LinearLayout
                     android:layout_width="wrap_content"

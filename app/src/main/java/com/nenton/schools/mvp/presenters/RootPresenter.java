@@ -9,6 +9,7 @@ import android.support.v4.view.ViewPager;
 import com.nenton.schools.data.storage.dto.ActivityResultDto;
 import com.nenton.schools.di.DaggerService;
 import com.nenton.schools.mvp.views.IRootView;
+import com.nenton.schools.ui.activities.LoginActivity;
 import com.nenton.schools.ui.activities.RootActivity;
 
 import mortar.MortarScope;
@@ -25,7 +26,9 @@ public class RootPresenter extends Presenter<IRootView> {
 
     @Override
     protected BundleService extractBundleService(IRootView view) {
-        return BundleService.getBundleService((RootActivity) view);
+        return (view instanceof RootActivity) ?
+                BundleService.getBundleService((RootActivity) view) :
+                BundleService.getBundleService((LoginActivity) view);
     }
 
     public PublishSubject<ActivityResultDto> getActivityResultSubject() {

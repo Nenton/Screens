@@ -42,7 +42,6 @@ public abstract class AbstractPresenter<V extends AbstractView, M extends Abstra
         super.onLoad(savedInstanceState);
         mCompSubs = new CompositeSubscription();
         initActivityBarBuilder();
-        getRootView().checkBottomNavView(getView());
     }
 
     @Override

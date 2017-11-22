@@ -34,6 +34,7 @@ import com.nenton.schools.di.sqopes.RootScope;
 import com.nenton.schools.flow.AbstractScreen;
 import com.nenton.schools.flow.TreeKeyDispatcher;
 import com.nenton.schools.mvp.presenters.RootPresenter;
+import com.nenton.schools.mvp.views.IRootActivityView;
 import com.nenton.schools.mvp.views.IRootView;
 import com.nenton.schools.mvp.views.IView;
 import com.nenton.schools.ui.screens.auth.AuthScreen;
@@ -52,7 +53,7 @@ import mortar.MortarScope;
 import mortar.bundler.BundleServiceRunner;
 import rx.subscriptions.CompositeSubscription;
 
-public class RootActivity extends AppCompatActivity implements IRootView {
+public class RootActivity extends AppCompatActivity implements IRootActivityView {
 
     @Inject
     RootPresenter mRootPresenter;
@@ -158,15 +159,12 @@ public class RootActivity extends AppCompatActivity implements IRootView {
 
     @Override
     protected void attachBaseContext(Context newBase) {
-        AbstractScreen key = new AuthScreen();
-        if (FireBaseManager.getInstance().getFirebaseAuth().getCurrentUser() != null) {
+        AbstractScreen key;
             if (DataManager.getInstance().checkCompleteRegistration()) {
                 key = new MainScreen();
             } else {
                 key = new RegistrationScreen();
             }
-        }
-
         newBase = Flow.configure(newBase, this)
                 .defaultKey(key)
                 .dispatcher(new TreeKeyDispatcher(this))
@@ -262,7 +260,7 @@ public class RootActivity extends AppCompatActivity implements IRootView {
     @RootScope
     public interface RootComponent {
         void inject(RootActivity rootActivity);
-
+        void inject(LoginActivity loginActivity);
         void inject(RootPresenter rootPresenter);
 
         RootPresenter getRootPresenter();

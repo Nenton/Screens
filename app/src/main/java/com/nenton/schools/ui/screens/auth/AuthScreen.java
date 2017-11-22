@@ -68,9 +68,9 @@ public class AuthScreen extends AbstractScreen<RootActivity.RootComponent> {
 
         @Override
         protected void initActivityBarBuilder() {
-            mRootPresenter.newRootActivityBarBuilder()
-                    .setShowBottomNav(false)
-                    .build();
+//            mRootPresenter.newRootActivityBarBuilder()
+//                    .setShowBottomNav(false)
+//                    .build();
         }
 
         public void changeState(int state) {

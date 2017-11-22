@@ -115,7 +115,7 @@
                     android:layout_centerHorizontal="true"
                     android:layout_marginLeft="8dp"
                     android:layout_marginRight="8dp"
-                    android:src="@drawable/ic_help_school" />
+                    android:src="@drawable/school_help" />
 
                 <LinearLayout
                     android:layout_width="wrap_content"
@@ -340,7 +340,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="200dp"
                         android:scaleType="fitXY"
-                        android:src="@drawable/icon_chalkboard_bg" />
+                        android:src="@drawable/chalkboard" />
 
                     <com.nenton.schools.ui.custom_views.CustomChronometer
                         android:id="@+id/pass_chronometer_tc"
@@ -363,7 +363,7 @@
                             android:layout_height="100dp"
                             android:layout_weight="1"
                             android:padding="16dp"
-                            android:src="@drawable/ic_classrooms_door" />
+                            android:src="@drawable/classes" />
 
                         <ImageView
                             android:id="@+id/pass_shop_iv"
@@ -371,7 +371,7 @@
                             android:layout_height="100dp"
                             android:layout_weight="1"
                             android:padding="16dp"
-                            android:src="@drawable/ic_book_bag_shop" />
+                            android:src="@drawable/shop" />
                     </LinearLayout>
                 </LinearLayout>
             </LinearLayout>
