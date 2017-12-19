@@ -5,6 +5,8 @@ import android.os.SystemClock;
 import android.widget.Chronometer;
 
 import com.nenton.schools.R;
+import com.nenton.schools.data.storage.dto.RoomsOfSchool;
+import com.nenton.schools.data.storage.realm.RoomRealm;
 import com.nenton.schools.di.DaggerService;
 import com.nenton.schools.di.sqopes.DaggerScope;
 import com.nenton.schools.flow.AbstractScreen;
@@ -16,6 +18,7 @@ import com.nenton.schools.ui.activities.RootActivity;
 import com.nenton.schools.ui.custom_views.CustomChronometer;
 
 import java.util.Date;
+import java.util.List;
 
 import dagger.Provides;
 import mortar.MortarScope;
@@ -61,6 +64,8 @@ public class SchoolPassScreen extends AbstractScreen<RootActivity.RootComponent>
 
     public class SchoolPassPresenter extends AbstractPresenter<SchoolPassView, SchoolPassModel> {
 
+        private List<RoomRealm> roomsOfSchool;
+
         @Override
         protected void initActivityBarBuilder() {
             mRootPresenter.newRootActivityBarBuilder()
@@ -76,6 +81,7 @@ public class SchoolPassScreen extends AbstractScreen<RootActivity.RootComponent>
         @Override
         protected void onLoad(Bundle savedInstanceState) {
             super.onLoad(savedInstanceState);
+            roomsOfSchool = mModel.getRoomsOfSchool();
             if (getView() != null) {
                 getView().initView();
             }
@@ -99,6 +105,7 @@ public class SchoolPassScreen extends AbstractScreen<RootActivity.RootComponent>
                 CustomChronometer chronometer = getView().getChronometer();
                 if (chronometer.isRunning()) {
                     chronometer.stop();
+                    // TODO: 12.12.2017 create Job on create entry in Firebase
                     getView().enableSwitches();
 //                    Date date = new Date(SystemClock.elapsedRealtime() - chronometer.getBase());
 //                    getRootView().showMessage(String.valueOf(date.getMinutes()) + ":" + String.valueOf(date.getSeconds()));
@@ -108,6 +115,26 @@ public class SchoolPassScreen extends AbstractScreen<RootActivity.RootComponent>
                     chronometer.start();
                     getView().disableSwitches();
                 }
+            }
+        }
+
+
+        public void clickOnChoiseClass() {
+            if (getView() != null) {
+                String[] strings = new String[]{};
+                for (int i = 0; i < roomsOfSchool.size(); i++) {
+                    RoomRealm room = roomsOfSchool.get(0);
+                    strings[i] = room.getName() + " " + room.getTeacher();
+                }
+                getView().showPickerRoomNameAndTeacher(strings);
+            }
+        }
+
+        public void clickOnRoom(int id) {
+            // TODO: 19.12.2017 save SharedPref
+            if (getView() != null) {
+                RoomRealm room = roomsOfSchool.get(id);
+                getView().fillRoom(room.getName(), room.getTeacher());
             }
         }
     }

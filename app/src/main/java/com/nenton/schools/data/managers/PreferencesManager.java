@@ -6,6 +6,7 @@ import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 
 import com.nenton.schools.data.storage.dto.UserDto;
+import com.nenton.schools.data.storage.realm.UserRealm;
 
 import java.util.ArrayList;
 import java.util.HashSet;
@@ -22,7 +23,7 @@ public class PreferencesManager {
     private static final String USER_DISTRICT = "USER_DISTRICT";
     private static final String USER_LEVEL_EDUCATION = "USER_LEVEL_EDUCATION";
     private static final String USER_DETAILS = "USER_DETAILS";
-    private static final String USER_LIST_SCHOOLS = "USER_LIST_SCHOOLS";
+    private static final String USER_SCHOOL = "USER_SCHOOL";
 
     private final SharedPreferences mSharedPreferences;
 
@@ -32,6 +33,10 @@ public class PreferencesManager {
 
     public PreferencesManager(Context context) {
         mSharedPreferences = context.getSharedPreferences("Schools", Context.MODE_PRIVATE);
+    }
+
+    public String getSchool() {
+        return mSharedPreferences.getString(USER_SCHOOL, "");
     }
 
 //    public void saveCurrentUser(UserDto userDto) {
@@ -45,7 +50,7 @@ public class PreferencesManager {
 //        editor.putString(USER_DISTRICT, userDto.getDistrict());
 //        editor.putString(USER_LEVEL_EDUCATION, userDto.getLevelEducation());
 //        editor.putString(USER_DETAILS, userDto.getDetails());
-////        editor.putString(USER_LIST_SCHOOLS, userDto.get)
+////        editor.putString(USER_SCHOOL, userDto.get)
 //        editor.apply();
 //    }
 //

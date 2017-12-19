@@ -79,7 +79,9 @@ public class RootActivity extends AppCompatActivity implements IRootActivityView
         mRootPresenter.takeView(this);
         initBottomNavView();
         disableShiftMode(mBottomNavigationView);
+        mRootPresenter.updateInfoAboutUser();
     }
+
 
     public static void disableShiftMode(BottomNavigationView view) {
         BottomNavigationMenuView menuView = (BottomNavigationMenuView) view.getChildAt(0);

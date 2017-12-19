@@ -12,6 +12,7 @@ import com.nenton.schools.mvp.model.AccountModel;
 import com.nenton.schools.mvp.presenters.AbstractPresenter;
 import com.nenton.schools.mvp.presenters.RootPresenter;
 import com.nenton.schools.ui.activities.RootActivity;
+import com.nenton.schools.ui.screens.auth.AuthScreen;
 import com.nenton.schools.ui.screens.shop.ShopScreen;
 
 import java.util.HashMap;
@@ -65,9 +66,18 @@ public class AccountScreen extends AbstractScreen<RootActivity.RootComponent> {
 
         @Override
         protected void initActivityBarBuilder() {
-//            mRootPresenter.newRootActivityBarBuilder()
-//                    .setShowBottomNav(false)
-//                    .build();
+            mCompSubs.add(
+                    mModel.checkCompleteRegistration().subscribe(aBoolean -> {
+                        if (aBoolean) {
+                            mRootPresenter.newRootActivityBarBuilder()
+                                    .setShowBottomNav(true)
+                                    .build();
+                        } else {
+                            mRootPresenter.newRootActivityBarBuilder()
+                                    .setShowBottomNav(false)
+                                    .build();
+                        }
+                    }));
         }
 
         @Override
@@ -108,14 +118,37 @@ public class AccountScreen extends AbstractScreen<RootActivity.RootComponent> {
         }
 
         public void clickState() {
-            if (getView() != null){
+            if (getView() != null) {
                 getView().showPickerState();
             }
         }
 
         public void clickDistrict() {
+            if (getView() != null) {
+                String[] strings = new String[]{"First", "Second", "Three"};
+                // TODO: 19.12.2017 get districts
+                getView().showPickerDistrict(strings);
+            }
+        }
+
+        public void clickOnLogout() {
+            mModel.logoutUser();
+            Flow.get(getView()).set(new AuthScreen());
+        }
+
+        public void clickOnGrade() {
+            if (getView() != null) {
+                String[] strings = new String[]{"First", "Second", "Three"};
+                // TODO: 19.12.2017 get grades
+                getView().showPickerGrade(strings);
+            }
+        }
+
+        public void clickOnSchool() {
             if (getView() != null){
-                getView().showPickerDistrict();
+                String[] strings = new String[]{"First", "Second", "Three"};
+                // TODO: 19.12.2017 get school
+                getView().showPickerSchool(strings);
             }
         }
 

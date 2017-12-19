@@ -135,6 +135,8 @@ public class LoginActivity extends AppCompatActivity implements IRootView {
 
     }
 
+
+
     @Nullable
     @Override
     public IView getCurrentScreen() {

@@ -12,6 +12,8 @@ import com.nenton.schools.mvp.model.AuthModel;
 import com.nenton.schools.mvp.presenters.AbstractPresenter;
 import com.nenton.schools.mvp.presenters.IAuthPresenter;
 import com.nenton.schools.mvp.presenters.RootPresenter;
+import com.nenton.schools.mvp.views.IRootActivityView;
+import com.nenton.schools.ui.activities.LoginActivity;
 import com.nenton.schools.ui.activities.RootActivity;
 import com.nenton.schools.ui.screens.account.AccountScreen;
 import com.nenton.schools.ui.screens.shop.ShopScreen;
@@ -104,7 +106,8 @@ public class AuthScreen extends AbstractScreen<RootActivity.RootComponent> {
                                 .subscribe(firebaseUser -> {
                                     getRootView().showMessage("Complete");
                                     mModel.saveUserInfo();
-                                    Flow.get(getView()).set(new AccountScreen());
+                                    ((LoginActivity) getRootView()).startRootActivity();
+//                                    Flow.get(getView()).set(new AccountScreen());
                                 }, throwable -> {
                                     if (throwable instanceof FirebaseAuthUserCollisionException) {
                                         getRootView().showMessage("Collision exception");
@@ -126,7 +129,8 @@ public class AuthScreen extends AbstractScreen<RootActivity.RootComponent> {
                                     mModel.saveUserInfo();
                                     mCompSubs.add(
                                             mModel.checkCompleteRegistration().subscribe(aBoolean -> {
-                                                Flow.get(getView()).set(aBoolean ? new ShopScreen() : new AccountScreen());
+                                                ((LoginActivity) getRootView()).startRootActivity();
+//                                                Flow.get(getView()).set(aBoolean ? new ShopScreen() : new AccountScreen());
                                             }, throwable -> {
                                                 getRootView().showError(throwable);
                                             }));

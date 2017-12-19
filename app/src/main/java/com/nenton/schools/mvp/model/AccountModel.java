@@ -35,4 +35,13 @@ public class AccountModel extends AbstractModel {
     public void saveUserInfo(Map<String, Object> mapFirebase) {
         mDB.getReference().child("users").child(mAuth.getCurrentUser().getUid()).updateChildren(mapFirebase);
     }
+
+    public void logoutUser() {
+        mDataManager.deleteUserFromRealm(mAuth.getCurrentUser().getUid());
+        mAuth.signOut();
+    }
+
+    public Observable<Boolean> checkCompleteRegistration() {
+        return mDataManager.checkCompleteRegistrationObs();
+    }
 }

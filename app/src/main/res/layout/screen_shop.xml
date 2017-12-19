@@ -194,7 +194,7 @@
             <ImageButton
                 android:id="@+id/main_reload_ib"
                 android:layout_width="48dp"
-                android:layout_height="36dp"
+                android:layout_height="48dp"
                 android:layout_alignParentRight="true"
                 android:layout_centerVertical="true"
                 android:layout_marginRight="8dp"

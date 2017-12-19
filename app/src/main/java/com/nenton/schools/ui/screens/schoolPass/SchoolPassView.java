@@ -1,13 +1,16 @@
 package com.nenton.schools.ui.screens.schoolPass;
 
 import android.content.Context;
+import android.support.v7.app.AlertDialog;
 import android.util.AttributeSet;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.NumberPicker;
 import android.widget.TextView;
 
 import com.kyleduo.switchbutton.SwitchButton;
 import com.nenton.schools.R;
+import com.nenton.schools.data.storage.dto.RoomsOfSchool;
 import com.nenton.schools.di.DaggerService;
 import com.nenton.schools.mvp.views.AbstractView;
 import com.nenton.schools.ui.custom_views.CustomChronometer;
@@ -75,8 +78,13 @@ class SchoolPassView extends AbstractView<SchoolPassScreen.SchoolPassPresenter> 
     }
 
     @OnClick(R.id.pass_chalkboard_iv)
-    void clickOnChalkboard(){
+    void clickOnChalkboard() {
         mPresenter.clickOnChalkboard();
+    }
+
+    @OnClick(R.id.pass_classes_iv)
+    void clickOnChoiseClass() {
+        mPresenter.clickOnChoiseClass();
     }
 
     public CustomChronometer getChronometer() {
@@ -129,5 +137,30 @@ class SchoolPassView extends AbstractView<SchoolPassScreen.SchoolPassPresenter> 
         for (SwitchButton switchButton : mSwitches) {
             switchButton.setEnabled(true);
         }
+    }
+
+    public void showPickerRoomNameAndTeacher(String[] strings) {
+        NumberPicker numberPicker = new NumberPicker(getContext());
+        numberPicker.setDisplayedValues(strings);
+        numberPicker.setMinValue(0);
+        numberPicker.setMaxValue(strings.length - 1);
+        numberPicker.getValue();
+
+        AlertDialog.Builder builder = new AlertDialog.Builder(getContext());
+        builder.setTitle("Choose State")
+                .setView(numberPicker)
+                .setPositiveButton("Ok", (dialogInterface, i) -> {
+                    mPresenter.clickOnRoom(i);
+                })
+                .setNegativeButton("Cancel", (dialogInterface, i) -> {
+                    dialogInterface.dismiss();
+                })
+                .create()
+                .show();
+    }
+
+    public void fillRoom(String name, String teacher) {
+        mCurrentRoom.setText(name);
+        mTeacher.setText(teacher);
     }
 }

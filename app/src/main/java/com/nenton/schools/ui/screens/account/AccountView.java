@@ -78,6 +78,21 @@ public class AccountView extends AbstractView<AccountScreen.AccountPresenter> {
         mPresenter.clickDistrict();
     }
 
+    @OnClick(R.id.reg_logout)
+    public void clickOnLogout(){
+        mPresenter.clickOnLogout();
+    }
+
+    @OnClick(R.id.reg_user_grade)
+    public void clickOnGrade(){
+        mPresenter.clickOnGrade();
+    }
+
+    @OnClick(R.id.reg_education)
+    public void clickOnSchool(){
+        mPresenter.clickOnSchool();
+    }
+
     @Override
     public boolean viewOnBackPressed() {
         return false;
@@ -154,9 +169,8 @@ public class AccountView extends AbstractView<AccountScreen.AccountPresenter> {
                 .show();
     }
 
-    public void showPickerDistrict() {
+    public void showPickerDistrict(String[] strings) {
         NumberPicker numberPicker = new NumberPicker(getContext());
-        String[] strings = new String[]{"First", "Second", "Three"};
         numberPicker.setDisplayedValues(strings);
         numberPicker.setMinValue(0);
         numberPicker.setMaxValue(strings.length - 1);
@@ -184,6 +198,49 @@ public class AccountView extends AbstractView<AccountScreen.AccountPresenter> {
                     dialogInterface.cancel();
                 });
         builder.create()
+                .show();
+    }
+
+    public void showPickerGrade(String[] strings) {
+        NumberPicker numberPicker = new NumberPicker(getContext());
+        numberPicker.setDisplayedValues(strings);
+        numberPicker.setMinValue(0);
+        numberPicker.setMaxValue(strings.length - 1);
+        numberPicker.getValue();
+
+        AlertDialog.Builder builder = new AlertDialog.Builder(getContext());
+        builder.setTitle("Choose Grade")
+                .setView(numberPicker)
+                .setPositiveButton("Ok", (dialogInterface, i) -> {
+                    // TODO: 19.12.2017 implement me
+//                    mUserDistrict.setText(strings[numberPicker.getValue()]);
+                })
+                .setNegativeButton("Cancel", (dialogInterface, i) -> {
+                    dialogInterface.dismiss();
+                })
+                .create()
+                .show();
+
+    }
+
+    public void showPickerSchool(String[] strings) {
+        NumberPicker numberPicker = new NumberPicker(getContext());
+        numberPicker.setDisplayedValues(strings);
+        numberPicker.setMinValue(0);
+        numberPicker.setMaxValue(strings.length - 1);
+        numberPicker.getValue();
+
+        AlertDialog.Builder builder = new AlertDialog.Builder(getContext());
+        builder.setTitle("Choose School")
+                .setView(numberPicker)
+                .setPositiveButton("Ok", (dialogInterface, i) -> {
+                    // TODO: 19.12.2017 implement me
+//                    mUserDistrict.setText(strings[numberPicker.getValue()]);
+                })
+                .setNegativeButton("Cancel", (dialogInterface, i) -> {
+                    dialogInterface.dismiss();
+                })
+                .create()
                 .show();
     }
 }

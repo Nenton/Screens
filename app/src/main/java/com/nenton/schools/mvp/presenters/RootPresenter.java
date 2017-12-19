@@ -6,6 +6,7 @@ import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.view.ViewPager;
 
+import com.nenton.schools.data.managers.DataManager;
 import com.nenton.schools.data.storage.dto.ActivityResultDto;
 import com.nenton.schools.di.DaggerService;
 import com.nenton.schools.mvp.views.IRootView;
@@ -72,6 +73,10 @@ public class RootPresenter extends Presenter<IRootView> {
         return this.new RootActivityBarBuilder();
     }
 
+    public void updateInfoAboutUser() {
+        DataManager.getInstance().updateUserInfo();
+    }
+
     public class RootActivityBarBuilder {
         private boolean isShowBottomNav = false;
 
@@ -82,8 +87,9 @@ public class RootPresenter extends Presenter<IRootView> {
 
         public void build() {
             if (getRootView() != null) {
-                RootActivity activity = (RootActivity) getRootView();
-                activity.stateBottomNavView(isShowBottomNav);
+                if (getRootView() instanceof RootActivity){
+                    ((RootActivity) getRootView()).stateBottomNavView(isShowBottomNav);
+                }
             }
         }
     }

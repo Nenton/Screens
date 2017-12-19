@@ -1,6 +1,10 @@
 package com.nenton.schools.data.managers;
 
+import com.nenton.schools.data.storage.dto.RoomsOfSchool;
+import com.nenton.schools.data.storage.realm.RoomRealm;
 import com.nenton.schools.data.storage.realm.UserRealm;
+
+import java.util.List;
 
 import io.realm.Realm;
 import io.realm.RealmObject;
@@ -39,7 +43,7 @@ public class RealmManager {
         realm.close();
     }
 
-    public Observable<UserRealm> getUserByIdObs(String id){
+    public Observable<UserRealm> getUserByIdObs(String id) {
         RealmResults<UserRealm> user = getQueryRealmInstance().where(UserRealm.class)
                 .equalTo("id", id)
                 .findAllAsync();
@@ -49,11 +53,33 @@ public class RealmManager {
                 .first();
     }
 
-    public UserRealm getUserById(String id){
+    public UserRealm getUserById(String id) {
         return getQueryRealmInstance().where(UserRealm.class)
                 .equalTo("id", id)
                 .findFirst();
     }
 
 
+    public String getSchool(String uid) {
+        UserRealm userRealm = getQueryRealmInstance().where(UserRealm.class)
+                .equalTo("id", uid)
+                .findFirst();
+        return userRealm.getSchoolName();
+    }
+
+    public void saveRoomsOfSchool(RoomsOfSchool value) {
+        Realm realm = Realm.getDefaultInstance();
+        realm.executeTransaction(realm1 -> {
+            for (RoomsOfSchool.Room room : value.getRooms()) {
+                realm.insertOrUpdate(new RoomRealm(room));
+            }
+        });
+        realm.close();
+    }
+
+    public List<RoomRealm> getRoomsOfSchool(String school) {
+        return getQueryRealmInstance().where(RoomRealm.class)
+                .equalTo("school", school)
+                .findAll();
+    }
 }

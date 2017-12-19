@@ -170,8 +170,8 @@
                         android:id="@+id/reg_account_img"
                         android:layout_width="match_parent"
                         android:layout_height="150dp"
-                        android:scaleType="fitXY"
-                        android:src="@drawable/profile"/>
+                        android:scaleType="centerCrop"
+                        android:src="@drawable/account_profile"/>
 
                     <Button
                         android:id="@+id/reg_classrooms"
