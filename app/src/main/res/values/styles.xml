@@ -25,6 +25,7 @@
         <item name="android:textStyle">bold</item>
         <item name="android:button">@null</item>
         <item name="android:padding">8dp</item>
+        <item name="android:textAllCaps">true</item>
         <item name="android:textSize">@dimen/text_size_small</item>
         <item name="android:textColor">@color/blue_radio_btn</item>
     </style>

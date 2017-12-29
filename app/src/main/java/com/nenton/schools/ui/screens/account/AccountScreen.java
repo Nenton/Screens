@@ -93,12 +93,16 @@ public class AccountScreen extends AbstractScreen<RootActivity.RootComponent> {
 
         public void clickComplete() {
             if (verifyUserInfo() && getView() != null) {
+                // TODO: 29.12.2017 Сохранить в Realm
                 Map<String, Object> mapFirebase = new HashMap<>();
                 mapFirebase.put("name", getView().getName());
                 mapFirebase.put("email", getView().getEmail());
+                mapFirebase.put("grade", getView().getGrade());
                 mapFirebase.put("state", getView().getState());
                 mapFirebase.put("schoolDistrict", getView().getDistrict());
-                mapFirebase.put("schoolPosition", getView().getSchoolPosition());
+                mapFirebase.put("schoolType", getView().getTypeEducation());
+                mapFirebase.put("schoolName", getView().getSchools());
+
                 mModel.saveUserInfo(mapFirebase);
 
                 Flow.get(getView()).set(new ShopScreen());
@@ -111,10 +115,11 @@ public class AccountScreen extends AbstractScreen<RootActivity.RootComponent> {
         private boolean verifyUserInfo() {
             return !getView().getName().isEmpty() &&
                     !getView().getEmail().isEmpty() &&
+                    !getView().getGrade().isEmpty() &&
                     !getView().getState().isEmpty() &&
                     !getView().getDistrict().isEmpty() &&
-//                    !getView().getTypeEducation().isEmpty() &&
-                    !getView().getSchoolPosition().isEmpty();
+                    !getView().getTypeEducation().isEmpty() &&
+                    !getView().getSchools().isEmpty();
         }
 
         public void clickState() {

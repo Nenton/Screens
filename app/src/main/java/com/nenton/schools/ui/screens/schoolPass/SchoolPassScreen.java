@@ -2,10 +2,8 @@ package com.nenton.schools.ui.screens.schoolPass;
 
 import android.os.Bundle;
 import android.os.SystemClock;
-import android.widget.Chronometer;
 
 import com.nenton.schools.R;
-import com.nenton.schools.data.storage.dto.RoomsOfSchool;
 import com.nenton.schools.data.storage.realm.RoomRealm;
 import com.nenton.schools.di.DaggerService;
 import com.nenton.schools.di.sqopes.DaggerScope;
@@ -17,7 +15,7 @@ import com.nenton.schools.mvp.presenters.RootPresenter;
 import com.nenton.schools.ui.activities.RootActivity;
 import com.nenton.schools.ui.custom_views.CustomChronometer;
 
-import java.util.Date;
+import java.util.ArrayList;
 import java.util.List;
 
 import dagger.Provides;
@@ -121,12 +119,23 @@ public class SchoolPassScreen extends AbstractScreen<RootActivity.RootComponent>
 
         public void clickOnChoiseClass() {
             if (getView() != null) {
-                String[] strings = new String[]{};
+                ArrayList<String> list = new ArrayList<>();
                 for (int i = 0; i < roomsOfSchool.size(); i++) {
-                    RoomRealm room = roomsOfSchool.get(0);
-                    strings[i] = room.getName() + " " + room.getTeacher();
+                    RoomRealm room = roomsOfSchool.get(i);
+                    list.add(room.getName() + " " + room.getTeacher());
                 }
-                getView().showPickerRoomNameAndTeacher(strings);
+                String[] strings = new String[list.size()];
+
+
+                for (int i = 0; i < list.size(); i++) {
+                    strings[i] = list.get(i);
+                }
+
+                if (strings.length == 0) {
+                    getRootView().showMessage("List Rooms and Teachers empty");
+                } else {
+                    getView().showPickerRoomNameAndTeacher(strings);
+                }
             }
         }
 
@@ -137,5 +146,18 @@ public class SchoolPassScreen extends AbstractScreen<RootActivity.RootComponent>
                 getView().fillRoom(room.getName(), room.getTeacher());
             }
         }
+
+        public void changeOtherSwitch() {
+            if (getRootView() != null && getView() != null) {
+                getRootView().showMessage("Other switch not Available");
+            }
+        }
+
+        public void clickOnHelp() {
+            if (getRootView() != null && getView() != null) {
+                getRootView().showMessage("Help not available");
+            }
+        }
+
     }
 }

@@ -1,6 +1,6 @@
 package com.nenton.schools.data.managers;
 
-import com.nenton.schools.data.storage.dto.RoomsOfSchool;
+import com.nenton.schools.data.storage.dto.RoomsDto;
 import com.nenton.schools.data.storage.realm.RoomRealm;
 import com.nenton.schools.data.storage.realm.UserRealm;
 
@@ -60,26 +60,24 @@ public class RealmManager {
     }
 
 
-    public String getSchool(String uid) {
+    public String getSchoolByUser(String uid) {
         UserRealm userRealm = getQueryRealmInstance().where(UserRealm.class)
                 .equalTo("id", uid)
                 .findFirst();
         return userRealm.getSchoolName();
     }
 
-    public void saveRoomsOfSchool(RoomsOfSchool value) {
+    public void saveRoomsOfSchool(RoomsDto value, String schoolId) {
         Realm realm = Realm.getDefaultInstance();
         realm.executeTransaction(realm1 -> {
-            for (RoomsOfSchool.Room room : value.getRooms()) {
-                realm.insertOrUpdate(new RoomRealm(room));
-            }
+            realm1.insertOrUpdate(new RoomRealm(value, schoolId));
         });
         realm.close();
     }
 
     public List<RoomRealm> getRoomsOfSchool(String school) {
         return getQueryRealmInstance().where(RoomRealm.class)
-                .equalTo("school", school)
+                .equalTo("schoolId", school)
                 .findAll();
     }
 }

@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<com.nenton.schools.ui.screens.account.AccountView
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<com.nenton.schools.ui.screens.account.AccountView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
@@ -33,7 +32,7 @@
                     android:textAllCaps="true"
                     android:textColor="@color/white"
                     android:textSize="@dimen/text_size_big"
-                    android:textStyle="bold"/>
+                    android:textStyle="bold" />
 
                 <ImageButton
                     android:id="@+id/reg_sound"
@@ -44,7 +43,7 @@
                     android:layout_toLeftOf="@+id/reg_help"
                     android:background="@drawable/red_btn_state"
                     android:padding="8dp"
-                    android:src="@drawable/ic_volume_up_black_24dp"/>
+                    android:src="@drawable/ic_volume_up_black_24dp" />
 
                 <ImageButton
                     android:id="@+id/reg_help"
@@ -55,7 +54,7 @@
                     android:layout_marginRight="8dp"
                     android:background="@drawable/red_btn_state"
                     android:padding="8dp"
-                    android:src="@drawable/ic_help_black_24dp"/>
+                    android:src="@drawable/ic_help_black_24dp" />
             </RelativeLayout>
 
             <RadioGroup
@@ -74,7 +73,7 @@
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:text="Student"/>
+                    android:text="Student" />
 
                 <RadioButton
                     android:id="@+id/reg_educator_rb"
@@ -83,21 +82,21 @@
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="8dp"
                     android:layout_weight="1"
-                    android:text="Educator"/>
+                    android:text="Educator" />
             </RadioGroup>
 
             <View
                 android:layout_width="match_parent"
                 android:layout_height="4dp"
                 android:layout_marginTop="8dp"
-                android:background="@color/blue"/>
+                android:background="@color/blue" />
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginRight="8dp"
-                android:paddingTop="8dp"
-                android:orientation="horizontal">
+                android:orientation="horizontal"
+                android:paddingTop="8dp">
 
                 <LinearLayout
                     android:layout_width="0dp"
@@ -109,45 +108,46 @@
                     <EditText
                         android:id="@+id/reg_user_name"
                         style="@style/Field"
-                        android:hint="NAME"
-                        android:textAlignment="center"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginBottom="8dp" />
+                        android:layout_marginBottom="8dp"
+                        android:hint="NAME"
+                        android:textAlignment="center" />
 
                     <EditText
                         android:id="@+id/reg_user_email"
                         style="@style/Field"
-                        android:hint="E-MAIL"
-                        android:textAlignment="center"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginBottom="8dp" />
+                        android:layout_marginBottom="8dp"
+                        android:hint="E-MAIL"
+                        android:textAlignment="center" />
 
                     <EditText
                         android:id="@+id/reg_user_id"
                         style="@style/Field"
-                        android:hint="ID#"
-                        android:textAlignment="center"
                         android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
                         android:layout_marginBottom="8dp"
-                        android:layout_height="wrap_content" />
+                        android:enabled="false"
+                        android:hint="ID#"
+                        android:textAlignment="center" />
 
                     <EditText
                         style="@style/Field"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:inputType="textPassword"/>
+                        android:inputType="textPassword" />
 
                     <TextView
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
+                        android:layout_marginTop="8dp"
                         android:text="Grade"
-                        android:textAllCaps="true"
                         android:textAlignment="center"
+                        android:textAllCaps="true"
                         android:textColor="@color/black"
-                        android:textSize="@dimen/text_size_small"
-                        android:layout_marginTop="8dp"/>
+                        android:textSize="@dimen/text_size_small" />
 
                     <Button
                         android:id="@+id/reg_user_grade"
@@ -156,7 +156,7 @@
                         android:layout_marginLeft="8dp"
                         android:layout_marginTop="8dp"
                         android:background="@drawable/light_blue_btn_state"
-                        android:text="------------"/>
+                        android:text="------------" />
 
                 </LinearLayout>
 
@@ -171,7 +171,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="150dp"
                         android:scaleType="centerCrop"
-                        android:src="@drawable/account_profile"/>
+                        android:src="@drawable/account_profile" />
 
                     <Button
                         android:id="@+id/reg_classrooms"
@@ -181,7 +181,7 @@
                         android:layout_marginTop="8dp"
                         android:text="My classrooms (0)"
                         android:textColor="@color/blue_btn"
-                        android:textSize="@dimen/text_size_small"/>
+                        android:textSize="@dimen/text_size_small" />
 
                     <Button
                         android:id="@+id/reg_logout"
@@ -191,7 +191,7 @@
                         android:background="@drawable/red_btn_state"
                         android:text="Logout"
                         android:textColor="@color/red_btn"
-                        android:textSize="@dimen/text_size_middle"/>
+                        android:textSize="@dimen/text_size_middle" />
                 </LinearLayout>
             </LinearLayout>
 
@@ -206,7 +206,7 @@
                 android:textAllCaps="true"
                 android:textColor="@color/white"
                 android:textSize="@dimen/text_size_big"
-                android:textStyle="bold|italic"/>
+                android:textStyle="bold|italic" />
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -229,7 +229,7 @@
                         android:textAlignment="center"
                         android:textAllCaps="true"
                         android:textColor="#000000"
-                        android:textSize="@dimen/text_size_small"/>
+                        android:textSize="@dimen/text_size_small" />
 
                     <Button
                         android:id="@+id/reg_user_state"
@@ -237,7 +237,7 @@
                         android:layout_height="wrap_content"
                         android:layout_marginTop="8dp"
                         android:background="@drawable/light_blue_btn_state"
-                        android:text="------------"/>
+                        android:text="------------" />
                 </LinearLayout>
 
                 <LinearLayout
@@ -254,7 +254,7 @@
                         android:textAlignment="center"
                         android:textAllCaps="true"
                         android:textColor="#000000"
-                        android:textSize="@dimen/text_size_small"/>
+                        android:textSize="@dimen/text_size_small" />
 
                     <Button
                         android:id="@+id/reg_user_district"
@@ -262,7 +262,7 @@
                         android:layout_height="wrap_content"
                         android:layout_marginTop="8dp"
                         android:background="@drawable/light_blue_btn_state"
-                        android:text="------------"/>
+                        android:text="------------" />
                 </LinearLayout>
             </LinearLayout>
 
@@ -270,7 +270,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="4dp"
                 android:layout_marginTop="8dp"
-                android:background="#0000ff"/>
+                android:background="#0000ff" />
 
             <RadioGroup
                 android:id="@+id/reg_type_education_rg"
@@ -288,7 +288,7 @@
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:text="Elementary"/>
+                    android:text="Elementary" />
 
                 <RadioButton
                     android:id="@+id/reg_ir_high_rb"
@@ -297,7 +297,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="8dp"
                     android:layout_weight="1"
-                    android:text="Jr. High"/>
+                    android:text="Jr. High" />
 
                 <RadioButton
                     android:id="@+id/reg_sr_high_rb"
@@ -306,7 +306,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="8dp"
                     android:layout_weight="1"
-                    android:text="Sr. High"/>
+                    android:text="Sr. High" />
 
                 <RadioButton
                     android:id="@+id/reg_all_rb"
@@ -315,14 +315,14 @@
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="8dp"
                     android:layout_weight="1"
-                    android:text="All"/>
+                    android:text="All" />
             </RadioGroup>
 
             <View
                 android:layout_width="match_parent"
                 android:layout_height="4dp"
                 android:layout_marginTop="8dp"
-                android:background="@color/blue"/>
+                android:background="@color/blue" />
 
             <RelativeLayout
                 android:layout_width="match_parent"
@@ -335,7 +335,7 @@
                     android:layout_height="wrap_content"
                     android:layout_toLeftOf="@+id/reg_add_school"
                     android:background="@drawable/light_blue_btn_state"
-                    android:text="------------"/>
+                    android:text="------------" />
 
                 <ImageButton
                     android:id="@+id/reg_add_school"
@@ -346,7 +346,7 @@
                     android:layout_marginLeft="8dp"
                     android:background="@drawable/light_blue_btn_state"
                     android:padding="8dp"
-                    android:src="@drawable/ic_add_black_24dp"/>
+                    android:src="@drawable/ic_add_black_24dp" />
 
             </RelativeLayout>
 
@@ -362,7 +362,7 @@
                     android:layout_height="wrap_content"
                     android:layout_centerVertical="true"
                     android:background="@drawable/blue_btn_state"
-                    android:src="@drawable/ic_place_black_24dp"/>
+                    android:src="@drawable/ic_place_black_24dp" />
 
                 <ImageButton
                     android:id="@+id/reg_phone"
@@ -373,7 +373,7 @@
                     android:layout_marginLeft="8dp"
                     android:layout_toRightOf="@+id/reg_geo"
                     android:background="@drawable/blue_btn_state"
-                    android:src="@drawable/ic_call_black_24dp"/>
+                    android:src="@drawable/ic_call_black_24dp" />
 
                 <ImageButton
                     android:id="@+id/reg_complete_edit"
@@ -381,7 +381,7 @@
                     android:layout_height="100dp"
                     android:layout_alignParentRight="true"
                     android:layout_centerVertical="true"
-                    android:background="@drawable/image"/>
+                    android:background="@drawable/image" />
 
                 <EditText
                     android:id="@+id/reg_school_position_et"
@@ -393,9 +393,10 @@
                     android:layout_toLeftOf="@+id/reg_complete_edit"
                     android:layout_toRightOf="@+id/reg_phone"
                     android:background="@color/white_transparent"
+                    android:enabled="false"
                     android:minLines="3"
                     android:text="123 Sesame Street Miami, FL 33056 305-502-3535"
-                    android:textSize="@dimen/text_size_middle"/>
+                    android:textSize="@dimen/text_size_middle" />
             </RelativeLayout>
 
             <LinearLayout
@@ -410,12 +411,12 @@
                     android:id="@+id/textView3"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Text for switch"
                     android:background="@drawable/text_stroke"
-                    android:textAllCaps="true"
                     android:padding="2dp"
+                    android:text="Text for switch"
+                    android:textAllCaps="true"
                     android:textColor="@color/black"
-                    android:textSize="@dimen/text_size_big"/>
+                    android:textSize="@dimen/text_size_big" />
 
                 <com.kyleduo.switchbutton.SwitchButton
                     android:id="@+id/switchButton"
@@ -425,7 +426,7 @@
                     android:checked="false"
                     app:kswBackRadius="2dp"
                     app:kswThumbRadius="2dp"
-                    app:kswTintColor="@color/blue_switch"/>
+                    app:kswTintColor="@color/blue_switch" />
 
             </LinearLayout>
 

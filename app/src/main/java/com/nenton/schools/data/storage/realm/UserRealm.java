@@ -22,6 +22,7 @@ public class UserRealm extends RealmObject {
     private String fbAccountImg;
     private String name;
     private String phone;
+    private String grade;
     private String schoolCity;
     private String schoolDistrict;
     private String schoolId;
@@ -153,5 +154,9 @@ public class UserRealm extends RealmObject {
 
     public String getTeacherRoom() {
         return teacherRoom;
+    }
+
+    public String getGrade() {
+        return grade;
     }
 }

@@ -1,6 +1,6 @@
 package com.nenton.schools.data.storage.realm;
 
-import com.nenton.schools.data.storage.dto.RoomsOfSchool;
+import com.nenton.schools.data.storage.dto.RoomsDto;
 
 import io.realm.RealmObject;
 import io.realm.annotations.PrimaryKey;
@@ -14,16 +14,18 @@ public class RoomRealm extends RealmObject {
     @PrimaryKey
     private String id;
 
-    private String school;
+    private String schoolId;
     private String name;
     private String teacher;
 
     public RoomRealm() {
     }
 
-    public RoomRealm(RoomsOfSchool.Room room) {
+    public RoomRealm(RoomsDto room, String schoolId) {
+        this.id = room.getName();
         this.name = room.getName();
         this.teacher = room.getTeacher();
+        this.schoolId = schoolId;
     }
 
     public String getName() {

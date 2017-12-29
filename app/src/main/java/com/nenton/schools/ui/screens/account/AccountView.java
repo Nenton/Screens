@@ -79,17 +79,17 @@ public class AccountView extends AbstractView<AccountScreen.AccountPresenter> {
     }
 
     @OnClick(R.id.reg_logout)
-    public void clickOnLogout(){
+    public void clickOnLogout() {
         mPresenter.clickOnLogout();
     }
 
     @OnClick(R.id.reg_user_grade)
-    public void clickOnGrade(){
+    public void clickOnGrade() {
         mPresenter.clickOnGrade();
     }
 
     @OnClick(R.id.reg_education)
-    public void clickOnSchool(){
+    public void clickOnSchool() {
         mPresenter.clickOnSchool();
     }
 
@@ -107,13 +107,13 @@ public class AccountView extends AbstractView<AccountScreen.AccountPresenter> {
         mUserName.setText(user.getName());
         mUserEmail.setText(user.getEmail());
         mUserId.setText(user.getId());
-
-        mUserGrage.setText(user.getSchoolType());
+        mUserGrage.setText(user.getGrade());
         mUserState.setText(user.getState());
         mUserDistrict.setText(user.getSchoolDistrict());
-
-        mSchoolPosition.setText(user.getSchoolStreet());
+        mEducation.setText(user.getSchoolName());
     }
+
+    //region getters
 
     public String getName() {
         return mUserName.getText().toString();
@@ -135,17 +135,22 @@ public class AccountView extends AbstractView<AccountScreen.AccountPresenter> {
         return mUserDistrict.getText().toString();
     }
 
-    public String getSchools() {
-        return null; // TODO: 10.11.2017 implement me
-    }
-
     public String getTypeEducation() {
         return ((RadioButton) findViewById(mTypeEducation.getCheckedRadioButtonId())).getText().toString();
+        // TODO: 29.12.2017 как то более правильно получить строку
+    }
+
+    public String getSchools() {
+        return mEducation.getText().toString();
+        // TODO: 10.11.2017 перевести на множество школ
     }
 
     public String getSchoolPosition() {
         return mSchoolPosition.getText().toString();
     }
+
+    //end region
+
 
     public void showPickerState() {
         NumberPicker numberPicker = new NumberPicker(getContext());
@@ -212,8 +217,7 @@ public class AccountView extends AbstractView<AccountScreen.AccountPresenter> {
         builder.setTitle("Choose Grade")
                 .setView(numberPicker)
                 .setPositiveButton("Ok", (dialogInterface, i) -> {
-                    // TODO: 19.12.2017 implement me
-//                    mUserDistrict.setText(strings[numberPicker.getValue()]);
+                    mUserGrage.setText(strings[numberPicker.getValue()]);
                 })
                 .setNegativeButton("Cancel", (dialogInterface, i) -> {
                     dialogInterface.dismiss();
@@ -234,8 +238,7 @@ public class AccountView extends AbstractView<AccountScreen.AccountPresenter> {
         builder.setTitle("Choose School")
                 .setView(numberPicker)
                 .setPositiveButton("Ok", (dialogInterface, i) -> {
-                    // TODO: 19.12.2017 implement me
-//                    mUserDistrict.setText(strings[numberPicker.getValue()]);
+                    mEducation.setText(strings[numberPicker.getValue()]);
                 })
                 .setNegativeButton("Cancel", (dialogInterface, i) -> {
                     dialogInterface.dismiss();

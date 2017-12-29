@@ -110,7 +110,7 @@
                 android:layout_marginTop="8dp">
 
                 <ImageView
-                    android:id="@+id/image_school_help"
+                    android:id="@+id/pass_school_help"
                     android:layout_width="75dp"
                     android:layout_height="75dp"
                     android:layout_centerHorizontal="true"
@@ -121,7 +121,7 @@
                 <LinearLayout
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_toLeftOf="@id/image_school_help"
+                    android:layout_toLeftOf="@id/pass_school_help"
                     android:orientation="vertical">
 
                     <TextView
@@ -163,7 +163,7 @@
                 <LinearLayout
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_toRightOf="@id/image_school_help"
+                    android:layout_toRightOf="@id/pass_school_help"
                     android:orientation="vertical">
 
                     <TextView

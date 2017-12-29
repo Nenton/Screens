@@ -1,6 +1,5 @@
 package com.nenton.schools.mvp.model;
 
-import com.nenton.schools.data.storage.dto.RoomsOfSchool;
 import com.nenton.schools.data.storage.realm.RoomRealm;
 
 import java.util.List;
@@ -12,6 +11,7 @@ import java.util.List;
 public class SchoolPassModel extends AbstractModel{
 
     public List<RoomRealm> getRoomsOfSchool(){
+        mDataManager.saveRoomsOfSchool();
         return mDataManager.getRoomsOfSchool();
     }
 }

@@ -10,7 +10,6 @@ import android.widget.TextView;
 
 import com.kyleduo.switchbutton.SwitchButton;
 import com.nenton.schools.R;
-import com.nenton.schools.data.storage.dto.RoomsOfSchool;
 import com.nenton.schools.di.DaggerService;
 import com.nenton.schools.mvp.views.AbstractView;
 import com.nenton.schools.ui.custom_views.CustomChronometer;
@@ -70,6 +69,17 @@ class SchoolPassView extends AbstractView<SchoolPassScreen.SchoolPassPresenter> 
     @OnCheckedChanged(R.id.pass_restroom_sb)
     void checkedRestroom() {
         mPresenter.changeSwitch(R.id.pass_restroom_sb);
+    }
+
+    @OnCheckedChanged(R.id.pass_other_sb)
+    void checkedOther() {
+        mPresenter.changeOtherSwitch();
+        mSwitchOther.setChecked(false);
+    }
+
+    @OnClick(R.id.pass_school_help)
+    void clickOnHelp() {
+        mPresenter.clickOnHelp();
     }
 
     @OnCheckedChanged(R.id.pass_main_office_sb)

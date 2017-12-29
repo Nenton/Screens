@@ -66,6 +66,8 @@ public class RootActivity extends AppCompatActivity implements IRootActivityView
     @BindView(R.id.bottom_navigation)
     BottomNavigationView mBottomNavigationView;
 
+    private Toast mToast;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -201,7 +203,11 @@ public class RootActivity extends AppCompatActivity implements IRootActivityView
 
     @Override
     public void showMessage(String message) {
-        Toast.makeText(this, message, Toast.LENGTH_LONG).show();
+        if (mToast != null) {
+            mToast.cancel();
+        }
+        mToast = Toast.makeText(this, message, Toast.LENGTH_LONG);
+        mToast.show();
 //        Snackbar.make(mCoordinatorLayout, message, Snackbar.LENGTH_LONG).show();
     }
 
@@ -213,7 +219,7 @@ public class RootActivity extends AppCompatActivity implements IRootActivityView
             showMessage(e.getMessage());
             e.printStackTrace();
         } else {
-            showMessage("Что-то пошло не так. Попробуйте повторить позже"); // TODO: 07.11.2017 поменятть на англ
+            showMessage("Something went wrong. Please try again later");
         }
     }
 
@@ -239,10 +245,10 @@ public class RootActivity extends AppCompatActivity implements IRootActivityView
     public void onBackPressed() {
         if (getCurrentScreen() != null && !getCurrentScreen().viewOnBackPressed() && !Flow.get(this).goBack()) {
             AlertDialog.Builder builder = new AlertDialog.Builder(this);
-            builder.setTitle("Выход")
-                    .setPositiveButton("Да", (dialog, which) -> super.onBackPressed())
-                    .setNegativeButton("Нет", (dialog, which) -> dialog.cancel())
-                    .setMessage("Вы действительно хотите выйти?")
+            builder.setTitle("Exit")
+                    .setPositiveButton("Yes", (dialog, which) -> super.onBackPressed())
+                    .setNegativeButton("No", (dialog, which) -> dialog.cancel())
+                    .setMessage("Do you want to quit?")
                     .show();
         }
     }

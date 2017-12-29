@@ -8,7 +8,7 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 import com.nenton.schools.data.network.RestCallTransformer;
 import com.nenton.schools.data.network.RestService;
-import com.nenton.schools.data.storage.dto.RoomsOfSchool;
+import com.nenton.schools.data.storage.dto.RoomsDto;
 import com.nenton.schools.data.storage.realm.RoomRealm;
 import com.nenton.schools.data.storage.realm.UserRealm;
 import com.nenton.schools.di.DaggerService;
@@ -99,29 +99,27 @@ public class DataManager {
     }
 
     public boolean checkCompleteRegistration() {
-        // TODO: 19.12.2017 implement me
         UserRealm userRealm = getRealmManager().getUserById(FirebaseAuth.getInstance().getCurrentUser().getUid());
-//        String name = userRealm.getName();
-//        String email = userRealm.getEmail();
-//        String state = userRealm.getState();
-//        String schoolDistrict = userRealm.getSchoolDistrict();
-//        String schoolPosition = userRealm.getSchoolPosition();
+
         return !userRealm.getName().isEmpty() &&
                 !userRealm.getEmail().isEmpty() &&
+                !userRealm.getGrade().isEmpty() &&
                 !userRealm.getState().isEmpty() &&
-//                !userRealm.getSchoolDistrict().isEmpty() &&
-                !userRealm.getSchoolName().isEmpty() &&
-                !userRealm.getSchoolPosition().isEmpty();
+                !userRealm.getSchoolDistrict().isEmpty() &&
+                !userRealm.getSchoolType().isEmpty() &&
+                !userRealm.getSchoolName().isEmpty();
     }
 
     public void saveRoomsOfSchool(){
         String uid = FireBaseManager.getInstance().getFirebaseAuth().getCurrentUser().getUid();
-        if (!mPreferencesManager.getSchool().isEmpty()) {
+//        if (!mPreferencesManager.getSchoolByUser().isEmpty()) {
             FirebaseDatabase firebaseDatabase = FireBaseManager.getInstance().getFirebaseDatabase();
-            firebaseDatabase.getReference().child("schools").child(mRealmManager.getSchool(uid)).child("rooms").addValueEventListener(new ValueEventListener() {
+            firebaseDatabase.getReference().child("schools").child(mRealmManager.getSchoolByUser(uid)).child("rooms").addValueEventListener(new ValueEventListener() {
                 @Override
                 public void onDataChange(DataSnapshot dataSnapshot) {
-                    saveRoomsOfSchoolToRealm(dataSnapshot.getValue(RoomsOfSchool.class));
+                    for (DataSnapshot postSnapshot: dataSnapshot.getChildren()) {
+                        saveRoomsOfSchoolToRealm(postSnapshot.getValue(RoomsDto.class));
+                    }
                 }
 
                 @Override
@@ -129,15 +127,15 @@ public class DataManager {
 
                 }
             });
-        }
+//        }
     }
 
     public List<RoomRealm> getRoomsOfSchool() {
-        return mRealmManager.getRoomsOfSchool(mRealmManager.getSchool(FireBaseManager.getInstance().getFirebaseAuth().getCurrentUser().getUid()));
+        return mRealmManager.getRoomsOfSchool(mRealmManager.getSchoolByUser(FireBaseManager.getInstance().getFirebaseAuth().getCurrentUser().getUid()));
     }
 
-    private void saveRoomsOfSchoolToRealm(RoomsOfSchool value) {
-        mRealmManager.saveRoomsOfSchool(value);
+    private void saveRoomsOfSchoolToRealm(RoomsDto value) {
+        mRealmManager.saveRoomsOfSchool(value, mRealmManager.getSchoolByUser(FireBaseManager.getInstance().getFirebaseAuth().getCurrentUser().getUid()));
     }
 
     public void deleteUserFromRealm(String uid) {
@@ -162,4 +160,5 @@ public class DataManager {
             });
         }
     }
+
 }

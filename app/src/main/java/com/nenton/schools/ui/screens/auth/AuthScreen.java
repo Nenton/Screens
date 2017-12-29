@@ -70,9 +70,9 @@ public class AuthScreen extends AbstractScreen<RootActivity.RootComponent> {
 
         @Override
         protected void initActivityBarBuilder() {
-//            mRootPresenter.newRootActivityBarBuilder()
-//                    .setShowBottomNav(false)
-//                    .build();// TODO: 22.11.2017 исправить вылетает ошибка потому что расчитан на RootActivivty а не LoginActivity
+            mRootPresenter.newRootActivityBarBuilder()
+                    .setShowBottomNav(false)
+                    .build();
         }
 
         public void changeState(int state) {

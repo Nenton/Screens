@@ -121,7 +121,7 @@ public class LoginActivity extends AppCompatActivity implements IRootView {
             showMessage(e.getMessage());
             e.printStackTrace();
         } else {
-            showMessage("Что-то пошло не так. Попробуйте повторить позже"); // TODO: 07.11.2017 поменятть на англ
+            showMessage("Something went wrong. Please try again later");
         }
     }
 
