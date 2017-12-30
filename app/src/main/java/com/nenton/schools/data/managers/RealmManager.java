@@ -1,7 +1,9 @@
 package com.nenton.schools.data.managers;
 
 import com.nenton.schools.data.storage.dto.RoomsDto;
+import com.nenton.schools.data.storage.realm.DistrictRealm;
 import com.nenton.schools.data.storage.realm.RoomRealm;
+import com.nenton.schools.data.storage.realm.StateRealm;
 import com.nenton.schools.data.storage.realm.UserRealm;
 
 import java.util.List;
@@ -78,6 +80,32 @@ public class RealmManager {
     public List<RoomRealm> getRoomsOfSchool(String school) {
         return getQueryRealmInstance().where(RoomRealm.class)
                 .equalTo("schoolId", school)
+                .findAll();
+    }
+
+    public void saveState(String stateRealm) {
+        Realm realm = Realm.getDefaultInstance();
+        realm.executeTransaction(realm1 -> {
+            realm1.insertOrUpdate(new StateRealm(stateRealm));
+        });
+        realm.close();
+    }
+
+    public void saveDistrict(String districtRealm) {
+        Realm realm = Realm.getDefaultInstance();
+        realm.executeTransaction(realm1 -> {
+            realm1.insertOrUpdate(new DistrictRealm(districtRealm));
+        });
+        realm.close();
+    }
+
+    public List<DistrictRealm> getDistricts() {
+        return getQueryRealmInstance().where(DistrictRealm.class)
+                .findAll();
+    }
+
+    public List<StateRealm> getStates() {
+        return getQueryRealmInstance().where(StateRealm.class)
                 .findAll();
     }
 }

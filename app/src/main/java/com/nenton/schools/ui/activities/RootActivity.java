@@ -39,7 +39,6 @@ import com.nenton.schools.ui.screens.account.AccountScreen;
 import com.nenton.schools.ui.screens.history.HistoryScreen;
 import com.nenton.schools.ui.screens.live.LiveScreen;
 import com.nenton.schools.ui.screens.schoolPass.SchoolPassScreen;
-import com.nenton.schools.ui.screens.shop.ShopScreen;
 import com.nenton.schools.utils.ConstantsManager;
 import com.squareup.picasso.Picasso;
 
@@ -179,7 +178,7 @@ public class RootActivity extends AppCompatActivity implements IRootActivityView
     protected void attachBaseContext(Context newBase) {
         AbstractScreen key;
         if (DataManager.getInstance().checkCompleteRegistration()) {
-            key = new ShopScreen();
+            key = new SchoolPassScreen();
         } else {
             key = new AccountScreen();
         }

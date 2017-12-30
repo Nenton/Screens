@@ -10,6 +10,7 @@ import com.nenton.schools.data.network.RestCallTransformer;
 import com.nenton.schools.data.network.RestService;
 import com.nenton.schools.data.storage.dto.RoomsDto;
 import com.nenton.schools.data.storage.realm.RoomRealm;
+import com.nenton.schools.data.storage.realm.StateRealm;
 import com.nenton.schools.data.storage.realm.UserRealm;
 import com.nenton.schools.di.DaggerService;
 import com.nenton.schools.di.components.DaggerDataManagerComponent;
@@ -161,4 +162,43 @@ public class DataManager {
         }
     }
 
+    public void uploadStatesDistricts() {
+        FireBaseManager instance = FireBaseManager.getInstance();
+        DatabaseReference states = instance.getFirebaseDatabase().getReference().child("states");
+        if (states != null){
+            states.addValueEventListener(new ValueEventListener() {
+                @Override
+                public void onDataChange(DataSnapshot dataSnapshot) {
+                    for (DataSnapshot data : dataSnapshot.getChildren()) {
+                        String stateRealm = data.getValue(String.class);
+                        mRealmManager.saveState(stateRealm);
+                    }
+                }
+
+                @Override
+                public void onCancelled(DatabaseError databaseError) {
+
+                }
+            });
+        }
+
+        DatabaseReference districts = instance.getFirebaseDatabase().getReference().child("districts");
+        if (districts != null){
+            districts.addValueEventListener(new ValueEventListener() {
+                @Override
+                public void onDataChange(DataSnapshot dataSnapshot) {
+                    for (DataSnapshot data : dataSnapshot.getChildren()) {
+                        String districtRealm = data.getValue(String.class);
+                        mRealmManager.saveDistrict(districtRealm);
+                    }
+                }
+
+                @Override
+                public void onCancelled(DatabaseError databaseError) {
+
+                }
+            });
+        }
+
+    }
 }

@@ -14,11 +14,13 @@ import com.nenton.schools.mvp.presenters.AbstractPresenter;
 import com.nenton.schools.mvp.presenters.RootPresenter;
 import com.nenton.schools.ui.activities.RootActivity;
 import com.nenton.schools.ui.custom_views.CustomChronometer;
+import com.nenton.schools.ui.screens.shop.ShopScreen;
 
 import java.util.ArrayList;
 import java.util.List;
 
 import dagger.Provides;
+import flow.Flow;
 import mortar.MortarScope;
 
 /**
@@ -63,6 +65,7 @@ public class SchoolPassScreen extends AbstractScreen<RootActivity.RootComponent>
     public class SchoolPassPresenter extends AbstractPresenter<SchoolPassView, SchoolPassModel> {
 
         private List<RoomRealm> roomsOfSchool;
+        private RoomRealm mRoom;
 
         @Override
         protected void initActivityBarBuilder() {
@@ -140,10 +143,14 @@ public class SchoolPassScreen extends AbstractScreen<RootActivity.RootComponent>
         }
 
         public void clickOnRoom(int id) {
-            // TODO: 19.12.2017 save SharedPref
             if (getView() != null) {
-                RoomRealm room = roomsOfSchool.get(id);
-                getView().fillRoom(room.getName(), room.getTeacher());
+                if (mRoom != null && mRoom.equals(roomsOfSchool.get(id))) {
+                    getRootView().showMessage("You are already here");
+                    return;
+                }
+
+                mRoom = roomsOfSchool.get(id);
+                getView().fillRoom(mRoom.getName(), mRoom.getTeacher());
             }
         }
 
@@ -159,5 +166,10 @@ public class SchoolPassScreen extends AbstractScreen<RootActivity.RootComponent>
             }
         }
 
+        public void clickOnShop() {
+            if (getView() != null) {
+                Flow.get(getView()).set(new ShopScreen());
+            }
+        }
     }
 }

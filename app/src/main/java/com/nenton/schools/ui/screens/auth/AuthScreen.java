@@ -12,14 +12,10 @@ import com.nenton.schools.mvp.model.AuthModel;
 import com.nenton.schools.mvp.presenters.AbstractPresenter;
 import com.nenton.schools.mvp.presenters.IAuthPresenter;
 import com.nenton.schools.mvp.presenters.RootPresenter;
-import com.nenton.schools.mvp.views.IRootActivityView;
 import com.nenton.schools.ui.activities.LoginActivity;
 import com.nenton.schools.ui.activities.RootActivity;
-import com.nenton.schools.ui.screens.account.AccountScreen;
-import com.nenton.schools.ui.screens.shop.ShopScreen;
 
 import dagger.Provides;
-import flow.Flow;
 import mortar.MortarScope;
 
 /**

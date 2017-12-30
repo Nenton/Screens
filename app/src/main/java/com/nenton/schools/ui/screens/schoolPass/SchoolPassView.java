@@ -77,6 +77,11 @@ class SchoolPassView extends AbstractView<SchoolPassScreen.SchoolPassPresenter> 
         mSwitchOther.setChecked(false);
     }
 
+    @OnClick(R.id.pass_shop_iv)
+    void clickOnShop(){
+        mPresenter.clickOnShop();
+    }
+
     @OnClick(R.id.pass_school_help)
     void clickOnHelp() {
         mPresenter.clickOnHelp();
@@ -154,13 +159,13 @@ class SchoolPassView extends AbstractView<SchoolPassScreen.SchoolPassPresenter> 
         numberPicker.setDisplayedValues(strings);
         numberPicker.setMinValue(0);
         numberPicker.setMaxValue(strings.length - 1);
-        numberPicker.getValue();
+//        numberPicker.getValue();
 
         AlertDialog.Builder builder = new AlertDialog.Builder(getContext());
         builder.setTitle("Choose State")
                 .setView(numberPicker)
                 .setPositiveButton("Ok", (dialogInterface, i) -> {
-                    mPresenter.clickOnRoom(i);
+                    mPresenter.clickOnRoom(numberPicker.getValue());
                 })
                 .setNegativeButton("Cancel", (dialogInterface, i) -> {
                     dialogInterface.dismiss();

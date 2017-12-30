@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<com.nenton.schools.ui.screens.schoolPass.SchoolPassView
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<com.nenton.schools.ui.screens.schoolPass.SchoolPassView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -149,7 +148,8 @@
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:background="#00ffff"
-                            android:enabled="true"
+                            android:enabled="false"
+                            android:textAlignment="center"
                             android:textSize="24sp" />
 
                         <View
@@ -191,7 +191,8 @@
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:background="#00ffff"
-                            android:enabled="true"
+                            android:enabled="false"
+                            android:textAlignment="center"
                             android:textSize="24sp" />
 
                         <View
@@ -382,10 +383,10 @@
                 style="@style/Field"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginBottom="?attr/actionBarSize"
                 android:layout_marginLeft="0dp"
                 android:layout_marginRight="0dp"
                 android:enabled="false"
-                android:layout_marginBottom="?attr/actionBarSize"
                 android:text="Details" />
 
         </LinearLayout>

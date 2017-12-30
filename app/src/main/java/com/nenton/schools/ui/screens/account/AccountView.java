@@ -152,10 +152,9 @@ public class AccountView extends AbstractView<AccountScreen.AccountPresenter> {
     //end region
 
 
-    public void showPickerState() {
+    public void showPickerState(String[] strings) {
         NumberPicker numberPicker = new NumberPicker(getContext());
-        String[] strings = new String[]{"First", "Second", "Three"};
-        numberPicker.setDisplayedValues(strings);
+                numberPicker.setDisplayedValues(strings);
         numberPicker.setMinValue(0);
         numberPicker.setMaxValue(strings.length - 1);
         numberPicker.getValue();

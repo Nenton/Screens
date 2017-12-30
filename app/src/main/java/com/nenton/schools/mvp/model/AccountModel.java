@@ -3,8 +3,11 @@ package com.nenton.schools.mvp.model;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.FirebaseDatabase;
 import com.nenton.schools.data.managers.FireBaseManager;
+import com.nenton.schools.data.storage.realm.DistrictRealm;
+import com.nenton.schools.data.storage.realm.StateRealm;
 import com.nenton.schools.data.storage.realm.UserRealm;
 
+import java.util.List;
 import java.util.Map;
 
 import javax.annotation.Nullable;
@@ -43,5 +46,23 @@ public class AccountModel extends AbstractModel {
 
     public Observable<Boolean> checkCompleteRegistration() {
         return mDataManager.checkCompleteRegistrationObs();
+    }
+
+    public String[] getDistricts() {
+        List<DistrictRealm> districts = mDataManager.getRealmManager().getDistricts();
+        String[] strings = new String[districts.size()];
+        for (int i = 0; i < districts.size(); i++) {
+            strings[i] = districts.get(i).getDistrict();
+        }
+        return strings;
+    }
+
+    public String[] getStates() {
+        List<StateRealm> districts = mDataManager.getRealmManager().getStates();
+        String[] strings = new String[districts.size()];
+        for (int i = 0; i < districts.size(); i++) {
+            strings[i] = districts.get(i).getState();
+        }
+        return strings;
     }
 }

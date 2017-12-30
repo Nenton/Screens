@@ -13,7 +13,7 @@ import com.nenton.schools.mvp.presenters.AbstractPresenter;
 import com.nenton.schools.mvp.presenters.RootPresenter;
 import com.nenton.schools.ui.activities.RootActivity;
 import com.nenton.schools.ui.screens.auth.AuthScreen;
-import com.nenton.schools.ui.screens.shop.ShopScreen;
+import com.nenton.schools.ui.screens.schoolPass.SchoolPassScreen;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -88,6 +88,7 @@ public class AccountScreen extends AbstractScreen<RootActivity.RootComponent> {
         @Override
         protected void onLoad(Bundle savedInstanceState) {
             super.onLoad(savedInstanceState);
+            mRootPresenter.updateInfoAboutStatesDistricts();
             mCompSubs.add(mModel.getUser().subscribe(new RealmSubscriber()));
         }
 
@@ -105,7 +106,7 @@ public class AccountScreen extends AbstractScreen<RootActivity.RootComponent> {
 
                 mModel.saveUserInfo(mapFirebase);
 
-                Flow.get(getView()).set(new ShopScreen());
+                Flow.get(getView()).set(new SchoolPassScreen());
             } else {
                 getView().showNotCompleted();
 //                getRootView().showMessage("Not complete registration");
@@ -124,15 +125,13 @@ public class AccountScreen extends AbstractScreen<RootActivity.RootComponent> {
 
         public void clickState() {
             if (getView() != null) {
-                getView().showPickerState();
+                getView().showPickerState(mModel.getStates());
             }
         }
 
         public void clickDistrict() {
             if (getView() != null) {
-                String[] strings = new String[]{"First", "Second", "Three"};
-                // TODO: 19.12.2017 get districts
-                getView().showPickerDistrict(strings);
+                getView().showPickerDistrict(mModel.getDistricts());
             }
         }
 
@@ -144,13 +143,13 @@ public class AccountScreen extends AbstractScreen<RootActivity.RootComponent> {
         public void clickOnGrade() {
             if (getView() != null) {
                 String[] strings = new String[]{"First", "Second", "Three"};
-                // TODO: 19.12.2017 get grades
+                // TODO: 19.12.2017 get grade
                 getView().showPickerGrade(strings);
             }
         }
 
         public void clickOnSchool() {
-            if (getView() != null){
+            if (getView() != null) {
                 String[] strings = new String[]{"First", "Second", "Three"};
                 // TODO: 19.12.2017 get school
                 getView().showPickerSchool(strings);
