@@ -26,7 +26,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_toLeftOf="@+id/school_district_volume"
-                    android:text="School district"
+                    android:text="@string/school_district"
                     android:textAlignment="center"
                     android:textAllCaps="true"
                     android:textColor="#ffffff"
@@ -59,7 +59,7 @@
                     android:layout_marginRight="8dp"
                     android:layout_toLeftOf="@+id/pass_passes_tv"
                     android:enabled="false"
-                    android:text="Not logged in"
+                    android:text="@string/not_logged_in"
                     android:textAlignment="center"
                     android:textAllCaps="true"
                     android:textSize="@dimen/text_size_middle" />
@@ -70,7 +70,7 @@
                     android:layout_height="wrap_content"
                     android:layout_centerVertical="true"
                     android:layout_toLeftOf="@+id/pass_district_data_et"
-                    android:text="Passes (0)"
+                    android:text="@string/passes_0"
                     android:textAllCaps="true"
                     android:textColor="@color/blue_no_thanks"
                     android:textSize="@dimen/text_size_small" />
@@ -83,7 +83,7 @@
                     android:layout_alignParentRight="true"
                     android:layout_centerVertical="true"
                     android:enabled="false"
-                    android:text="Jun 5 2016"
+                    tools:text="Jun 5 2016"
                     android:textAllCaps="true"
                     android:textSize="@dimen/text_size_middle" />
             </RelativeLayout>
@@ -95,7 +95,7 @@
                 android:background="#ff0000"
                 android:paddingBottom="8dp"
                 android:paddingTop="8dp"
-                android:text="School name"
+                android:text="@string/school_name"
                 android:textAlignment="center"
                 android:textAllCaps="true"
                 android:textColor="#ffffff"
@@ -126,7 +126,7 @@
                     <TextView
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="Current Room"
+                        android:text="@string/tv_current_room"
                         android:textAlignment="center"
                         android:textColor="@color/black" />
 
@@ -169,7 +169,7 @@
                     <TextView
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="Teacher"
+                        android:text="@string/tv_teacher"
                         android:textAlignment="center"
                         android:textColor="@color/black" />
 
@@ -212,7 +212,7 @@
                 android:background="#000000"
                 android:paddingBottom="4dp"
                 android:paddingTop="4dp"
-                android:text="Destination"
+                android:text="@string/tv_destination"
                 android:textAlignment="center"
                 android:textAllCaps="true"
                 android:textColor="#ffffff"
@@ -234,7 +234,7 @@
 
                         <TextView
                             style="@style/TextSwitchDestination"
-                            android:text="Restroom" />
+                            android:text="@string/tv_restroom" />
 
                         <com.kyleduo.switchbutton.SwitchButton
                             android:id="@+id/pass_restroom_sb"
@@ -248,7 +248,7 @@
 
                         <TextView
                             style="@style/TextSwitchDestination"
-                            android:text="Counselor" />
+                            android:text="@string/tv_counselor" />
 
                         <com.kyleduo.switchbutton.SwitchButton
                             android:id="@+id/pass_counselor_sb"
@@ -262,7 +262,7 @@
 
                         <TextView
                             style="@style/TextSwitchDestination"
-                            android:text="Main office" />
+                            android:text="@string/tv_main_office" />
 
                         <com.kyleduo.switchbutton.SwitchButton
                             android:id="@+id/pass_main_office_sb"
@@ -276,7 +276,7 @@
 
                         <TextView
                             style="@style/TextSwitchDestination"
-                            android:text="Student Services" />
+                            android:text="@string/tv_student_services" />
 
                         <com.kyleduo.switchbutton.SwitchButton
                             android:id="@+id/pass_student_service_sb"
@@ -291,7 +291,7 @@
 
                         <TextView
                             style="@style/TextSwitchDestination"
-                            android:text="Library" />
+                            android:text="@string/tv_library" />
 
                         <com.kyleduo.switchbutton.SwitchButton
                             android:id="@+id/pass_library_sb"
@@ -305,7 +305,7 @@
 
                         <TextView
                             style="@style/TextSwitchDestination"
-                            android:text="Clinic" />
+                            android:text="@string/tv_clinic" />
 
                         <com.kyleduo.switchbutton.SwitchButton
                             android:id="@+id/pass_clinic_sb"
@@ -319,7 +319,7 @@
 
                         <TextView
                             style="@style/TextSwitchDestination"
-                            android:text="Other" />
+                            android:text="@string/tv_other" />
 
                         <com.kyleduo.switchbutton.SwitchButton
                             android:id="@+id/pass_other_sb"
@@ -387,7 +387,7 @@
                 android:layout_marginLeft="0dp"
                 android:layout_marginRight="0dp"
                 android:enabled="false"
-                android:text="Details" />
+                android:text="@string/hint_details" />
 
         </LinearLayout>
 

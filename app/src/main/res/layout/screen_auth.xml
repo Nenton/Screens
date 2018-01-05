@@ -29,7 +29,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_alignParentLeft="true"
-                    android:text="Cancel" />
+                    android:text="@string/cancel" />
 
                 <Button
                     android:id="@+id/login_next_btn"
@@ -37,8 +37,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_alignParentRight="true"
-
-                    android:text="Next" />
+                    android:text="@string/next" />
             </RelativeLayout>
 
             <TextView
@@ -48,7 +47,7 @@
                 android:background="@color/red"
                 android:paddingBottom="4dp"
                 android:paddingTop="4dp"
-                android:text="Title"
+                android:text="@string/title"
                 android:textAlignment="center"
                 android:textAllCaps="true"
                 android:textColor="@color/white"
@@ -59,7 +58,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="8dp"
-                android:text="Create an account or Log in below"
+                android:text="@string/tv_create_account"
                 android:textAlignment="center"
                 android:textColor="@color/black"
                 android:textSize="@dimen/text_size_big" />
@@ -93,7 +92,7 @@
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
-                        android:text="New Account" />
+                        android:text="@string/new_account" />
 
                     <RadioButton
                         android:id="@+id/existing_account_rb"
@@ -102,7 +101,7 @@
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="8dp"
                         android:layout_weight="1"
-                        android:text="Existing Account" />
+                        android:text="@string/existing_account" />
                 </RadioGroup>
 
             </LinearLayout>
@@ -118,7 +117,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="8dp"
                 android:layout_marginTop="8dp"
-                android:text="Email address"
+                android:text="@string/email_address"
                 android:textAlignment="textStart"
                 android:textAllCaps="true"
                 android:textColor="@color/red"
@@ -144,7 +143,7 @@
                     android:layout_height="wrap_content"
                     android:layout_alignParentLeft="true"
                     android:layout_centerVertical="true"
-                    android:text="Password"
+                    android:text="@string/password"
                     android:textAllCaps="true"
                     android:textColor="@color/red"
                     android:textSize="@dimen/text_size_big"
@@ -157,7 +156,7 @@
                     android:layout_height="wrap_content"
                     android:layout_alignParentRight="true"
                     android:layout_centerVertical="true"
-                    android:text="Forgot Password" />
+                    android:text="@string/forgot_password" />
             </RelativeLayout>
 
             <EditText
@@ -180,7 +179,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="8dp"
                     android:layout_marginTop="8dp"
-                    android:text="Full name"
+                    android:text="@string/tv_full_name"
                     android:textAlignment="textStart"
                     android:textAllCaps="true"
                     android:textColor="@color/red"
@@ -204,7 +203,7 @@
                 android:background="@drawable/image"
                 android:paddingBottom="16dp"
                 android:paddingTop="16dp"
-                android:text="IMAGE"
+                android:text="@string/image"
                 android:textSize="@dimen/text_size_big" />
         </LinearLayout>
 

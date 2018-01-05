@@ -43,6 +43,8 @@ public class LoginActivity extends AppCompatActivity implements IRootView {
 
     @BindView(R.id.root_frame)
     FrameLayout mRootFrame;
+    @BindView(R.id.frame_progress_bar)
+    FrameLayout mProgressBarFrame;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -127,14 +129,13 @@ public class LoginActivity extends AppCompatActivity implements IRootView {
 
     @Override
     public void showLoad() {
-
+        mProgressBarFrame.setVisibility(View.VISIBLE);
     }
 
     @Override
     public void hideLoad() {
-
+        mProgressBarFrame.setVisibility(View.INVISIBLE);
     }
-
 
 
     @Nullable

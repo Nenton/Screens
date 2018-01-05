@@ -97,6 +97,7 @@ public class AuthScreen extends AbstractScreen<RootActivity.RootComponent> {
 
         public void clickCreateUser(String email, String pass, String fullName) {
             if (getView() != null && getRootView() != null) {
+                getRootView().showLoad();
                 mCompSubs.add(
                         mModel.createUser(email, pass, fullName)
                                 .subscribe(firebaseUser -> {
@@ -110,6 +111,7 @@ public class AuthScreen extends AbstractScreen<RootActivity.RootComponent> {
                                     } else {
                                         getRootView().showMessage(throwable.getMessage());
                                     }
+                                    getRootView().hideLoad();
                                 })
                 );
             }
@@ -118,6 +120,7 @@ public class AuthScreen extends AbstractScreen<RootActivity.RootComponent> {
 
         public void clickLogin(String email, String pass) {
             if (getView() != null && getRootView() != null) {
+                getRootView().showLoad();
                 mCompSubs.add(
                         mModel.loginUser(email, pass)
                                 .subscribe(firebaseUser -> {
@@ -132,6 +135,7 @@ public class AuthScreen extends AbstractScreen<RootActivity.RootComponent> {
                                             }));
                                 }, throwable -> {
                                     getRootView().showMessage(throwable.getMessage());
+                                    getRootView().hideLoad();
                                 })
                 );
             }

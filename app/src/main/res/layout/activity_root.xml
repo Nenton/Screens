@@ -19,6 +19,22 @@
                 android:layout_height="match_parent"
                 android:background="@android:color/white" />
 
+
+        <FrameLayout
+            android:id="@+id/frame_progress_bar"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:visibility="invisible"
+            android:background="@android:color/white">
+
+            <ProgressBar
+                android:id="@+id/progress_bar"
+                android:layout_width="48dp"
+                android:layout_height="48dp"
+                android:layout_gravity="center"
+                android:indeterminate="true" />
+        </FrameLayout>
+
         <android.support.design.widget.BottomNavigationView
             android:id="@+id/bottom_navigation"
             android:layout_width="match_parent"

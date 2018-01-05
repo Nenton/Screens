@@ -11,9 +11,9 @@ import com.nenton.schools.flow.Screen;
 import com.nenton.schools.mvp.model.AccountModel;
 import com.nenton.schools.mvp.presenters.AbstractPresenter;
 import com.nenton.schools.mvp.presenters.RootPresenter;
+import com.nenton.schools.mvp.views.IRootActivityView;
 import com.nenton.schools.ui.activities.RootActivity;
 import com.nenton.schools.ui.screens.auth.AuthScreen;
-import com.nenton.schools.ui.screens.schoolPass.SchoolPassScreen;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -88,25 +88,27 @@ public class AccountScreen extends AbstractScreen<RootActivity.RootComponent> {
         @Override
         protected void onLoad(Bundle savedInstanceState) {
             super.onLoad(savedInstanceState);
-            mRootPresenter.updateInfoAboutStatesDistricts();
+            mRootPresenter.updateInfoAboutStatesDistrictsSchools();
             mCompSubs.add(mModel.getUser().subscribe(new RealmSubscriber()));
         }
 
         public void clickComplete() {
-            if (verifyUserInfo() && getView() != null) {
+            if (getRootView() != null && getView() != null && verifyUserInfo() ) {
                 // TODO: 29.12.2017 Сохранить в Realm
+                RootActivity rootView = (RootActivity) getRootView();
                 Map<String, Object> mapFirebase = new HashMap<>();
-                mapFirebase.put("name", getView().getName());
-                mapFirebase.put("email", getView().getEmail());
-                mapFirebase.put("grade", getView().getGrade());
-                mapFirebase.put("state", getView().getState());
-                mapFirebase.put("schoolDistrict", getView().getDistrict());
-                mapFirebase.put("schoolType", getView().getTypeEducation());
-                mapFirebase.put("schoolName", getView().getSchools());
+                mapFirebase.put(rootView.getResources().getString(R.string.user_name), getView().getName());
+                mapFirebase.put(rootView.getResources().getString(R.string.user_email), getView().getEmail());
+                mapFirebase.put(rootView.getResources().getString(R.string.user_telephone), getView().getTelephone());
+//                mapFirebase.put("grade", getView().getGrade());
+//                mapFirebase.put("state", getView().getState());
+//                mapFirebase.put("schoolDistrict", getView().getDistrict());
+//                mapFirebase.put("schoolType", getView().getTypeEducation());
+                mapFirebase.put(rootView.getResources().getString(R.string.user_school_name), getView().getSchools());
 
-                mModel.saveUserInfo(mapFirebase);
-
-                Flow.get(getView()).set(new SchoolPassScreen());
+                mModel.saveUserInfo(getView().getContext(), mapFirebase);
+                getRootView().showMessage("Changes saved!");
+//                Flow.get(getView()).set(new SchoolPassScreen());
             } else {
                 getView().showNotCompleted();
 //                getRootView().showMessage("Not complete registration");
@@ -138,13 +140,12 @@ public class AccountScreen extends AbstractScreen<RootActivity.RootComponent> {
         public void clickOnLogout() {
             mModel.logoutUser();
             Flow.get(getView()).set(new AuthScreen());
+            // TODO: 05.01.2018 clear user realm
         }
 
         public void clickOnGrade() {
             if (getView() != null) {
-                String[] strings = new String[]{"First", "Second", "Three"};
-                // TODO: 19.12.2017 get grade
-                getView().showPickerGrade(strings);
+                getView().showPickerGrade(mModel.getGrades());
             }
         }
 
@@ -152,7 +153,7 @@ public class AccountScreen extends AbstractScreen<RootActivity.RootComponent> {
             if (getView() != null) {
                 String[] strings = new String[]{"First", "Second", "Three"};
                 // TODO: 19.12.2017 get school
-                getView().showPickerSchool(strings);
+                getView().showPickerSchool(mModel.getSchools());
             }
         }
 

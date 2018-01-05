@@ -64,6 +64,8 @@ public class RootActivity extends AppCompatActivity implements IRootActivityView
     CoordinatorLayout mCoordinatorLayout;
     @BindView(R.id.bottom_navigation)
     BottomNavigationView mBottomNavigationView;
+    @BindView(R.id.frame_progress_bar)
+    FrameLayout mProgressBarFrame;
 
     private Toast mToast;
 
@@ -190,7 +192,7 @@ public class RootActivity extends AppCompatActivity implements IRootActivityView
     }
 
     @Override
-    public Object getSystemService(String name) {
+    public Object getSystemService(@NonNull String name) {
         MortarScope rootActivityScope = MortarScope.findChild(getApplicationContext(), RootActivity.class.getName());
         return rootActivityScope.hasService(name) ? rootActivityScope.getService(name) : super.getSystemService(name);
     }
@@ -224,13 +226,12 @@ public class RootActivity extends AppCompatActivity implements IRootActivityView
 
     @Override
     public void showLoad() {
-// TODO: 07.11.2017 реализовать
-
+        mProgressBarFrame.setVisibility(View.VISIBLE);
     }
 
     @Override
     public void hideLoad() {
-// TODO: 07.11.2017 реализовать
+        mProgressBarFrame.setVisibility(View.INVISIBLE);
     }
 
 

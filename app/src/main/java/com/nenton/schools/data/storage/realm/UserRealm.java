@@ -1,9 +1,7 @@
 package com.nenton.schools.data.storage.realm;
 
-import java.io.Serializable;
-import java.util.List;
+import com.nenton.schools.data.storage.dto.UserDto;
 
-import io.realm.RealmList;
 import io.realm.RealmObject;
 import io.realm.annotations.PrimaryKey;
 
@@ -22,58 +20,29 @@ public class UserRealm extends RealmObject {
     private String fbAccountImg;
     private String name;
     private String phone;
-    private String grade;
-    private String schoolCity;
-    private String schoolDistrict;
-    private String schoolId;
-    private String schoolName;
-    private String schoolPeopleMyUrl;
-    private String schoolPhone;
-    private String schoolPosition;
-    private String schoolStreet;
-    private String schoolType;
-    private String schoolZip;
-    private String state;
+    private SchoolRealm school;
     private boolean studentVerified;
     private String teacherRoom;
 
     public UserRealm() {
     }
 
-    public UserRealm(String email, String uid, String fullName) {
-        this.id = uid;
-        this.email = email;
-        this.name = fullName;
+    public UserRealm(UserDto user) {
+        this.id = user.getId();
+        this.email = user.getEmail();
+        this.name = user.getName();
         this.accountType = "";
         this.educatorVerified = false;
         this.fbAccountImg = "";
         this.phone = "";
-        this.schoolCity = "";
-        this.schoolDistrict = "";
-        this.schoolId = "";
-        this.schoolName = "";
-        this.schoolPhone = "";
-        this.schoolPeopleMyUrl = "";
-        this.schoolPosition = "";
-        this.schoolStreet = "";
-        this.schoolType = "";
-        this.schoolZip = "";
-        this.state = "";
+        this.school = null;
         this.accountType = "";
         this.studentVerified = false;
         this.teacherRoom = "";
     }
 
-    public void setId(String id) {
-        this.id = id;
-    }
-
-    public void setEmail(String email) {
-        this.email = email;
-    }
-
-    public void setName(String name) {
-        this.name = name;
+    public SchoolRealm getSchool() {
+        return school;
     }
 
     public String getId() {
@@ -104,50 +73,6 @@ public class UserRealm extends RealmObject {
         return phone;
     }
 
-    public String getSchoolCity() {
-        return schoolCity;
-    }
-
-    public String getSchoolDistrict() {
-        return schoolDistrict;
-    }
-
-    public String getSchoolId() {
-        return schoolId;
-    }
-
-    public String getSchoolName() {
-        return schoolName;
-    }
-
-    public String getSchoolPeopleMyUrl() {
-        return schoolPeopleMyUrl;
-    }
-
-    public String getSchoolPhone() {
-        return schoolPhone;
-    }
-
-    public String getSchoolPosition() {
-        return schoolPosition;
-    }
-
-    public String getSchoolStreet() {
-        return schoolStreet;
-    }
-
-    public String getSchoolType() {
-        return schoolType;
-    }
-
-    public String getSchoolZip() {
-        return schoolZip;
-    }
-
-    public String getState() {
-        return state;
-    }
-
     public boolean isStudentVerified() {
         return studentVerified;
     }
@@ -156,7 +81,19 @@ public class UserRealm extends RealmObject {
         return teacherRoom;
     }
 
-    public String getGrade() {
-        return grade;
+    public void setTelephone(String phone) {
+
+    }
+
+    public void setSchool(String id) {
+
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
     }
 }

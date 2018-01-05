@@ -10,12 +10,19 @@ import io.realm.annotations.PrimaryKey;
 public class StateRealm extends RealmObject {
 
     @PrimaryKey
+    private String id;
+
+    public String getId() {
+        return id;
+    }
+
     private String mState;
 
     public StateRealm() {
     }
 
-    public StateRealm(String state) {
+    public StateRealm(String id, String state) {
+        this.id = id;
         this.mState = state;
     }
 

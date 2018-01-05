@@ -4,7 +4,6 @@ import android.content.Intent;
 import android.os.Build;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
-import android.support.v4.view.ViewPager;
 
 import com.nenton.schools.data.managers.DataManager;
 import com.nenton.schools.data.storage.dto.ActivityResultDto;
@@ -77,8 +76,8 @@ public class RootPresenter extends Presenter<IRootView> {
         DataManager.getInstance().updateUserInfo();
     }
 
-    public void updateInfoAboutStatesDistricts(){
-        DataManager.getInstance().uploadStatesDistricts();
+    public void updateInfoAboutStatesDistrictsSchools(){
+        DataManager.getInstance().uploadStatesDistrictsSchools();
     }
 
     public class RootActivityBarBuilder {

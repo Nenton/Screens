@@ -8,9 +8,9 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 import com.nenton.schools.data.network.RestCallTransformer;
 import com.nenton.schools.data.network.RestService;
-import com.nenton.schools.data.storage.dto.RoomsDto;
+import com.nenton.schools.data.storage.dto.RoomDto;
+import com.nenton.schools.data.storage.dto.SchoolDto;
 import com.nenton.schools.data.storage.realm.RoomRealm;
-import com.nenton.schools.data.storage.realm.StateRealm;
 import com.nenton.schools.data.storage.realm.UserRealm;
 import com.nenton.schools.di.DaggerService;
 import com.nenton.schools.di.components.DaggerDataManagerComponent;
@@ -91,10 +91,7 @@ public class DataManager {
                 .flatMap(userRealm -> {
                     boolean isComplete = !userRealm.getName().isEmpty() &&
                             !userRealm.getEmail().isEmpty() &&
-                            !userRealm.getState().isEmpty() &&
-//                            !userRealm.getSchoolDistrict().isEmpty() &&
-                            !userRealm.getSchoolName().isEmpty() &&
-                            !userRealm.getSchoolPosition().isEmpty();
+                            userRealm.getSchool() != null;
                     return Observable.just(isComplete);
                 });
     }
@@ -104,39 +101,35 @@ public class DataManager {
 
         return !userRealm.getName().isEmpty() &&
                 !userRealm.getEmail().isEmpty() &&
-                !userRealm.getGrade().isEmpty() &&
-                !userRealm.getState().isEmpty() &&
-                !userRealm.getSchoolDistrict().isEmpty() &&
-                !userRealm.getSchoolType().isEmpty() &&
-                !userRealm.getSchoolName().isEmpty();
+                userRealm.getSchool() != null;
     }
 
-    public void saveRoomsOfSchool(){
+    public void saveRoomsOfSchool() {
         String uid = FireBaseManager.getInstance().getFirebaseAuth().getCurrentUser().getUid();
 //        if (!mPreferencesManager.getSchoolByUser().isEmpty()) {
-            FirebaseDatabase firebaseDatabase = FireBaseManager.getInstance().getFirebaseDatabase();
-            firebaseDatabase.getReference().child("schools").child(mRealmManager.getSchoolByUser(uid)).child("rooms").addValueEventListener(new ValueEventListener() {
-                @Override
-                public void onDataChange(DataSnapshot dataSnapshot) {
-                    for (DataSnapshot postSnapshot: dataSnapshot.getChildren()) {
-                        saveRoomsOfSchoolToRealm(postSnapshot.getValue(RoomsDto.class));
-                    }
+        FirebaseDatabase firebaseDatabase = FireBaseManager.getInstance().getFirebaseDatabase();
+        firebaseDatabase.getReference().child("schools").child(mRealmManager.getSchoolByUser(uid).getId()).child("rooms").addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                for (DataSnapshot postSnapshot : dataSnapshot.getChildren()) {
+                    saveRoomsOfSchoolToRealm(postSnapshot.getValue(RoomDto.class));
                 }
+            }
 
-                @Override
-                public void onCancelled(DatabaseError databaseError) {
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
 
-                }
-            });
+            }
+        });
 //        }
     }
 
     public List<RoomRealm> getRoomsOfSchool() {
-        return mRealmManager.getRoomsOfSchool(mRealmManager.getSchoolByUser(FireBaseManager.getInstance().getFirebaseAuth().getCurrentUser().getUid()));
+        return mRealmManager.getRoomsOfSchool(mRealmManager.getSchoolByUser(FireBaseManager.getInstance().getFirebaseAuth().getCurrentUser().getUid()).getId());
     }
 
-    private void saveRoomsOfSchoolToRealm(RoomsDto value) {
-        mRealmManager.saveRoomsOfSchool(value, mRealmManager.getSchoolByUser(FireBaseManager.getInstance().getFirebaseAuth().getCurrentUser().getUid()));
+    private void saveRoomsOfSchoolToRealm(RoomDto value) {
+        mRealmManager.saveRoomsOfSchool(value);
     }
 
     public void deleteUserFromRealm(String uid) {
@@ -162,16 +155,17 @@ public class DataManager {
         }
     }
 
-    public void uploadStatesDistricts() {
+    public void uploadStatesDistrictsSchools() {
         FireBaseManager instance = FireBaseManager.getInstance();
         DatabaseReference states = instance.getFirebaseDatabase().getReference().child("states");
-        if (states != null){
+        if (states != null) {
             states.addValueEventListener(new ValueEventListener() {
                 @Override
                 public void onDataChange(DataSnapshot dataSnapshot) {
                     for (DataSnapshot data : dataSnapshot.getChildren()) {
                         String stateRealm = data.getValue(String.class);
-                        mRealmManager.saveState(stateRealm);
+                        String stateKey = data.getKey();
+                        mRealmManager.saveState(stateKey, stateRealm);
                     }
                 }
 
@@ -183,13 +177,31 @@ public class DataManager {
         }
 
         DatabaseReference districts = instance.getFirebaseDatabase().getReference().child("districts");
-        if (districts != null){
+        if (districts != null) {
             districts.addValueEventListener(new ValueEventListener() {
                 @Override
                 public void onDataChange(DataSnapshot dataSnapshot) {
                     for (DataSnapshot data : dataSnapshot.getChildren()) {
                         String districtRealm = data.getValue(String.class);
-                        mRealmManager.saveDistrict(districtRealm);
+                        mRealmManager.saveDistrict(data.getKey(), districtRealm);
+                    }
+                }
+
+                @Override
+                public void onCancelled(DatabaseError databaseError) {
+
+                }
+            });
+        }
+
+        DatabaseReference schools = instance.getFirebaseDatabase().getReference().child("schools");
+        if (schools != null) {
+            schools.addValueEventListener(new ValueEventListener() {
+                @Override
+                public void onDataChange(DataSnapshot dataSnapshot) {
+                    for (DataSnapshot data : dataSnapshot.getChildren()) {
+                        SchoolDto value = data.getValue(SchoolDto.class);
+                        mRealmManager.saveSchool(value);
                     }
                 }
 

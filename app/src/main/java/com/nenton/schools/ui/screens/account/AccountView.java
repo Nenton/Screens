@@ -11,6 +11,7 @@ import android.widget.RadioButton;
 import android.widget.RadioGroup;
 
 import com.nenton.schools.R;
+import com.nenton.schools.data.storage.realm.SchoolRealm;
 import com.nenton.schools.data.storage.realm.UserRealm;
 import com.nenton.schools.di.DaggerService;
 import com.nenton.schools.mvp.views.AbstractView;
@@ -58,6 +59,8 @@ public class AccountView extends AbstractView<AccountScreen.AccountPresenter> {
     ImageButton mPhone;
     @BindView(R.id.reg_school_position_et)
     EditText mSchoolPosition;
+    @BindView(R.id.et_user_phone)
+    EditText mUserPhone;
 
     public AccountView(Context context, AttributeSet attrs) {
         super(context, attrs);
@@ -107,13 +110,17 @@ public class AccountView extends AbstractView<AccountScreen.AccountPresenter> {
         mUserName.setText(user.getName());
         mUserEmail.setText(user.getEmail());
         mUserId.setText(user.getId());
-        mUserGrage.setText(user.getGrade());
-        mUserState.setText(user.getState());
-        mUserDistrict.setText(user.getSchoolDistrict());
-        mEducation.setText(user.getSchoolName());
+        mUserPhone.setText(user.getPhone());
+
+//        mUserGrage.setText(user.getGrade()); // TODO: 04.01.2018 посмотреть что такое grade
+        if (user.getSchool() != null){
+            mUserState.setText(user.getSchool().getSchoolState().getState());
+            mUserDistrict.setText(user.getSchool().getSchoolDistrict().getDistrict());
+            mEducation.setText(user.getSchool().getSchoolType());
+        }
     }
 
-    //region getters
+    //regiongetters
 
     public String getName() {
         return mUserName.getText().toString();
@@ -135,6 +142,11 @@ public class AccountView extends AbstractView<AccountScreen.AccountPresenter> {
         return mUserDistrict.getText().toString();
     }
 
+
+    public String getTelephone() {
+        return mUserPhone.getText().toString();
+    }
+
     public String getTypeEducation() {
         return ((RadioButton) findViewById(mTypeEducation.getCheckedRadioButtonId())).getText().toString();
         // TODO: 29.12.2017 как то более правильно получить строку
@@ -154,7 +166,7 @@ public class AccountView extends AbstractView<AccountScreen.AccountPresenter> {
 
     public void showPickerState(String[] strings) {
         NumberPicker numberPicker = new NumberPicker(getContext());
-                numberPicker.setDisplayedValues(strings);
+        numberPicker.setDisplayedValues(strings);
         numberPicker.setMinValue(0);
         numberPicker.setMaxValue(strings.length - 1);
         numberPicker.getValue();
@@ -245,4 +257,5 @@ public class AccountView extends AbstractView<AccountScreen.AccountPresenter> {
                 .create()
                 .show();
     }
+
 }

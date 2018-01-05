@@ -2,7 +2,8 @@
 <com.nenton.schools.ui.screens.account.AccountView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    xmlns:tools="http://schemas.android.com/tools">
 
     <android.support.v4.widget.NestedScrollView
         android:layout_width="match_parent"
@@ -73,7 +74,7 @@
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:text="Student" />
+                    android:text="@string/auth_student" />
 
                 <RadioButton
                     android:id="@+id/reg_educator_rb"
@@ -82,7 +83,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="8dp"
                     android:layout_weight="1"
-                    android:text="Educator" />
+                    android:text="@string/auth_educator" />
             </RadioGroup>
 
             <View
@@ -95,6 +96,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginRight="8dp"
+                android:baselineAligned="false"
                 android:orientation="horizontal"
                 android:paddingTop="8dp">
 
@@ -111,8 +113,9 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginBottom="8dp"
-                        android:hint="NAME"
-                        android:textAlignment="center" />
+                        android:hint="@string/hint_name"
+                        android:textAlignment="center"
+                        android:textAllCaps="true" />
 
                     <EditText
                         android:id="@+id/reg_user_email"
@@ -120,7 +123,8 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginBottom="8dp"
-                        android:hint="E-MAIL"
+                        android:hint="@string/hint_email"
+                        android:inputType="textEmailAddress"
                         android:textAlignment="center" />
 
                     <EditText
@@ -130,20 +134,23 @@
                         android:layout_height="wrap_content"
                         android:layout_marginBottom="8dp"
                         android:enabled="false"
-                        android:hint="ID#"
+                        android:hint="@string/hint_id"
                         android:textAlignment="center" />
 
                     <EditText
+                        android:id="@+id/et_user_phone"
                         style="@style/Field"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:inputType="textPassword" />
+                        android:hint="@string/hint_telephone"
+                        android:inputType="phone"
+                        android:textAlignment="center" />
 
                     <TextView
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="8dp"
-                        android:text="Grade"
+                        android:text="@string/tv_grade"
                         android:textAlignment="center"
                         android:textAllCaps="true"
                         android:textColor="@color/black"
@@ -156,7 +163,7 @@
                         android:layout_marginLeft="8dp"
                         android:layout_marginTop="8dp"
                         android:background="@drawable/light_blue_btn_state"
-                        android:text="------------" />
+                        android:text="@string/hint_pickers" />
 
                 </LinearLayout>
 
@@ -179,7 +186,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="8dp"
-                        android:text="My classrooms (0)"
+                        android:text="@string/button_my_classrooms"
                         android:textColor="@color/blue_btn"
                         android:textSize="@dimen/text_size_small" />
 
@@ -189,7 +196,7 @@
                         android:layout_height="wrap_content"
                         android:layout_marginTop="8dp"
                         android:background="@drawable/red_btn_state"
-                        android:text="Logout"
+                        android:text="@string/logout"
                         android:textColor="@color/red_btn"
                         android:textSize="@dimen/text_size_middle" />
                 </LinearLayout>
@@ -201,7 +208,7 @@
                 android:layout_marginTop="8dp"
                 android:background="@color/black"
                 android:padding="4dp"
-                android:text="School information"
+                android:text="@string/tv_school_information"
                 android:textAlignment="center"
                 android:textAllCaps="true"
                 android:textColor="@color/white"
@@ -225,7 +232,7 @@
                     <TextView
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="State"
+                        android:text="@string/tv_state"
                         android:textAlignment="center"
                         android:textAllCaps="true"
                         android:textColor="#000000"
@@ -237,7 +244,7 @@
                         android:layout_height="wrap_content"
                         android:layout_marginTop="8dp"
                         android:background="@drawable/light_blue_btn_state"
-                        android:text="------------" />
+                        android:text="@string/hint_pickers" />
                 </LinearLayout>
 
                 <LinearLayout
@@ -250,7 +257,7 @@
                     <TextView
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="District"
+                        android:text="@string/tv_district"
                         android:textAlignment="center"
                         android:textAllCaps="true"
                         android:textColor="#000000"
@@ -262,7 +269,7 @@
                         android:layout_height="wrap_content"
                         android:layout_marginTop="8dp"
                         android:background="@drawable/light_blue_btn_state"
-                        android:text="------------" />
+                        android:text="@string/hint_pickers" />
                 </LinearLayout>
             </LinearLayout>
 
@@ -288,7 +295,7 @@
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:text="Elementary" />
+                    android:text="@string/school_elementary" />
 
                 <RadioButton
                     android:id="@+id/reg_ir_high_rb"
@@ -297,7 +304,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="8dp"
                     android:layout_weight="1"
-                    android:text="Jr. High" />
+                    android:text="@string/school_jr_high" />
 
                 <RadioButton
                     android:id="@+id/reg_sr_high_rb"
@@ -306,7 +313,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="8dp"
                     android:layout_weight="1"
-                    android:text="Sr. High" />
+                    android:text="@string/school_sr_high" />
 
                 <RadioButton
                     android:id="@+id/reg_all_rb"
@@ -315,7 +322,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="8dp"
                     android:layout_weight="1"
-                    android:text="All" />
+                    android:text="@string/school_all" />
             </RadioGroup>
 
             <View
@@ -335,7 +342,7 @@
                     android:layout_height="wrap_content"
                     android:layout_toLeftOf="@+id/reg_add_school"
                     android:background="@drawable/light_blue_btn_state"
-                    android:text="------------" />
+                    android:text="@string/hint_pickers" />
 
                 <ImageButton
                     android:id="@+id/reg_add_school"
@@ -395,7 +402,7 @@
                     android:background="@color/white_transparent"
                     android:enabled="false"
                     android:minLines="3"
-                    android:text="123 Sesame Street Miami, FL 33056 305-502-3535"
+                    tools:text="123 Sesame Street Miami, FL 33056 305-502-3535"
                     android:textSize="@dimen/text_size_middle" />
             </RelativeLayout>
 
@@ -413,7 +420,7 @@
                     android:layout_height="wrap_content"
                     android:background="@drawable/text_stroke"
                     android:padding="2dp"
-                    android:text="Text for switch"
+                    android:text="@string/account_text_switch"
                     android:textAllCaps="true"
                     android:textColor="@color/black"
                     android:textSize="@dimen/text_size_big" />

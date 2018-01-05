@@ -10,12 +10,19 @@ import io.realm.annotations.PrimaryKey;
 public class DistrictRealm extends RealmObject{
 
     @PrimaryKey
+    private String id;
     private String mDistrict;
+
 
     public DistrictRealm() {
     }
 
-    public DistrictRealm(String district) {
+    public String getId() {
+        return id;
+    }
+
+    public DistrictRealm(String id, String district) {
+        this.id = id;
         this.mDistrict = district;
     }
 

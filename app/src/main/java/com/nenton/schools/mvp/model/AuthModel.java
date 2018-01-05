@@ -9,6 +9,7 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 import com.nenton.schools.data.managers.FireBaseManager;
+import com.nenton.schools.data.storage.dto.UserDto;
 import com.nenton.schools.data.storage.realm.UserRealm;
 
 import rx.Observable;
@@ -70,11 +71,9 @@ public class AuthModel extends AbstractModel {
     public Observable<FirebaseUser> createUser(String email, String pass, String fullName) {
         return createUserObs(email, pass)
                 .doOnNext(firebaseUser -> {
-                    UserRealm userRealm = new UserRealm(firebaseUser.getEmail(), firebaseUser.getUid(), fullName);
-                    userRealm.setEmail(firebaseUser.getEmail());
-                    userRealm.setId(firebaseUser.getUid());
-                    userRealm.setName(fullName);
-                    mDB.getReference().child("users").child(firebaseUser.getUid()).setValue(userRealm);
+                    UserDto user = new UserDto(firebaseUser.getEmail(), firebaseUser.getUid(), fullName);
+                    mDB.getReference().child("users").child(firebaseUser.getUid()).setValue(user);
+                    mDataManager.getRealmManager().saveUserInfo(new UserRealm(user));
                 });
     }
 

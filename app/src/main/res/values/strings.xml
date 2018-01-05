@@ -6,8 +6,65 @@
     <string name="roboto_light">sans-serif-light</string>
     <string name="roboto_medium">sans-serif-medium</string>
 
+
+
+
+    <string name="user_name">name</string>
+    <string name="user_email">email</string>
+    <string name="user_telephone">phone</string>
+
+    <string name="user_school_name">schoolName</string>
+
+
+
+
+
     <string name="open_drawer">open</string>
     <string name="close_drawer">close</string>
     <string name="title_activity_auth">AuthActivity</string>
     <string name="title_activity_login">LoginActivity</string>
+    <string name="auth_student">Student</string>
+    <string name="auth_educator">Educator</string>
+    <string name="hint_name">Name</string>
+    <string name="hint_email">e-mail</string>
+    <string name="hint_id">Id</string>
+    <string name="hint_telephone">Telephone number</string>
+    <string name="tv_grade">Grade</string>
+    <string name="hint_pickers">------------</string>
+    <string name="button_my_classrooms">My classrooms (0)</string>
+    <string name="logout">Logout</string>
+    <string name="tv_school_information">School information</string>
+    <string name="tv_state">State</string>
+    <string name="tv_district">District</string>
+    <string name="school_elementary">Elementary</string>
+    <string name="school_jr_high">Jr. High</string>
+    <string name="school_sr_high">Sr. High</string>
+    <string name="school_all">All</string>
+    <string name="account_text_switch">Text for switch</string>
+    <string name="cancel">Cancel</string>
+    <string name="next">Next</string>
+    <string name="title">Title</string>
+    <string name="tv_create_account">Create an account or Log in below</string>
+    <string name="new_account">New Account</string>
+    <string name="existing_account">Existing Account</string>
+    <string name="email_address">E-mail address</string>
+    <string name="password">Password</string>
+    <string name="forgot_password">Forgot Password</string>
+    <string name="tv_full_name">Full name</string>
+    <string name="image">IMAGE</string>
+    <string name="school_district">School district</string>
+    <string name="not_logged_in">Not logged in</string>
+    <string name="passes_0">Passes (0)</string>
+    <string name="school_name">School name</string>
+    <string name="tv_current_room">Current Room</string>
+    <string name="tv_teacher">Teacher</string>
+    <string name="tv_destination">Destination</string>
+    <string name="tv_restroom">Restroom</string>
+    <string name="tv_counselor">Counselor</string>
+    <string name="tv_main_office">Main office</string>
+    <string name="tv_student_services">Student Services</string>
+    <string name="tv_library">Library</string>
+    <string name="tv_clinic">Clinic</string>
+    <string name="tv_other">Other</string>
+    <string name="hint_details">Details</string>
 </resources>
