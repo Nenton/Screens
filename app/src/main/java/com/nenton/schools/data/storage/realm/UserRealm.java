@@ -82,11 +82,11 @@ public class UserRealm extends RealmObject {
     }
 
     public void setTelephone(String phone) {
-
+        this.phone = phone;
     }
 
-    public void setSchool(String id) {
-
+    public void setSchool(SchoolRealm school) {
+        this.school = school;
     }
 
     public void setName(String name) {

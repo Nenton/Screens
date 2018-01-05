@@ -4,7 +4,6 @@ import android.content.Context;
 import android.support.annotation.Nullable;
 
 import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.FirebaseDatabase;
 import com.nenton.schools.data.managers.FireBaseManager;
 import com.nenton.schools.data.storage.realm.DistrictRealm;
@@ -77,13 +76,12 @@ public class AccountModel extends AbstractModel {
         return strings;
     }
 
-    public String[] getSchools() {
-        List<SchoolRealm> mSchools = mDataManager.getRealmManager().getSchools();
-        String[] strings = new String[mSchools.size()];
-        for (int i = 0; i < mSchools.size(); i++) {
-            strings[i] = mSchools.get(i).getName();
-        }
-        return strings;
+    public List<SchoolRealm> getSchools() {
+        return mDataManager.getRealmManager().getSchools();
+    }
+
+    public void deleteUserFromRealm() {
+        mDataManager.getRealmManager().deleteUserFromRealm();
     }
 
 //    @Nullable

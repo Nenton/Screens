@@ -16,6 +16,8 @@ import com.nenton.schools.data.storage.realm.UserRealm;
 import com.nenton.schools.di.DaggerService;
 import com.nenton.schools.mvp.views.AbstractView;
 
+import java.util.List;
+
 import butterknife.BindView;
 import butterknife.OnClick;
 
@@ -47,8 +49,8 @@ public class AccountView extends AbstractView<AccountScreen.AccountPresenter> {
 
     @BindView(R.id.reg_type_education_rg)
     RadioGroup mTypeEducation;
-    @BindView(R.id.reg_education)
-    Button mEducation;
+    @BindView(R.id.reg_school)
+    Button mSchool;
     @BindView(R.id.reg_add_school)
     ImageButton mAddSchool;
     @BindView(R.id.reg_geo)
@@ -91,7 +93,7 @@ public class AccountView extends AbstractView<AccountScreen.AccountPresenter> {
         mPresenter.clickOnGrade();
     }
 
-    @OnClick(R.id.reg_education)
+    @OnClick(R.id.reg_school)
     public void clickOnSchool() {
         mPresenter.clickOnSchool();
     }
@@ -113,10 +115,11 @@ public class AccountView extends AbstractView<AccountScreen.AccountPresenter> {
         mUserPhone.setText(user.getPhone());
 
 //        mUserGrage.setText(user.getGrade()); // TODO: 04.01.2018 посмотреть что такое grade
-        if (user.getSchool() != null){
+        if (user.getSchool() != null) {
             mUserState.setText(user.getSchool().getSchoolState().getState());
             mUserDistrict.setText(user.getSchool().getSchoolDistrict().getDistrict());
-            mEducation.setText(user.getSchool().getSchoolType());
+            mSchool.setText(user.getSchool().getName());
+            mSchoolPosition.setText(user.getSchool().getPosition());
         }
     }
 
@@ -153,12 +156,7 @@ public class AccountView extends AbstractView<AccountScreen.AccountPresenter> {
     }
 
     public String getSchools() {
-        return mEducation.getText().toString();
-        // TODO: 10.11.2017 перевести на множество школ
-    }
-
-    public String getSchoolPosition() {
-        return mSchoolPosition.getText().toString();
+        return mSchool.getText().toString();
     }
 
     //end region
@@ -238,7 +236,12 @@ public class AccountView extends AbstractView<AccountScreen.AccountPresenter> {
 
     }
 
-    public void showPickerSchool(String[] strings) {
+    public void showPickerSchool(List<SchoolRealm> array) {
+        String[] strings = new String[array.size()];
+        for (int i = 0; i < array.size(); i++) {
+            strings[i] = array.get(i).getName();
+        }
+
         NumberPicker numberPicker = new NumberPicker(getContext());
         numberPicker.setDisplayedValues(strings);
         numberPicker.setMinValue(0);
@@ -249,13 +252,19 @@ public class AccountView extends AbstractView<AccountScreen.AccountPresenter> {
         builder.setTitle("Choose School")
                 .setView(numberPicker)
                 .setPositiveButton("Ok", (dialogInterface, i) -> {
-                    mEducation.setText(strings[numberPicker.getValue()]);
+                    mPresenter.choiceSchool(numberPicker.getValue());
                 })
                 .setNegativeButton("Cancel", (dialogInterface, i) -> {
                     dialogInterface.dismiss();
                 })
                 .create()
                 .show();
+    }
+
+    public void changeSchool(SchoolRealm school) {
+        mSchool.setText(school.getName());
+        mUserState.setText(school.getSchoolState().getState());
+        mUserDistrict.setText(school.getSchoolDistrict().getDistrict());
     }
 
 }

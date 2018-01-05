@@ -1,6 +1,7 @@
 package com.nenton.schools.data.managers;
 
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -10,6 +11,7 @@ import com.nenton.schools.data.network.RestCallTransformer;
 import com.nenton.schools.data.network.RestService;
 import com.nenton.schools.data.storage.dto.RoomDto;
 import com.nenton.schools.data.storage.dto.SchoolDto;
+import com.nenton.schools.data.storage.dto.UserDto;
 import com.nenton.schools.data.storage.realm.RoomRealm;
 import com.nenton.schools.data.storage.realm.UserRealm;
 import com.nenton.schools.di.DaggerService;
@@ -19,6 +21,7 @@ import com.nenton.schools.di.modules.LocalModule;
 import com.nenton.schools.di.modules.NetworkModule;
 import com.nenton.schools.utils.App;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.inject.Inject;
@@ -82,8 +85,8 @@ public class DataManager {
         mRestCallTransformer = new RestCallTransformer<>();
     }
 
-    public void saveUserToRealm(UserRealm userRealm) {
-        mRealmManager.saveUserInfo(userRealm);
+    public void saveUserToRealm(UserRealm user, String schoolId) {
+        mRealmManager.saveUserInfo(user, schoolId);
     }
 
     public Observable<Boolean> checkCompleteRegistrationObs() {
@@ -106,7 +109,6 @@ public class DataManager {
 
     public void saveRoomsOfSchool() {
         String uid = FireBaseManager.getInstance().getFirebaseAuth().getCurrentUser().getUid();
-//        if (!mPreferencesManager.getSchoolByUser().isEmpty()) {
         FirebaseDatabase firebaseDatabase = FireBaseManager.getInstance().getFirebaseDatabase();
         firebaseDatabase.getReference().child("schools").child(mRealmManager.getSchoolByUser(uid).getId()).child("rooms").addValueEventListener(new ValueEventListener() {
             @Override
@@ -121,11 +123,15 @@ public class DataManager {
 
             }
         });
-//        }
     }
 
     public List<RoomRealm> getRoomsOfSchool() {
-        return mRealmManager.getRoomsOfSchool(mRealmManager.getSchoolByUser(FireBaseManager.getInstance().getFirebaseAuth().getCurrentUser().getUid()).getId());
+        FirebaseUser currentUser = FireBaseManager.getInstance().getFirebaseAuth().getCurrentUser();
+        if (currentUser != null){
+            return mRealmManager.getSchoolByUser(currentUser.getUid()).getRoomRealms();
+        } else {
+            return new ArrayList<>();
+        }
     }
 
     private void saveRoomsOfSchoolToRealm(RoomDto value) {
@@ -143,8 +149,10 @@ public class DataManager {
             user.addValueEventListener(new ValueEventListener() {
                 @Override
                 public void onDataChange(DataSnapshot dataSnapshot) {
-                    UserRealm userRealm = dataSnapshot.getValue(UserRealm.class);
-                    saveUserToRealm(userRealm);
+                    UserDto user = dataSnapshot.getValue(UserDto.class);
+                    if (user != null){
+                        saveUserToRealm(new UserRealm(user), user.getSchoolId());
+                    }
                 }
 
                 @Override

@@ -44,23 +44,30 @@ public class RealmManager {
         realm.close();
     }
 
-    public void saveUserInfo(UserRealm userRealm) {
+    public void saveUserInfo(UserRealm user, String schoolId) {
+        SchoolRealm school = getQueryRealmInstance().where(SchoolRealm.class)
+                .equalTo("id", schoolId)
+                .findFirst();
+        user.setSchool(school);
         Realm realm = Realm.getDefaultInstance();
         realm.executeTransaction(realm1 -> {
-            realm.insertOrUpdate(userRealm);
+            realm.insertOrUpdate(user);
         });
         realm.close();
     }
 
 
     public void saveUserInfo(Context context, Map<String, Object> mapFirebase) {
+        SchoolRealm school = getQueryRealmInstance().where(SchoolRealm.class)
+                .equalTo("id", mapFirebase.get(context.getResources().getString(R.string.user_school_id)).toString())
+                .findFirst();
         Realm realm = Realm.getDefaultInstance();
         realm.executeTransaction(realm1 -> {
             UserRealm userRealm = realm.where(UserRealm.class).equalTo("id", FirebaseAuth.getInstance().getCurrentUser().getUid()).findFirst();
             userRealm.setName(mapFirebase.get(context.getResources().getString(R.string.user_name)).toString());
             userRealm.setEmail(mapFirebase.get(context.getResources().getString(R.string.user_email)).toString());
             userRealm.setTelephone(mapFirebase.get(context.getResources().getString(R.string.user_telephone)).toString());
-            userRealm.setSchool(mapFirebase.get(context.getResources().getString(R.string.user_school_name)).toString());
+            userRealm.setSchool(school);
         });
         realm.close();
     }
@@ -100,12 +107,6 @@ public class RealmManager {
             realm1.insertOrUpdate(new RoomRealm(value));
         });
         realm.close();
-    }
-
-    public List<RoomRealm> getRoomsOfSchool(String id) {
-        return getQueryRealmInstance().where(RoomRealm.class)
-                .equalTo("schoolId", id)
-                .findAll();
     }
 
     public void saveState(String id, String stateRealm) {
@@ -154,4 +155,12 @@ public class RealmManager {
         realm.close();
     }
 
+    public void deleteUserFromRealm() {
+        Realm realm = Realm.getDefaultInstance();
+        RealmResults<UserRealm> entity = realm.where(UserRealm.class).findAll();
+        if (entity != null) {
+            realm.executeTransaction(realm1 -> entity.deleteAllFromRealm());
+        }
+        realm.close();
+    }
 }

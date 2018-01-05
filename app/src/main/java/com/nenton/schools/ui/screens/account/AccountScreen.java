@@ -3,6 +3,7 @@ package com.nenton.schools.ui.screens.account;
 import android.os.Bundle;
 
 import com.nenton.schools.R;
+import com.nenton.schools.data.storage.realm.SchoolRealm;
 import com.nenton.schools.data.storage.realm.UserRealm;
 import com.nenton.schools.di.DaggerService;
 import com.nenton.schools.di.sqopes.DaggerScope;
@@ -11,7 +12,6 @@ import com.nenton.schools.flow.Screen;
 import com.nenton.schools.mvp.model.AccountModel;
 import com.nenton.schools.mvp.presenters.AbstractPresenter;
 import com.nenton.schools.mvp.presenters.RootPresenter;
-import com.nenton.schools.mvp.views.IRootActivityView;
 import com.nenton.schools.ui.activities.RootActivity;
 import com.nenton.schools.ui.screens.auth.AuthScreen;
 
@@ -64,6 +64,8 @@ public class AccountScreen extends AbstractScreen<RootActivity.RootComponent> {
 
     public class AccountPresenter extends AbstractPresenter<AccountView, AccountModel> {
 
+        private String mIdSchool = "";
+
         @Override
         protected void initActivityBarBuilder() {
             mCompSubs.add(
@@ -88,23 +90,19 @@ public class AccountScreen extends AbstractScreen<RootActivity.RootComponent> {
         @Override
         protected void onLoad(Bundle savedInstanceState) {
             super.onLoad(savedInstanceState);
+            mRootPresenter.updateInfoAboutUser();
             mRootPresenter.updateInfoAboutStatesDistrictsSchools();
             mCompSubs.add(mModel.getUser().subscribe(new RealmSubscriber()));
         }
 
         public void clickComplete() {
-            if (getRootView() != null && getView() != null && verifyUserInfo() ) {
-                // TODO: 29.12.2017 Сохранить в Realm
+            if (getRootView() != null && getView() != null && verifyUserInfo()) {
                 RootActivity rootView = (RootActivity) getRootView();
                 Map<String, Object> mapFirebase = new HashMap<>();
                 mapFirebase.put(rootView.getResources().getString(R.string.user_name), getView().getName());
                 mapFirebase.put(rootView.getResources().getString(R.string.user_email), getView().getEmail());
                 mapFirebase.put(rootView.getResources().getString(R.string.user_telephone), getView().getTelephone());
-//                mapFirebase.put("grade", getView().getGrade());
-//                mapFirebase.put("state", getView().getState());
-//                mapFirebase.put("schoolDistrict", getView().getDistrict());
-//                mapFirebase.put("schoolType", getView().getTypeEducation());
-                mapFirebase.put(rootView.getResources().getString(R.string.user_school_name), getView().getSchools());
+                mapFirebase.put(rootView.getResources().getString(R.string.user_school_id), mIdSchool);
 
                 mModel.saveUserInfo(getView().getContext(), mapFirebase);
                 getRootView().showMessage("Changes saved!");
@@ -140,7 +138,7 @@ public class AccountScreen extends AbstractScreen<RootActivity.RootComponent> {
         public void clickOnLogout() {
             mModel.logoutUser();
             Flow.get(getView()).set(new AuthScreen());
-            // TODO: 05.01.2018 clear user realm
+            mModel.deleteUserFromRealm();
         }
 
         public void clickOnGrade() {
@@ -151,9 +149,15 @@ public class AccountScreen extends AbstractScreen<RootActivity.RootComponent> {
 
         public void clickOnSchool() {
             if (getView() != null) {
-                String[] strings = new String[]{"First", "Second", "Three"};
-                // TODO: 19.12.2017 get school
                 getView().showPickerSchool(mModel.getSchools());
+            }
+        }
+
+        public void choiceSchool(int position) {
+            if (getView() != null && position >= 0) {
+                SchoolRealm schoolRealm = mModel.getSchools().get(position);
+                mIdSchool = schoolRealm.getId();
+                getView().changeSchool(schoolRealm);
             }
         }
 
@@ -174,6 +178,9 @@ public class AccountScreen extends AbstractScreen<RootActivity.RootComponent> {
             public void onNext(UserRealm user) {
                 if (getRootView() != null && getView() != null) {
                     getView().initView(user);
+                    if (user.getSchool() != null) {
+                        mIdSchool = user.getSchool().getId();
+                    }
                 }
             }
         }

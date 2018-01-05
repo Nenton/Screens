@@ -73,7 +73,7 @@ public class AuthModel extends AbstractModel {
                 .doOnNext(firebaseUser -> {
                     UserDto user = new UserDto(firebaseUser.getEmail(), firebaseUser.getUid(), fullName);
                     mDB.getReference().child("users").child(firebaseUser.getUid()).setValue(user);
-                    mDataManager.getRealmManager().saveUserInfo(new UserRealm(user));
+                    mDataManager.getRealmManager().saveUserInfo(new UserRealm(user), null);
                 });
     }
 
@@ -83,20 +83,24 @@ public class AuthModel extends AbstractModel {
     }
 
     public void saveUserInfo() {
-        DatabaseReference user = mDB.getReference().child("users").child(mAuth.getCurrentUser().getUid());
-        if (user != null){
-            user.addValueEventListener(new ValueEventListener() {
-                @Override
-                public void onDataChange(DataSnapshot dataSnapshot) {
-                    UserRealm userRealm = dataSnapshot.getValue(UserRealm.class);
-                    mDataManager.saveUserToRealm(userRealm);
-                }
+        if (mAuth.getCurrentUser() != null){
+            DatabaseReference user = mDB.getReference().child("users").child(mAuth.getCurrentUser().getUid());
+            if (user != null) {
+                user.addValueEventListener(new ValueEventListener() {
+                    @Override
+                    public void onDataChange(DataSnapshot dataSnapshot) {
+                        UserDto user = dataSnapshot.getValue(UserDto.class);
+                        if (user != null) {
+                            mDataManager.saveUserToRealm(new UserRealm(user), user.getSchoolId());
+                        }
+                    }
 
-                @Override
-                public void onCancelled(DatabaseError databaseError) {
+                    @Override
+                    public void onCancelled(DatabaseError databaseError) {
 
-                }
-            });
+                    }
+                });
+            }
         }
     }
 
