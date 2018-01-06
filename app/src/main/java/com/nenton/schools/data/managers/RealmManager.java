@@ -3,10 +3,13 @@ package com.nenton.schools.data.managers;
 import android.content.Context;
 
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.nenton.schools.R;
+import com.nenton.schools.data.storage.dto.EntityHistoryPass;
 import com.nenton.schools.data.storage.dto.RoomDto;
 import com.nenton.schools.data.storage.dto.SchoolDto;
 import com.nenton.schools.data.storage.realm.DistrictRealm;
+import com.nenton.schools.data.storage.realm.EntityHistoryPassRealm;
 import com.nenton.schools.data.storage.realm.RoomRealm;
 import com.nenton.schools.data.storage.realm.SchoolRealm;
 import com.nenton.schools.data.storage.realm.StateRealm;
@@ -16,6 +19,7 @@ import java.util.List;
 import java.util.Map;
 
 import io.realm.Realm;
+import io.realm.RealmList;
 import io.realm.RealmObject;
 import io.realm.RealmResults;
 import rx.Observable;
@@ -162,5 +166,35 @@ public class RealmManager {
             realm.executeTransaction(realm1 -> entity.deleteAllFromRealm());
         }
         realm.close();
+    }
+
+    public void saveHistory(EntityHistoryPass entityHistoryPass, String key) {
+        FirebaseUser currentUser = FireBaseManager.getInstance().getFirebaseAuth().getCurrentUser();
+        if (currentUser != null) {
+            UserRealm user = getQueryRealmInstance()
+                    .where(UserRealm.class)
+                    .equalTo("id", currentUser.getUid())
+                    .findFirst();
+
+            Realm realm = Realm.getDefaultInstance();
+            realm.executeTransaction(realm1 -> {
+                EntityHistoryPassRealm entityHistoryPassRealm = new EntityHistoryPassRealm(entityHistoryPass, key);
+                realm1.insertOrUpdate(entityHistoryPassRealm);
+                user.getHistories().add(entityHistoryPassRealm);
+            });
+            realm.close();
+        }
+    }
+
+    public Observable<RealmList<EntityHistoryPassRealm>> getHistories() {
+        FirebaseUser currentUser = FireBaseManager.getInstance().getFirebaseAuth().getCurrentUser();
+        if (currentUser != null) {
+            return getQueryRealmInstance().where(UserRealm.class)
+                    .equalTo("id", currentUser.getUid())
+                    .findFirst().getHistories().asObservable();
+
+        } else {
+            return Observable.empty();
+        }
     }
 }

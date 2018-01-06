@@ -1,5 +1,6 @@
 package com.nenton.schools.ui.activities;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.Intent;
 import android.content.pm.ActivityInfo;
@@ -85,7 +86,7 @@ public class RootActivity extends AppCompatActivity implements IRootActivityView
         mRootPresenter.updateInfoAboutUser();
     }
 
-
+    @SuppressLint("RestrictedApi")
     public static void disableShiftMode(BottomNavigationView view) {
         BottomNavigationMenuView menuView = (BottomNavigationMenuView) view.getChildAt(0);
         try {

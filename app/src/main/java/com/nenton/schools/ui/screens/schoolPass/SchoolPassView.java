@@ -78,7 +78,7 @@ class SchoolPassView extends AbstractView<SchoolPassScreen.SchoolPassPresenter> 
     }
 
     @OnClick(R.id.pass_shop_iv)
-    void clickOnShop(){
+    void clickOnShop() {
         mPresenter.clickOnShop();
     }
 
@@ -129,6 +129,14 @@ class SchoolPassView extends AbstractView<SchoolPassScreen.SchoolPassPresenter> 
         }
     }
 
+//    public String getCurrentRoom() {
+//        return mCurrentRoom.getText().toString();
+//    }
+//
+//    public String getCurrentTeacher() {
+//        return mTeacher.getText().toString();
+//    }
+
     public void showOnlyMainOffice() {
         if (mSwitchMainOffice.isChecked()) {
             for (SwitchButton switchButton : mSwitches) {
@@ -139,7 +147,27 @@ class SchoolPassView extends AbstractView<SchoolPassScreen.SchoolPassPresenter> 
     }
 
     public void initView() {
+        for (SwitchButton switcher : mSwitches) {
+            switcher.setOnCheckedChangeListener((compoundButton, b) -> {
+                if (b) {
+                    mPresenter.choiceRoom((String) compoundButton.getTag());
+                    mCurrentRoom.getText().clear();
+                    mTeacher.getText().clear();
+                    mPresenter.changeSwitch();
 
+                    for (SwitchButton mSwitch : mSwitches) {
+                        if (!mSwitch.equals(switcher)) {
+                            mSwitch.setChecked(false);
+                        }
+                    }
+                }
+                boolean isChecked = false;
+                for (SwitchButton mSwitch : mSwitches) {
+                    isChecked = isChecked || mSwitch.isChecked();
+                }
+                mPresenter.onSwitchers(isChecked);
+            });
+        }
     }
 
     public void disableSwitches() {
@@ -159,7 +187,6 @@ class SchoolPassView extends AbstractView<SchoolPassScreen.SchoolPassPresenter> 
         numberPicker.setDisplayedValues(strings);
         numberPicker.setMinValue(0);
         numberPicker.setMaxValue(strings.length - 1);
-//        numberPicker.getValue();
 
         AlertDialog.Builder builder = new AlertDialog.Builder(getContext());
         builder.setTitle("Choose State")
@@ -177,5 +204,26 @@ class SchoolPassView extends AbstractView<SchoolPassScreen.SchoolPassPresenter> 
     public void fillRoom(String name, String teacher) {
         mCurrentRoom.setText(name);
         mTeacher.setText(teacher);
+        for (SwitchButton switcher : mSwitches) {
+            switcher.setChecked(false);
+        }
+    }
+
+    public void showDialogStop() {
+        AlertDialog.Builder builder = new AlertDialog.Builder(this.getContext());
+
+        builder.setTitle("Stop timer")
+                .setMessage("You want to stop the timer?")
+                .setPositiveButton("Yes", (dialogInterface, i) -> {
+                    mPresenter.stopTimer();
+                })
+                .setNegativeButton("Cancel", (dialogInterface, i) -> {
+                    dialogInterface.cancel();
+                })
+                .setNeutralButton("Pause", (dialogInterface, i) -> {
+                    mPresenter.pauseTimer();
+                })
+                .create()
+                .show();
     }
 }

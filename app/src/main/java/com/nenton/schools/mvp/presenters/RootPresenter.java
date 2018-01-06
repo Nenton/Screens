@@ -76,9 +76,9 @@ public class RootPresenter extends Presenter<IRootView> {
         DataManager.getInstance().updateUserInfo();
     }
 
-    public void updateInfoAboutStatesDistrictsSchools(){
-        DataManager.getInstance().uploadStatesDistrictsSchools();
-    }
+//    public void updateInfoAboutStatesDistrictsSchools(){
+//        DataManager.getInstance().uploadStatesDistrictsSchools();
+//    }
 
     public class RootActivityBarBuilder {
         private boolean isShowBottomNav = false;

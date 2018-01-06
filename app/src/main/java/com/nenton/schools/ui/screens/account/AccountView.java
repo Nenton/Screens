@@ -114,12 +114,16 @@ public class AccountView extends AbstractView<AccountScreen.AccountPresenter> {
         mUserId.setText(user.getId());
         mUserPhone.setText(user.getPhone());
 
-//        mUserGrage.setText(user.getGrade()); // TODO: 04.01.2018 посмотреть что такое grade
+//        mUserGrage.setText(user.getGrade());
         if (user.getSchool() != null) {
             mUserState.setText(user.getSchool().getSchoolState().getState());
             mUserDistrict.setText(user.getSchool().getSchoolDistrict().getDistrict());
             mSchool.setText(user.getSchool().getName());
             mSchoolPosition.setText(user.getSchool().getPosition());
+
+            if (!user.getSchool().getSchoolType().isEmpty()){
+                ((RadioButton) this.findViewWithTag(user.getSchool().getSchoolType())).setChecked(true);
+            }
         }
     }
 
@@ -137,23 +141,22 @@ public class AccountView extends AbstractView<AccountScreen.AccountPresenter> {
         return mUserGrage.getText().toString();
     }
 
-    public String getState() {
-        return mUserState.getText().toString();
-    }
-
-    public String getDistrict() {
-        return mUserDistrict.getText().toString();
-    }
+//    public String getState() {
+//        return mUserState.getText().toString();
+//    }
+//
+//    public String getDistrict() {
+//        return mUserDistrict.getText().toString();
+//    }
 
 
     public String getTelephone() {
         return mUserPhone.getText().toString();
     }
 
-    public String getTypeEducation() {
-        return ((RadioButton) findViewById(mTypeEducation.getCheckedRadioButtonId())).getText().toString();
-        // TODO: 29.12.2017 как то более правильно получить строку
-    }
+//    public String getTypeEducation() {
+//        return ((RadioButton) findViewById(mTypeEducation.getCheckedRadioButtonId())).getText().toString();
+//    }
 
     public String getSchools() {
         return mSchool.getText().toString();
@@ -189,7 +192,6 @@ public class AccountView extends AbstractView<AccountScreen.AccountPresenter> {
         numberPicker.setMinValue(0);
         numberPicker.setMaxValue(strings.length - 1);
         numberPicker.getValue();
-//        numberPicker.setValue(1);
 
         AlertDialog.Builder builder = new AlertDialog.Builder(getContext());
         builder.setTitle("Choose District")
@@ -265,6 +267,12 @@ public class AccountView extends AbstractView<AccountScreen.AccountPresenter> {
         mSchool.setText(school.getName());
         mUserState.setText(school.getSchoolState().getState());
         mUserDistrict.setText(school.getSchoolDistrict().getDistrict());
+
+        mSchoolPosition.setText(school.getPosition());
+
+        if (!school.getSchoolType().isEmpty()){
+            ((RadioButton) this.findViewWithTag(school.getSchoolType())).setChecked(true);
+        }
     }
 
 }

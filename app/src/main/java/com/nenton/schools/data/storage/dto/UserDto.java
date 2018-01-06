@@ -21,6 +21,12 @@ public class UserDto {
     private boolean studentVerified;
     private String teacherRoom;
 
+    public HashMap<String, EntityHistoryPass> getHistory() {
+        return history;
+    }
+
+    private HashMap<String, EntityHistoryPass> history;
+
     public UserDto() {
     }
 

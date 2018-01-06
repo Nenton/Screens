@@ -17,6 +17,7 @@ import com.nenton.schools.ui.custom_views.CustomChronometer;
 import com.nenton.schools.ui.screens.shop.ShopScreen;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 import dagger.Provides;
@@ -66,6 +67,10 @@ public class SchoolPassScreen extends AbstractScreen<RootActivity.RootComponent>
 
         private List<RoomRealm> roomsOfSchool;
         private RoomRealm mRoom;
+        private long baseChronometer = 0;
+        private long timeFromChronometer = 0;
+        private String mCurrentRoom = "";
+        private String mCurrentTeacher = "";
 
         @Override
         protected void initActivityBarBuilder() {
@@ -103,41 +108,50 @@ public class SchoolPassScreen extends AbstractScreen<RootActivity.RootComponent>
 
         public void clickOnChalkboard() {
             if (getRootView() != null && getView() != null) {
-                CustomChronometer chronometer = getView().getChronometer();
-                if (chronometer.isRunning()) {
-                    chronometer.stop();
-                    // TODO: 12.12.2017 create Job on create entry in Firebase
-                    getView().enableSwitches();
-//                    Date date = new Date(SystemClock.elapsedRealtime() - chronometer.getBase());
-//                    getRootView().showMessage(String.valueOf(date.getMinutes()) + ":" + String.valueOf(date.getSeconds()));
+                if (!mCurrentRoom.isEmpty() || !mCurrentTeacher.isEmpty()) {
+                    CustomChronometer chronometer = getView().getChronometer();
+                    if (chronometer.isRunning()) {
+                        getView().showDialogStop();
+                    } else {
+                        if (timeFromChronometer == 0) {
+                            baseChronometer = new Date().getTime();
+                            timeFromChronometer = SystemClock.elapsedRealtime();
+                            chronometer.setBase(timeFromChronometer);
+                        } else {
+                            chronometer.setBase(SystemClock.elapsedRealtime() - timeFromChronometer);
+                        }
+                        getView().disableSwitches();
+                        getRootView().showMessage("Start time");
+                        chronometer.start();
+                        ((RootActivity) getRootView()).stateBottomNavView(false);
+                    }
                 } else {
-                    getRootView().showMessage("Start time");
-                    chronometer.setBase(SystemClock.elapsedRealtime());
-                    chronometer.start();
-                    getView().disableSwitches();
+                    getRootView().showMessage("For start the timer will choice room or classroom");
                 }
             }
         }
 
-
         public void clickOnChoiseClass() {
-            if (getView() != null) {
-                ArrayList<String> list = new ArrayList<>();
-                for (int i = 0; i < roomsOfSchool.size(); i++) {
-                    RoomRealm room = roomsOfSchool.get(i);
-                    list.add(room.getName() + " " + room.getTeacher());
-                }
-                String[] strings = new String[list.size()];
+            if (getRootView() != null && getView() != null) {
+                if (timeFromChronometer == 0) {
+                    ArrayList<String> list = new ArrayList<>();
+                    for (int i = 0; i < roomsOfSchool.size(); i++) {
+                        RoomRealm room = roomsOfSchool.get(i);
+                        list.add(room.getName() + " " + room.getTeacher());
+                    }
+                    String[] strings = new String[list.size()];
 
+                    for (int i = 0; i < list.size(); i++) {
+                        strings[i] = list.get(i);
+                    }
 
-                for (int i = 0; i < list.size(); i++) {
-                    strings[i] = list.get(i);
-                }
-
-                if (strings.length == 0) {
-                    getRootView().showMessage("List Rooms and Teachers empty");
+                    if (strings.length == 0) {
+                        getRootView().showMessage("List Rooms and Teachers empty");
+                    } else {
+                        getView().showPickerRoomNameAndTeacher(strings);
+                    }
                 } else {
-                    getView().showPickerRoomNameAndTeacher(strings);
+                    getRootView().showMessage("For choice of the room will stop the timer");
                 }
             }
         }
@@ -148,9 +162,10 @@ public class SchoolPassScreen extends AbstractScreen<RootActivity.RootComponent>
                     getRootView().showMessage("You are already here");
                     return;
                 }
-
                 mRoom = roomsOfSchool.get(id);
-                getView().fillRoom(mRoom.getName(), mRoom.getTeacher());
+                mCurrentRoom = mRoom.getName();
+                mCurrentTeacher = mRoom.getTeacher();
+                getView().fillRoom(mCurrentRoom, mCurrentTeacher);
             }
         }
 
@@ -168,7 +183,53 @@ public class SchoolPassScreen extends AbstractScreen<RootActivity.RootComponent>
 
         public void clickOnShop() {
             if (getView() != null) {
-                Flow.get(getView()).set(new ShopScreen());
+                if (timeFromChronometer == 0) {
+                    Flow.get(getView()).set(new ShopScreen());
+                } else {
+                    getRootView().showMessage("For go in shop will stop the timer");
+                }
+            }
+        }
+
+        public void stopTimer() {
+            if (getView() != null) {
+                saveEntityToHistory();
+                getView().getChronometer().stop();
+                getView().enableSwitches();
+                timeFromChronometer = 0;
+                baseChronometer = 0;
+                ((RootActivity) getRootView()).stateBottomNavView(true);
+            }
+        }
+
+        private void saveEntityToHistory() {
+            mModel.saveEntityToHistory(mCurrentRoom,
+                    mCurrentTeacher,
+                    baseChronometer,
+                    new Date().getTime());
+        }
+
+        public void pauseTimer() {
+            if (getView() != null) {
+                CustomChronometer chronometer = getView().getChronometer();
+                timeFromChronometer = SystemClock.elapsedRealtime() - chronometer.getBase();
+                chronometer.stop();
+            }
+        }
+
+        public void choiceRoom(String tag) {
+            mCurrentRoom = tag;
+            mCurrentTeacher = "";
+        }
+
+        public void changeSwitch() {
+            mRoom = null;
+        }
+
+        public void onSwitchers(boolean isChangeOne) {
+            if (!isChangeOne) {
+                mCurrentRoom = "";
+                mCurrentTeacher = "";
             }
         }
     }

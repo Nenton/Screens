@@ -84,6 +84,7 @@ public class AuthModel extends AbstractModel {
 
     public void saveUserInfo() {
         if (mAuth.getCurrentUser() != null){
+            mDataManager.uploadStatesDistrictsSchools();
             DatabaseReference user = mDB.getReference().child("users").child(mAuth.getCurrentUser().getUid());
             if (user != null) {
                 user.addValueEventListener(new ValueEventListener() {

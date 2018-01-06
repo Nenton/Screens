@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <com.nenton.schools.ui.screens.account.AccountView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    xmlns:tools="http://schemas.android.com/tools">
+    android:layout_height="match_parent">
 
     <android.support.v4.widget.NestedScrollView
         android:layout_width="match_parent"
@@ -71,6 +71,7 @@
                 <RadioButton
                     android:id="@+id/reg_student_rb"
                     style="@style/BlueRadioBtn"
+                    android:enabled="false"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
@@ -79,6 +80,7 @@
                 <RadioButton
                     android:id="@+id/reg_educator_rb"
                     style="@style/BlueRadioBtn"
+                    android:enabled="false"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="8dp"
@@ -292,36 +294,44 @@
                 <RadioButton
                     android:id="@+id/reg_elementary_rb"
                     style="@style/BlueRadioBtn"
+                    android:enabled="false"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
+                    android:tag="@string/type_education_elementary"
                     android:text="@string/school_elementary" />
 
                 <RadioButton
                     android:id="@+id/reg_ir_high_rb"
                     style="@style/BlueRadioBtn"
+                    android:enabled="false"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="8dp"
                     android:layout_weight="1"
+                    android:tag="@string/type_education_jr_high"
                     android:text="@string/school_jr_high" />
 
                 <RadioButton
                     android:id="@+id/reg_sr_high_rb"
                     style="@style/BlueRadioBtn"
+                    android:enabled="false"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="8dp"
                     android:layout_weight="1"
+                    android:tag="@string/type_education_sr_high"
                     android:text="@string/school_sr_high" />
 
                 <RadioButton
                     android:id="@+id/reg_all_rb"
                     style="@style/BlueRadioBtn"
+                    android:enabled="false"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="8dp"
                     android:layout_weight="1"
+                    android:tag="@string/type_education_all"
                     android:text="@string/school_all" />
             </RadioGroup>
 
@@ -402,8 +412,8 @@
                     android:background="@color/white_transparent"
                     android:enabled="false"
                     android:minLines="3"
-                    tools:text="123 Sesame Street Miami, FL 33056 305-502-3535"
-                    android:textSize="@dimen/text_size_middle" />
+                    android:textSize="@dimen/text_size_middle"
+                    tools:text="123 Sesame Street Miami, FL 33056 305-502-3535" />
             </RelativeLayout>
 
             <LinearLayout

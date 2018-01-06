@@ -6,18 +6,23 @@
     <string name="roboto_light">sans-serif-light</string>
     <string name="roboto_medium">sans-serif-medium</string>
 
-
-
-
     <string name="user_name">name</string>
     <string name="user_email">email</string>
     <string name="user_telephone">phone</string>
-
     <string name="user_school_id">schoolId</string>
 
+    <string name="type_education_elementary">Elementary</string>
+    <string name="type_education_jr_high">Jr. high</string>
+    <string name="type_education_sr_high">Sr. high</string>
+    <string name="type_education_all">All</string>
 
-
-
+    <string name="tv_restroom">Restroom</string>
+    <string name="tv_counselor">Counselor</string>
+    <string name="tv_main_office">Main office</string>
+    <string name="tv_student_services">Student Services</string>
+    <string name="tv_library">Library</string>
+    <string name="tv_clinic">Clinic</string>
+    <string name="tv_other">Other</string>
 
     <string name="open_drawer">open</string>
     <string name="close_drawer">close</string>
@@ -59,12 +64,5 @@
     <string name="tv_current_room">Current Room</string>
     <string name="tv_teacher">Teacher</string>
     <string name="tv_destination">Destination</string>
-    <string name="tv_restroom">Restroom</string>
-    <string name="tv_counselor">Counselor</string>
-    <string name="tv_main_office">Main office</string>
-    <string name="tv_student_services">Student Services</string>
-    <string name="tv_library">Library</string>
-    <string name="tv_clinic">Clinic</string>
-    <string name="tv_other">Other</string>
     <string name="hint_details">Details</string>
 </resources>

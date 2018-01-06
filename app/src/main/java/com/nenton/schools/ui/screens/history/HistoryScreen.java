@@ -1,6 +1,10 @@
 package com.nenton.schools.ui.screens.history;
 
+import android.os.Bundle;
+
 import com.nenton.schools.R;
+import com.nenton.schools.data.managers.FireBaseManager;
+import com.nenton.schools.data.storage.realm.EntityHistoryPassRealm;
 import com.nenton.schools.di.DaggerService;
 import com.nenton.schools.di.sqopes.DaggerScope;
 import com.nenton.schools.flow.AbstractScreen;
@@ -11,7 +15,12 @@ import com.nenton.schools.mvp.presenters.RootPresenter;
 import com.nenton.schools.ui.activities.RootActivity;
 
 import dagger.Provides;
+import io.realm.RealmList;
 import mortar.MortarScope;
+import rx.Scheduler;
+import rx.Subscriber;
+import rx.android.schedulers.AndroidSchedulers;
+import rx.schedulers.Schedulers;
 
 /**
  * Created by serge on 22.11.2017.
@@ -64,5 +73,38 @@ public class HistoryScreen extends AbstractScreen<RootActivity.RootComponent> {
         protected void initDagger(MortarScope scope) {
             ((Component) scope.getService(DaggerService.SERVICE_NAME)).inject(this);
         }
+
+        @Override
+        protected void onLoad(Bundle savedInstanceState) {
+            super.onLoad(savedInstanceState);
+            if (getView() != null){
+                getView().initView();
+                mCompSubs.add(mModel.getHistories()
+                        .subscribe(new RealmSubscriber()));
+            }
+        }
+
+        private class RealmSubscriber extends Subscriber<RealmList<EntityHistoryPassRealm>> {
+            @Override
+            public void onCompleted() {
+
+            }
+
+            @Override
+            public void onError(Throwable e) {
+                if (getRootView() != null) {
+                    getRootView().showError(e);
+                }
+            }
+
+            @Override
+            public void onNext(RealmList<EntityHistoryPassRealm> entity) {
+                if (getRootView() != null && getView() != null) {
+                    entity.sort("dateStart");
+                    getView().addEntities(entity);
+                }
+            }
+        }
     }
+
 }

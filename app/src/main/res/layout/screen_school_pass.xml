@@ -83,7 +83,7 @@
                     android:layout_alignParentRight="true"
                     android:layout_centerVertical="true"
                     android:enabled="false"
-                    tools:text="Jun 5 2016"
+                    android:text="Jun 5 2016"
                     android:textAllCaps="true"
                     android:textSize="@dimen/text_size_middle" />
             </RelativeLayout>
@@ -241,6 +241,7 @@
                             style="@style/SwitchDestination"
                             app:kswThumbColor="@color/color_switcher"
                             app:kswTintColor="@color/green_switch"
+                            android:tag="@string/tv_restroom"
                             tools:checked="true" />
                     </LinearLayout>
 
@@ -255,6 +256,7 @@
                             style="@style/SwitchDestination"
                             app:kswThumbColor="@color/color_switcher"
                             app:kswTintColor="@color/green_switch"
+                            android:tag="@string/tv_counselor"
                             tools:checked="true" />
                     </LinearLayout>
 
@@ -269,6 +271,7 @@
                             style="@style/SwitchDestination"
                             app:kswThumbColor="@color/color_switcher"
                             app:kswTintColor="@color/green_switch"
+                            android:tag="@string/tv_main_office"
                             tools:checked="true" />
                     </LinearLayout>
 
@@ -283,6 +286,7 @@
                             style="@style/SwitchDestination"
                             app:kswThumbColor="@color/color_switcher"
                             app:kswTintColor="@color/green_switch"
+                            android:tag="@string/tv_student_services"
                             tools:checked="true" />
                     </LinearLayout>
 
@@ -298,6 +302,7 @@
                             style="@style/SwitchDestination"
                             app:kswThumbColor="@color/color_switcher"
                             app:kswTintColor="@color/green_switch"
+                            android:tag="@string/tv_library"
                             tools:checked="true" />
                     </LinearLayout>
 
@@ -312,6 +317,7 @@
                             style="@style/SwitchDestination"
                             app:kswThumbColor="@color/color_switcher"
                             app:kswTintColor="@color/green_switch"
+                            android:tag="@string/tv_clinic"
                             tools:checked="true" />
                     </LinearLayout>
 
@@ -326,6 +332,7 @@
                             style="@style/SwitchDestination"
                             app:kswThumbColor="@color/color_switcher"
                             app:kswTintColor="@color/green_switch"
+                            android:tag="@string/tv_other"
                             tools:checked="true" />
                     </LinearLayout>
 

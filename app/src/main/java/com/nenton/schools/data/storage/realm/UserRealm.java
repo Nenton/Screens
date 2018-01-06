@@ -1,7 +1,9 @@
 package com.nenton.schools.data.storage.realm;
 
+import com.nenton.schools.data.storage.dto.EntityHistoryPass;
 import com.nenton.schools.data.storage.dto.UserDto;
 
+import io.realm.RealmList;
 import io.realm.RealmObject;
 import io.realm.annotations.PrimaryKey;
 
@@ -23,6 +25,7 @@ public class UserRealm extends RealmObject {
     private SchoolRealm school;
     private boolean studentVerified;
     private String teacherRoom;
+    private RealmList<EntityHistoryPassRealm> histories;
 
     public UserRealm() {
     }
@@ -39,6 +42,11 @@ public class UserRealm extends RealmObject {
         this.accountType = "";
         this.studentVerified = false;
         this.teacherRoom = "";
+
+        histories = new RealmList<>();
+        for (String key : user.getHistory().keySet()) {
+            histories.add(new EntityHistoryPassRealm(user.getHistory().get(key), key));
+        }
     }
 
     public SchoolRealm getSchool() {
@@ -95,5 +103,9 @@ public class UserRealm extends RealmObject {
 
     public void setEmail(String email) {
         this.email = email;
+    }
+
+    public RealmList<EntityHistoryPassRealm> getHistories() {
+        return histories;
     }
 }

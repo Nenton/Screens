@@ -91,7 +91,7 @@ public class AccountScreen extends AbstractScreen<RootActivity.RootComponent> {
         protected void onLoad(Bundle savedInstanceState) {
             super.onLoad(savedInstanceState);
             mRootPresenter.updateInfoAboutUser();
-            mRootPresenter.updateInfoAboutStatesDistrictsSchools();
+//            mRootPresenter.updateInfoAboutStatesDistrictsSchools();
             mCompSubs.add(mModel.getUser().subscribe(new RealmSubscriber()));
         }
 
@@ -117,9 +117,6 @@ public class AccountScreen extends AbstractScreen<RootActivity.RootComponent> {
             return !getView().getName().isEmpty() &&
                     !getView().getEmail().isEmpty() &&
                     !getView().getGrade().isEmpty() &&
-                    !getView().getState().isEmpty() &&
-                    !getView().getDistrict().isEmpty() &&
-                    !getView().getTypeEducation().isEmpty() &&
                     !getView().getSchools().isEmpty();
         }
 
